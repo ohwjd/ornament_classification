@@ -1,0 +1,1736 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href='https://music-encoding.org/schema/5.0/mei-all.rng' type='application/xml' schematypens='http://relaxng.org/ns/structure/1.0'?>
+<mei xmlns='http://www.music-encoding.org/ns/mei' meiversion='5.1'>
+    <meiHead>
+        <fileDesc>
+            <titleStmt>
+                <title>4438_07_la_plus_des_plus</title>
+            </titleStmt>
+            <pubStmt></pubStmt>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo>
+                <application isodate='2025-08-27' version='1.0.0'>
+                    <name>abtab -- tabmapper</name>
+                    <p>Input file: 4438_07_la_plus_des_plus.tbp</p>
+                </application>
+            </appInfo>
+        </encodingDesc>
+        <workList>
+            <work>
+                <title></title>
+                <composer></composer>
+                <notesStmt>
+                    <annot></annot>
+                </notesStmt>
+            </work>
+        </workList>
+    </meiHead>
+    <music>
+       <body>
+            <mdiv>
+                <score>
+                    <scoreDef xml:id='sdckq5o2'>
+                        <staffGrp xml:id='sg2wm766' symbol='bracket' bar.thru='true'>
+                            <staffDef xml:id='sd7xy13c' n='1' lines='5' keysig='0' meter.count='2' meter.unit='2'>
+                                <clef xml:id='cnr6vsco' shape='G' line='2'/>
+                                <keySig xml:id='ks4nzgdx' sig='0' mode='major'/>
+                                <meterSig xml:id='ms8fh6fh' count='2' unit='2' sym='cut'/>
+                            </staffDef>
+                            <staffDef xml:id='sdlh345j' n='2' lines='5' keysig='0' meter.count='2' meter.unit='2'>
+                                <clef xml:id='c4xsgni4' shape='F' line='4'/>
+                                <keySig xml:id='ks2ydevi' sig='0' mode='major'/>
+                                <meterSig xml:id='ms9kkh8h' count='2' unit='2' sym='cut'/>
+                            </staffDef>
+                            <staffDef xml:id='sd1zshub' n='3' lines='5' keysig='0' meter.count='2' meter.unit='2'>
+                                <clef xml:id='c4koqlog' shape='F' line='4'/>
+                                <keySig xml:id='ksw5kib9' sig='0' mode='major'/>
+                                <meterSig xml:id='ms4w4ec9' count='2' unit='2' sym='cut'/>
+                            </staffDef>
+                        </staffGrp>
+                    </scoreDef>
+                    <section xml:id='sxmkktwf' n='1'>
+                        <measure xml:id='mjqm73ah' n='1'>
+                            <staff xml:id='s2buyhpb' n='1'>
+                                <layer xml:id='l2y17ra5' n='1'>
+                                    <mRest xml:id='mrgll4vf'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s6zqvpos' n='2'>
+                                <layer xml:id='lualf3nz' n='1'>
+                                    <rest xml:id='r4ot38u9' dur='2'/>
+                                    <note xml:id='n352k64y' pname='e' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sumaj5zx' n='3'>
+                                <layer xml:id='l449grhz' n='1'>
+                                    <note xml:id='ny9ncgbi' pname='e' oct='3' dur='2'/>
+                                    <rest xml:id='rquk6zc9' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mv5dms12' n='2'>
+                            <staff xml:id='s97388bo' n='1'>
+                                <layer xml:id='lus1qe9c' n='1'>
+                                    <mRest xml:id='mrt2fa2x'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sr38wyv6' n='2'>
+                                <layer xml:id='lqhesmrq' n='1'>
+                                    <note xml:id='nqpog37b' pname='e' oct='3' dur='2' color='lime'/>
+                                    <note xml:id='nga5j2vo' pname='f' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='scyfbkmv' n='3'>
+                                <layer xml:id='loualxo1' n='1'>
+                                    <note xml:id='n26b74rb' pname='c' oct='3' dur='2'/>
+                                    <note xml:id='nf5kf7jh' pname='d' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mynshlb5' n='3'>
+                            <staff xml:id='s8qotwhp' n='1'>
+                                <layer xml:id='lme9v3rs' n='1'>
+                                    <rest xml:id='rpdap6iv' dur='2'/>
+                                    <note xml:id='nagzg3id' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rvbo9us3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='szfqqpoe' n='2'>
+                                <layer xml:id='lir6dktt' n='1'>
+                                    <note xml:id='nj6xtfrc' pname='g' oct='3' dur='2'/>
+                                    <note xml:id='nhst9yll' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='r8gawn5a' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='scr6yl7f' n='3'>
+                                <layer xml:id='lf73ij1q' n='1'>
+                                    <note xml:id='npi3btno' pname='e' oct='3' dur='2'/>
+                                    <rest xml:id='rb4vdbmx' dur='4'/>
+                                    <note xml:id='noajq4ga' pname='a' oct='2' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mpdo1o6t' n='4'>
+                            <staff xml:id='spvwwyuu' n='1'>
+                                <layer xml:id='ly3slh5v' n='1'>
+                                    <note xml:id='nsi428l8' pname='e' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='r6olr6v2' dur='4'/>
+                                    <note xml:id='nvyi7e7g' pname='f' oct='4' dur='4'/>
+                                    <rest xml:id='r4wsuuq7' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sgidqc97' n='2'>
+                                <layer xml:id='lu2pzyzp' n='1'>
+                                    <note xml:id='ndk89lq8' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nyuh3q39' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='nnsfynpo' pname='a' oct='3' dur='4' color='lime'/>
+                                    <beam xml:id='b2wrpbwu'>
+                                        <note xml:id='n9j6fyko' pname='g' oct='3' dur='8'/>
+                                        <note xml:id='n512thqf' pname='f' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='ssmpicdk' n='3'>
+                                <layer xml:id='ltjqyybx' n='1'>
+                                    <note xml:id='n838paf1' pname='c' oct='3' dur='4'/>
+                                    <rest xml:id='r2m77leq' dur='4'/>
+                                    <note xml:id='nplk65es' pname='d' oct='3' dur='4'/>
+                                    <rest xml:id='r2c29z3t' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m8cnl54o' n='5'>
+                            <staff xml:id='sfw21vnh' n='1'>
+                                <layer xml:id='lupseehh' n='1'>
+                                    <note xml:id='nah9l5ku' pname='g' oct='4' dur='2'/>
+                                    <note xml:id='natujd97' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='ryvnopqv' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='snzc8nsb' n='2'>
+                                <layer xml:id='ljrgi91n' n='1'>
+                                    <note xml:id='nhsyvug3' pname='e' oct='3' dur='2'/>
+                                    <rest xml:id='r2ap6jt4' dur='4'/>
+                                    <note xml:id='nx4ub7bz' pname='d' oct='3' dur='4' color='lime'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='soljxtaz' n='3'>
+                                <layer xml:id='luu9khsr' n='1'>
+                                    <note xml:id='n9nwbgzh' pname='e' oct='3' dur='2'/>
+                                    <rest xml:id='rm2qzeea' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mlq2noy4' n='6'>
+                            <staff xml:id='sqh5uwen' n='1'>
+                                <layer xml:id='lbfc1x6r' n='1'>
+                                    <note xml:id='nkox7npk' pname='g' oct='4' dur='4'/>
+                                    <note xml:id='ngo4lxgd' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='rvfzrk6m' dur='8'/>
+                                    <beam xml:id='btji7don'>
+                                        <note xml:id='nwrrrmr5' pname='a' oct='4' dur='8' color='blue'/>
+                                        <note xml:id='npdjy628' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='nm2lb6bj' pname='f' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sklit4yo' n='2'>
+                                <layer xml:id='ll7y7n6z' n='1'>
+                                    <rest xml:id='rndijsv7' dur='2'/>
+                                    <note xml:id='nq54tike' pname='a' oct='3' dur='8'/>
+                                    <rest xml:id='rbpdgi28' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sjxaw7ob' n='3'>
+                                <layer xml:id='l3j5zgfx' n='1'>
+                                    <note xml:id='no4cqbh4' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='nsemfmb4' pname='f' oct='3' dur='4'/>
+                                    <rest xml:id='r11tec9i' dur='4'/>
+                                    <beam xml:id='by2xqck7'>
+                                        <note xml:id='n2yixfmk' pname='e' oct='3' dur='8'/>
+                                        <note xml:id='nsukqh3x' pname='d' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mvoj9kx4' n='7'>
+                            <staff xml:id='sv7zi2hv' n='1'>
+                                <layer xml:id='lns4czvf' n='1'>
+                                    <note xml:id='ne9nglwx' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='ro1q2o2e' dur='4'/>
+                                    <note xml:id='nvym5r84' pname='d' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sbiz4o8m' n='2'>
+                                <layer xml:id='lfhqn9v8' n='1'>
+                                    <note xml:id='nwig6iir' pname='a' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='r2t1igpe' dur='4'/>
+                                    <note xml:id='n2ydknwu' pname='b' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sk514w4l' n='3'>
+                                <layer xml:id='lzjye7go' n='1'>
+                                    <note xml:id='nx7prek1' pname='c' oct='3' dur='4'/>
+                                    <beam xml:id='bjbnva3a'>
+                                        <note xml:id='nl83rcm1' pname='b' oct='2' dur='8'/>
+                                        <note xml:id='nk97mppz' pname='a' oct='2' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nck1dpcc' pname='g' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='miha1vn5' n='8'>
+                            <staff xml:id='spbo7pxm' n='1'>
+                                <layer xml:id='l6heth5f' n='1'>
+                                    <rest xml:id='rcktlq17' dur='2'/>
+                                    <note xml:id='nlnda79g' pname='a' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sqstoifs' n='2'>
+                                <layer xml:id='lyrs2n7t' n='1'>
+                                    <note xml:id='nircz19g' pname='c' oct='4' dur='4'/>
+                                    <beam xml:id='b2vi28k4'>
+                                        <note xml:id='nso52w9l' pname='d' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nrg9qidf' pname='c' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nalvafae' pname='b' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='njk36gf9' pname='c' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nmyfod1a' pname='d' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sapr7hea' n='3'>
+                                <layer xml:id='lsnmkumi' n='1'>
+                                    <note xml:id='nwjbs9tz' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rmmoz19k' dur='4'/>
+                                    <note xml:id='nqgdal5l' pname='d' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mztug11u' n='9'>
+                            <staff xml:id='sfbyfwwc' n='1'>
+                                <layer xml:id='l3czvrw4' n='1'>
+                                    <note xml:id='nj88bmpd' pname='a' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='ro4ea81j' dur='4'/>
+                                    <note xml:id='nh3bg1if' pname='b' oct='4' dur='4'/>
+                                    <rest xml:id='rnor8qw3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='svhba7cw' n='2'>
+                                <layer xml:id='lop7yhu7' n='1'>
+                                    <note xml:id='njv6d8mm' pname='c' oct='4' dur='4'/>
+                                    <note xml:id='nbabknxr' pname='d' oct='4' dur='4'/>
+                                    <note xml:id='n39qdi9d' pname='d' oct='4' dur='4' color='lime'/>
+                                    <note xml:id='nc23k5m5' pname='c' oct='4' dur='16'/>
+                                    <rest xml:id='rm7fu1k4' dur='8' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s7nznarm' n='3'>
+                                <layer xml:id='lw3hx39s' n='1'>
+                                    <note xml:id='n6e15bt9' pname='f' oct='3' dur='4'/>
+                                    <rest xml:id='rylujnep' dur='4'/>
+                                    <note xml:id='ndn6dtug' pname='g' oct='3' dur='4'/>
+                                    <rest xml:id='r8ti4lde' dur='16'/>
+                                    <beam xml:id='blv1osim'>
+                                        <note xml:id='nqh5fayo' pname='b' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='nn81bnb8' pname='a' oct='3' dur='16' color='red'/>
+                                        <note xml:id='nzoms4j6' pname='g' oct='3' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m1ly2je4' n='10'>
+                            <staff xml:id='saosrgda' n='1'>
+                                <layer xml:id='liy8ru6r' n='1'>
+                                    <note xml:id='naappigc' pname='c' oct='5' dur='2'/>
+                                    <note xml:id='ncxjr39k' pname='d' oct='5' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sum526b7' n='2'>
+                                <layer xml:id='lh2qmky3' n='1'>
+                                    <note xml:id='nk3qakdq' pname='a' oct='3' dur='2'/>
+                                    <note xml:id='nygr8c3v' pname='g' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='shhflv4n' n='3'>
+                                <layer xml:id='lvi77ocx' n='1'>
+                                    <note xml:id='n6lxhlpg' pname='a' oct='3' dur='2'/>
+                                    <note xml:id='nqkev3sc' pname='b' oct='3' accid='f' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mhg6ux4f' n='11'>
+                            <staff xml:id='s9m87lim' n='1'>
+                                <layer xml:id='ljvqtg4u' n='1'>
+                                    <note xml:id='n7x5oaws' pname='c' oct='5' dur='4'/>
+                                    <note xml:id='n41g5x3i' pname='d' oct='5' dur='4'/>
+                                    <rest xml:id='rbbcn2py' dur='4'/>
+                                    <beam xml:id='buk67l52'>
+                                        <note xml:id='nm4aomsq' pname='c' oct='5' dur='8'/>
+                                        <note xml:id='n6bpvcsl' pname='b' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s7d3q4xl' n='2'>
+                                <layer xml:id='l1tcv8l8' n='1'>
+                                    <rest xml:id='r4vh2134' dur='2'/>
+                                    <note xml:id='nwbf1qz6' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='r95118wh' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s84axljl' n='3'>
+                                <layer xml:id='l8gxmfh9' n='1'>
+                                    <note xml:id='nhuun5bb' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='nwfa4lo1' pname='b' oct='3' accid='f' dur='4'/>
+                                    <rest xml:id='r25tkw8o' dur='4'/>
+                                    <beam xml:id='bo3h5dnu'>
+                                        <note xml:id='nn1v4fz2' pname='a' oct='3' dur='8'/>
+                                        <note xml:id='nkg1ijpf' pname='g' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mmt3b3ve' n='12'>
+                            <staff xml:id='ss46suvd' n='1'>
+                                <layer xml:id='lgt5ao4t' n='1'>
+                                    <note xml:id='n3yi9q9z' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='rf8ev1zt' dur='4'/>
+                                    <note xml:id='n3m1dpjb' pname='g' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='suvktnog' n='2'>
+                                <layer xml:id='lwjmqaof' n='1'>
+                                    <note xml:id='n99wv8on' pname='d' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bzi868yq'>
+                                        <note xml:id='ndp1zflb' pname='e' oct='4' dur='16' color='red'/>
+                                        <note xml:id='nkg76n7d' pname='d' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nxvn8m1r' pname='c' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='npfm2xuu' pname='d' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nwbfi1jp' pname='e' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sfer6yxi' n='3'>
+                                <layer xml:id='lhjv4up6' n='1'>
+                                    <note xml:id='nb3lnjmv' pname='f' oct='3' dur='4'/>
+                                    <rest xml:id='rp3hn9rf' dur='4'/>
+                                    <note xml:id='n8cd69gu' pname='c' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='megvvoxh' n='13'>
+                            <staff xml:id='s6klf3lk' n='1'>
+                                <layer xml:id='l65cpw7i' n='1'>
+                                    <note xml:id='nqgkcbpk' pname='g' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='buazqcen'>
+                                        <note xml:id='ni64f7ak' pname='a' oct='4' dur='8'/>
+                                        <note xml:id='n61l1nn1' pname='b' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n5gqv7t7' pname='c' oct='5' dur='4'/>
+                                    <beam xml:id='btuyzugm'>
+                                        <note xml:id='n9t21lnb' pname='b' oct='4' dur='16'/>
+                                        <note xml:id='n3aoz615' pname='a' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ny1xyc5a' pname='b' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nblvfwg5' pname='c' oct='5' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='szmjj855' n='2'>
+                                <layer xml:id='l7zz5w9x' n='1'>
+                                    <note xml:id='nura7242' pname='e' oct='4' dur='4' color='lime'/>
+                                    <note xml:id='n4o9xb8n' pname='d' oct='4' dur='8'/>
+                                    <rest xml:id='r44no31r' dur='8'/>
+                                    <note xml:id='nivvk83j' pname='c' oct='4' dur='4'/>
+                                    <note xml:id='npg6648j' pname='d' oct='4' dur='16'/>
+                                    <rest xml:id='rywu14hi' dur='8' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='safh2tk1' n='3'>
+                                <layer xml:id='lpob88sg' n='1'>
+                                    <note xml:id='nexlrdm7' pname='c' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='rpzwmamp' dur='4'/>
+                                    <note xml:id='neuw71lk' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='n32fuzq3' pname='g' oct='3' dur='16'/>
+                                    <rest xml:id='rygyazxx' dur='8' dots='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mztbypgi' n='14'>
+                            <staff xml:id='s3yhobn3' n='1'>
+                                <layer xml:id='lhwp9zwq' n='1'>
+                                    <beam xml:id='bejuqtle'>
+                                        <note xml:id='ny4ymarm' pname='b' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nrxzdbwq' pname='a' oct='4' dur='8'/>
+                                        <note xml:id='nki3hayw' pname='a' oct='4' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='r5dss732' dur='8' dots='1'/>
+                                    <beam xml:id='b4kdykkn'>
+                                        <note xml:id='na1qheam' pname='a' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nwytmjue' pname='f' oct='4' accid='s' dur='16' color='blue'/>
+                                        <note xml:id='n9i5gdc3' pname='g' oct='4' accid='s' dur='16' color='blue'/>
+                                        <note xml:id='nr6phz6v' pname='a' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='nlvvx5ir' pname='g' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                        <note xml:id='n5zss1td' pname='f' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                        <note xml:id='nu5y8ek9' pname='g' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sda6mpxi' n='2'>
+                                <layer xml:id='limahmu6' n='1'>
+                                    <beam xml:id='b82u8csn'>
+                                        <note xml:id='ntf7c958' pname='d' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='namw42v1' pname='c' oct='4' dur='8'/>
+                                        <note xml:id='nwr16ltu' pname='b' oct='3' dur='8'/>
+                                    </beam>
+                                    <beam xml:id='brsqe9f4'>
+                                        <note xml:id='nbichklz' pname='a' oct='3' dur='8'/>
+                                        <note xml:id='nsf6ln6g' pname='b' oct='3' dur='16'/>
+                                    </beam>
+                                    <rest xml:id='rh847ypq' dur='4' dots='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='svhsvbke' n='3'>
+                                <layer xml:id='l93hwa3i' n='1'>
+                                    <mRest xml:id='mrionumz'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m8hw2788' n='15'>
+                            <staff xml:id='satybf73' n='1'>
+                                <layer xml:id='lfx5zw78' n='1'>
+                                    <note xml:id='nv2cmxhz' pname='a' oct='4' dur='2'/>
+                                    <note xml:id='n3otj7qn' pname='a' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bu9ddilj'>
+                                        <note xml:id='ns5ywt65' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='nwlrfor1' pname='f' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sfhu9frx' n='2'>
+                                <layer xml:id='l97tu4j5' n='1'>
+                                    <note xml:id='njazptzc' pname='a' oct='3' dur='2'/>
+                                    <note xml:id='nlvnoslx' pname='a' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='rlkv7ell' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sojy6lxi' n='3'>
+                                <layer xml:id='lqubybb9' n='1'>
+                                    <note xml:id='nb9c37cd' pname='a' oct='2' dur='2' color='red'/>
+                                    <note xml:id='n4m5zntb' pname='a' oct='2' dur='4'/>
+                                    <rest xml:id='rtt753ns' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mbipnz6v' n='16'>
+                            <staff xml:id='swk6poyb' n='1'>
+                                <layer xml:id='lh17ss4l' n='1'>
+                                    <beam xml:id='bc5g5arz'>
+                                        <note xml:id='n5m3k1an' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='nf5c1pn2' pname='f' oct='4' dur='8'/>
+                                        <note xml:id='n4sv1rwk' pname='g' oct='4' dur='16' color='red'/>
+                                        <note xml:id='ncx4kpj2' pname='f' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nolglr6c' pname='e' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='nuxpybhg' pname='d' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nr1akjkj' pname='c' oct='4' dur='4'/>
+                                    <rest xml:id='rrq1u3rg' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sy7xrjby' n='2'>
+                                <layer xml:id='lnd246ko' n='1'>
+                                    <rest xml:id='rxbz1qip' dur='2'/>
+                                    <note xml:id='ncggh75y' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rrfdl4k8' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s2drssc1' n='3'>
+                                <layer xml:id='l5qnpqy1' n='1'>
+                                    <note xml:id='n8i1y5hl' pname='b' oct='2' dur='8'/>
+                                    <rest xml:id='rkxrz7fj' dur='4' dots='1'/>
+                                    <note xml:id='nrvb2moh' pname='a' oct='2' dur='4'/>
+                                    <note xml:id='nvg3b4mx' pname='f' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m22i2iga' n='17'>
+                            <staff xml:id='sarhy81s' n='1'>
+                                <layer xml:id='lhorl76z' n='1'>
+                                    <rest xml:id='r4f45lq1' dur='2'/>
+                                    <note xml:id='n5pjrzyq' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='rqlq1bzr' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sn2glahn' n='2'>
+                                <layer xml:id='lirm87cu' n='1'>
+                                    <note xml:id='nti1fmko' pname='b' oct='3' dur='4'/>
+                                    <rest xml:id='rh2j7b39' dur='4'/>
+                                    <note xml:id='n868ephh' pname='b' oct='3' dur='4'/>
+                                    <rest xml:id='rg5cskdl' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='silxurbf' n='3'>
+                                <layer xml:id='ltiv5lh4' n='1'>
+                                    <note xml:id='n2cbng5n' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='ndkdsc8y' pname='d' oct='3' dur='4'/>
+                                    <rest xml:id='r6dqdaln' dur='4'/>
+                                    <beam xml:id='b3fcsbir'>
+                                        <note xml:id='nzjjozhx' pname='c' oct='3' dur='8'/>
+                                        <note xml:id='netubpln' pname='b' oct='2' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mei1wgoo' n='18'>
+                            <staff xml:id='sahq74b8' n='1'>
+                                <layer xml:id='lp1dgglu' n='1'>
+                                    <note xml:id='n3o1wx1g' pname='e' oct='4' dur='2'/>
+                                    <note xml:id='nj2z9l5s' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rcalrere' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='skgterf6' n='2'>
+                                <layer xml:id='lqs31tvv' n='1'>
+                                    <note xml:id='ncr4zhbz' pname='c' oct='4' dur='2'/>
+                                    <note xml:id='nso15312' pname='c' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bxz98m3f'>
+                                        <note xml:id='nt15hkzh' pname='d' oct='4' dur='16' color='red'/>
+                                        <note xml:id='n2szo8g8' pname='c' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='na88fjgp' pname='b' oct='3' dur='16' color='lime'/>
+                                        <note xml:id='nlhwnlip' pname='a' oct='3' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sy3x7wiq' n='3'>
+                                <layer xml:id='ly5ve424' n='1'>
+                                    <note xml:id='n3bvnoi2' pname='a' oct='2' dur='2'/>
+                                    <note xml:id='nba1rjsi' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='ro5qoyd1' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m5ohuhj8' n='19'>
+                            <staff xml:id='svzu6scl' n='1'>
+                                <layer xml:id='lsufw26q' n='1'>
+                                    <note xml:id='nlonoqrq' pname='d' oct='4' dur='2'/>
+                                    <note xml:id='n6nbta2u' pname='a' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s66p7y7t' n='2'>
+                                <layer xml:id='lnqndx7y' n='1'>
+                                    <note xml:id='njg3odzj' pname='b' oct='3' dur='2'/>
+                                    <note xml:id='nrgs46sv' pname='c' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='supv6g8i' n='3'>
+                                <layer xml:id='l6couykm' n='1'>
+                                    <rest xml:id='r1323s9t' dur='2'/>
+                                    <note xml:id='nacfimnu' pname='a' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mrdkfad8' n='20'>
+                            <staff xml:id='srn31rqf' n='1'>
+                                <layer xml:id='lligyr5n' n='1'>
+                                    <note xml:id='ndfcl145' pname='b' oct='4' dur='2'/>
+                                    <note xml:id='nxkjahso' pname='b' oct='4' dur='4'/>
+                                    <rest xml:id='rvjoakmg' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='skwsh9ky' n='2'>
+                                <layer xml:id='l8ijrsfg' n='1'>
+                                    <note xml:id='nph5gbux' pname='d' oct='4' dur='2'/>
+                                    <note xml:id='nzynmk98' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rs21f495' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stsywazn' n='3'>
+                                <layer xml:id='lusk79x4' n='1'>
+                                    <note xml:id='nkg5g6g8' pname='g' oct='3' dur='2'/>
+                                    <note xml:id='nnuqddre' pname='g' oct='3' dur='4' color='lime'/>
+                                    <beam xml:id='bne4kftw'>
+                                        <note xml:id='nf6z4n7y' pname='f' oct='3' dur='8'/>
+                                        <note xml:id='n763fjne' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m43te3sq' n='21'>
+                            <staff xml:id='s8qm9tiq' n='1'>
+                                <layer xml:id='lmjx1fqc' n='1'>
+                                    <note xml:id='ns954v8y' pname='c' oct='5' dur='2'/>
+                                    <note xml:id='nh2k8lnt' pname='b' oct='4' dur='4'/>
+                                    <note xml:id='niv49v2a' pname='c' oct='5' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s68v52e8' n='2'>
+                                <layer xml:id='lp2mo7xf' n='1'>
+                                    <note xml:id='nyul62c2' pname='e' oct='4' dur='2' color='lime'/>
+                                    <rest xml:id='rcbav99k' dur='4'/>
+                                    <note xml:id='nly3dl9p' pname='e' oct='4' dur='4' color='lime'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sesla2yn' n='3'>
+                                <layer xml:id='l7plukic' n='1'>
+                                    <note xml:id='naabk4d5' pname='a' oct='3' dur='2'/>
+                                    <note xml:id='ngck99u4' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='np1habby' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mlt5e2dy' n='22'>
+                            <staff xml:id='sqjibk8w' n='1'>
+                                <layer xml:id='lp8v1o8d' n='1'>
+                                    <rest xml:id='rclt4uyh' dur='4'/>
+                                    <beam xml:id='b3kk7h1k'>
+                                        <note xml:id='ni8jm83p' pname='b' oct='4' dur='8'/>
+                                        <note xml:id='n54f9966' pname='a' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='ndu47q8b' pname='g' oct='4' dur='4'/>
+                                    <note xml:id='nr86tkr4' pname='a' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stvzayjq' n='2'>
+                                <layer xml:id='lcd6ixil' n='1'>
+                                    <note xml:id='nuvg3vtq' pname='f' oct='4' dur='4'/>
+                                    <rest xml:id='rhwa4cc7' dur='4'/>
+                                    <note xml:id='nkdg3tbt' pname='e' oct='4' dur='4'/>
+                                    <note xml:id='n1wroony' pname='f' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='shujsbpa' n='3'>
+                                <layer xml:id='lwppbx7p' n='1'>
+                                    <rest xml:id='rje6ux4p' dur='4'/>
+                                    <note xml:id='nxgsvt1v' pname='b' oct='3' dur='8'/>
+                                    <rest xml:id='rkwn64u1' dur='8'/>
+                                    <note xml:id='nbh5ldie' pname='c' oct='4' dur='4'/>
+                                    <note xml:id='nusc1jjx' pname='f' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mlnl2we4' n='23'>
+                            <staff xml:id='sgtbioa3' n='1'>
+                                <layer xml:id='l3wyu7w6' n='1'>
+                                    <rest xml:id='romgi7kk' dur='4'/>
+                                    <beam xml:id='brnzpki9'>
+                                        <note xml:id='ngg4csw1' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='ncfqr8e1' pname='f' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nbq49h9a' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rn9mkyql' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sbwm5wx9' n='2'>
+                                <layer xml:id='lqwcupvl' n='1'>
+                                    <beam xml:id='b78lesvx'>
+                                        <note xml:id='n8xgm95y' pname='g' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nxi49asg' pname='f' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='n7yj8kxp' pname='e' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ni4wyar1' pname='f' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nj6l6kbx' pname='e' oct='4' dur='8'/>
+                                        <note xml:id='n26jx1zs' pname='d' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n7t7527i' pname='c' oct='4' dur='4'/>
+                                    <rest xml:id='r81482mh' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='st3zbhwr' n='3'>
+                                <layer xml:id='lvpn4rd7' n='1'>
+                                    <rest xml:id='r5okfebn' dur='4'/>
+                                    <note xml:id='nmlu7i8k' pname='g' oct='3' dur='8'/>
+                                    <rest xml:id='rvpno6qa' dur='8'/>
+                                    <note xml:id='nws98odz' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='n1lpx9ku' pname='a' oct='2' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m21ti37m' n='24'>
+                            <staff xml:id='snyp6lir' n='1'>
+                                <layer xml:id='lw8161ms' n='1'>
+                                    <note xml:id='n1nwx28f' pname='e' oct='4' dur='4' color='lime'/>
+                                    <note xml:id='np5tfgeh' pname='d' oct='4' dur='4'/>
+                                    <note xml:id='nd41jya2' pname='e' oct='4' dur='4'/>
+                                    <beam xml:id='b2a5nvpi'>
+                                        <note xml:id='nptmt5sk' pname='f' oct='4' dur='16'/>
+                                        <note xml:id='n7j1q8tm' pname='e' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nypc77cr' pname='f' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='n946hm5c' pname='g' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sojtvj2l' n='2'>
+                                <layer xml:id='lyhpxtlj' n='1'>
+                                    <note xml:id='nh8y6y1x' pname='c' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='r7sv3lc7' dur='4'/>
+                                    <note xml:id='nn1n6vn5' pname='g' oct='3' dur='4'/>
+                                    <rest xml:id='rjb7xi7k' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s9l9tr7x' n='3'>
+                                <layer xml:id='l36fsqns' n='1'>
+                                    <rest xml:id='r5jnsw44' dur='4'/>
+                                    <note xml:id='nc8bmg6j' pname='b' oct='2' dur='4'/>
+                                    <note xml:id='nz47lh1g' pname='c' oct='3' dur='4'/>
+                                    <note xml:id='n814nzbb' pname='d' oct='3' dur='16'/>
+                                    <rest xml:id='rz13yifn' dur='8' dots='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m2ub9eaj' n='25'>
+                            <staff xml:id='s4syi794' n='1'>
+                                <layer xml:id='lhxzusgh' n='1'>
+                                    <beam xml:id='bh1e82sb'>
+                                        <note xml:id='nlnm7x68' pname='f' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nhzafuik' pname='e' oct='4' dur='8'/>
+                                        <note xml:id='noggrh29' pname='d' oct='4' dur='8'/>
+                                        <note xml:id='nq58hbpk' pname='c' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nhvjd873' pname='b' oct='3' dur='4'/>
+                                    <note xml:id='n1w7132x' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stcxuybm' n='2'>
+                                <layer xml:id='lp98l7ai' n='1'>
+                                    <note xml:id='nayyxs1b' pname='a' oct='3' dur='8'/>
+                                    <rest xml:id='rqkc76tt' dur='4' dots='1'/>
+                                    <note xml:id='n3clr5sf' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nugmuiki' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sgd99oqh' n='3'>
+                                <layer xml:id='l7wfp63s' n='1'>
+                                    <beam xml:id='b947zbb2'>
+                                        <note xml:id='nen1gf2d' pname='d' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='nfkvgh7w' pname='c' oct='3' dur='8'/>
+                                        <note xml:id='n1d2airc' pname='d' oct='3' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='r4ay5hil' dur='8'/>
+                                    <note xml:id='nadfmsrl' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='n53osvb7' pname='f' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mdznam6m' n='26'>
+                            <staff xml:id='sbl7lhaa' n='1'>
+                                <layer xml:id='lr5wzmxp' n='1'>
+                                    <rest xml:id='rlba12td' dur='4'/>
+                                    <note xml:id='nmhu6hnw' pname='d' oct='4' dur='8'/>
+                                    <rest xml:id='r8fn8xzg' dur='4'/>
+                                    <beam xml:id='bekxw8ul'>
+                                        <note xml:id='nia578re' pname='c' oct='4' accid='s' dur='8' color='blue'/>
+                                        <note xml:id='n6c9e6tj' pname='d' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='nawofb6d' pname='c' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                        <note xml:id='np2dntet' pname='b' oct='3' dur='16' color='red'/>
+                                        <note xml:id='nfsdrcvf' pname='c' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sikxnt4q' n='2'>
+                                <layer xml:id='l7gliz2j' n='1'>
+                                    <rest xml:id='r6ms9fqd' dur='4'/>
+                                    <note xml:id='n58ke1ar' pname='d' oct='3' dur='8' color='lime'/>
+                                    <beam xml:id='b5aq6loa'>
+                                        <note xml:id='n3iwz3q5' pname='f' oct='3' dur='8' color='blue'/>
+                                        <note xml:id='nwfq54ju' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='rzm7flis' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='siq7hzbz' n='3'>
+                                <layer xml:id='ldir6k6c' n='1'>
+                                    <beam xml:id='byo7gqpw'>
+                                        <note xml:id='ns3b3yne' pname='f' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='n1qm97co' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='rhjxoaj9' dur='4'/>
+                                    <note xml:id='nimpkyqn' pname='g' oct='3' dur='8'/>
+                                    <rest xml:id='rk99d6jo' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m8btmoxt' n='27'>
+                            <staff xml:id='st9bf6i2' n='1'>
+                                <layer xml:id='lbqwyxx2' n='1'>
+                                    <note xml:id='ntu9qext' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='r9twj5rp' dur='4'/>
+                                    <note xml:id='nk7yjk56' pname='d' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='ruine62x' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='spfdqrz9' n='2'>
+                                <layer xml:id='la11aqmp' n='1'>
+                                    <note xml:id='nt775cml' pname='d' oct='3' dur='4'/>
+                                    <rest xml:id='rw1d2qox' dur='4'/>
+                                    <note xml:id='nwgwuowe' pname='d' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='rvrqcean' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='ssrk4883' n='3'>
+                                <layer xml:id='lsxiu51b' n='1'>
+                                    <note xml:id='n57z7j9g' pname='b' oct='3' dur='4' color='orange'/>
+                                    <note xml:id='njn2kftm' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='nrprq81n' pname='b' oct='3' dur='4' color='orange'/>
+                                    <note xml:id='n6qph8e9' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mzaw9y4a' n='28'>
+                            <staff xml:id='siijhh52' n='1'>
+                                <layer xml:id='ln8jf5tq' n='1'>
+                                    <rest xml:id='rgxtaf77' dur='2'/>
+                                    <note xml:id='nnslzhsc' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rpmxtixf' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='ssfb874m' n='2'>
+                                <layer xml:id='l2eiils7' n='1'>
+                                    <note xml:id='nspom3j4' pname='d' oct='3' dur='8' color='lime'/>
+                                    <rest xml:id='rfpvrott' dur='2' dots='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stmk9sf9' n='3'>
+                                <layer xml:id='l4jthq5g' n='1'>
+                                    <beam xml:id='bpz5qexx'>
+                                        <note xml:id='n2sppymm' pname='a' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='ndciy2q2' pname='g' oct='3' dur='8'/>
+                                        <note xml:id='n6zrsip3' pname='a' oct='3' dur='16' color='red'/>
+                                        <note xml:id='nxulyt8q' pname='g' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='nwwwpvee' pname='f' oct='3' dur='16' color='lime'/>
+                                        <note xml:id='n6f2oqld' pname='e' oct='3' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='n71q9p6e' pname='d' oct='3' dur='4'/>
+                                    <beam xml:id='b275bqfv'>
+                                        <note xml:id='nl96cvpg' pname='c' oct='3' dur='8'/>
+                                        <note xml:id='ngbtqgmu' pname='b' oct='2' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='msx69lbg' n='29'>
+                            <staff xml:id='sq2rr8do' n='1'>
+                                <layer xml:id='lc5li4dq' n='1'>
+                                    <note xml:id='n6wtyz49' pname='c' oct='4' dur='2'/>
+                                    <note xml:id='nk9rpmta' pname='c' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bfagqd3z'>
+                                        <note xml:id='nyctpv72' pname='d' oct='4' dur='16' color='red'/>
+                                        <note xml:id='n9due6nn' pname='c' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ni59kn5z' pname='b' oct='3' dur='16' color='lime'/>
+                                    </beam>
+                                    <rest xml:id='r4vcqlfy' dur='16'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s1ee4qw3' n='2'>
+                                <layer xml:id='lqr38wv7' n='1'>
+                                    <rest xml:id='roacarjs' dur='2'/>
+                                    <note xml:id='nvlduv32' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='r5n9uf1r' dur='8' dots='1'/>
+                                    <note xml:id='nt37ylud' pname='a' oct='3' dur='16' color='blue'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sr65l2fr' n='3'>
+                                <layer xml:id='ljicfvo5' n='1'>
+                                    <note xml:id='nazr88pz' pname='a' oct='2' dur='2'/>
+                                    <note xml:id='n4269tkx' pname='a' oct='2' dur='4' color='lime'/>
+                                    <rest xml:id='rjei2khu' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mbtse897' n='30'>
+                            <staff xml:id='sr9h4kit' n='1'>
+                                <layer xml:id='ldd4mlvp' n='1'>
+                                    <beam xml:id='bh36vbui'>
+                                        <note xml:id='na57ut6j' pname='c' oct='4' dur='16'/>
+                                        <note xml:id='nqb3ubuv' pname='b' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='n4iltfd5' pname='c' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nsfuoady' pname='d' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ner21cas' pname='c' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nxss8k8u' pname='d' oct='4' dur='8' color='blue'/>
+                                    </beam>
+                                    <note xml:id='n271q3yk' pname='e' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sqdq1oa5' n='2'>
+                                <layer xml:id='lbpm974o' n='1'>
+                                    <note xml:id='ndyxl3u2' pname='a' oct='3' dur='16'/>
+                                    <rest xml:id='rcjiw16x' dur='4' dots='2'/>
+                                    <note xml:id='nym3qo68' pname='a' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s8zgp1cc' n='3'>
+                                <layer xml:id='l6155d19' n='1'>
+                                    <note xml:id='n6zcibee' pname='a' oct='2' dur='16' color='lime'/>
+                                    <rest xml:id='r8s3i8hi' dur='4' dots='2'/>
+                                    <note xml:id='nuwt6dui' pname='a' oct='2' dur='2' color='lime'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mbrpntqq' n='31'>
+                            <staff xml:id='sygqgcsi' n='1'>
+                                <layer xml:id='lupb1k94' n='1'>
+                                    <rest xml:id='rbhxrwlw' dur='2'/>
+                                    <note xml:id='n5vy2y8s' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rt9bjxyt' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sh9aztwf' n='2'>
+                                <layer xml:id='l3mbwxxa' n='1'>
+                                    <note xml:id='n6uxllmj' pname='c' oct='4' dur='2'/>
+                                    <note xml:id='nl2l4qz7' pname='c' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bqjybo6o'>
+                                        <note xml:id='n7a1bw9t' pname='b' oct='3' dur='8'/>
+                                        <note xml:id='ncs8eam2' pname='a' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='seyk2ufd' n='3'>
+                                <layer xml:id='l1f5p6ex' n='1'>
+                                    <note xml:id='ntns5kj9' pname='a' oct='3' dur='2'/>
+                                    <rest xml:id='r4wtgw4a' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='ma62bqw3' n='32'>
+                            <staff xml:id='s7kve6vp' n='1'>
+                                <layer xml:id='lqypknk2' n='1'>
+                                    <note xml:id='nm5n2a1y' pname='g' oct='4' dur='2'/>
+                                    <note xml:id='nyhow2o1' pname='g' oct='4' dur='4' color='lime'/>
+                                    <beam xml:id='bq56us4t'>
+                                        <note xml:id='nvac59zb' pname='f' oct='4' dur='8'/>
+                                        <note xml:id='nz84jcnx' pname='e' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='svh9hhs5' n='2'>
+                                <layer xml:id='lkifkex9' n='1'>
+                                    <mRest xml:id='mru63kzs'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s1ptwokq' n='3'>
+                                <layer xml:id='lo5go2tm' n='1'>
+                                    <note xml:id='nsecj3l7' pname='e' oct='3' dur='2'/>
+                                    <note xml:id='n988e7i7' pname='e' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='rc2ldvoc' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='miw8kwgb' n='33'>
+                            <staff xml:id='skbg2716' n='1'>
+                                <layer xml:id='lck878gg' n='1'>
+                                    <note xml:id='naxse3gf' pname='g' oct='4' dur='4'/>
+                                    <note xml:id='ne9zp82h' pname='a' oct='4' dur='4'/>
+                                    <note xml:id='nxm6fz9x' pname='b' oct='4' dur='4'/>
+                                    <rest xml:id='r8ea26rw' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sjfytbjj' n='2'>
+                                <layer xml:id='lmstpzu6' n='1'>
+                                    <rest xml:id='ro1ipfvk' dur='2'/>
+                                    <note xml:id='nbz5cyj6' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='remlvst8' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sfboc9qb' n='3'>
+                                <layer xml:id='lo5nmqit' n='1'>
+                                    <note xml:id='ngam2v54' pname='e' oct='3' dur='4'/>
+                                    <rest xml:id='r829u2d9' dur='4'/>
+                                    <note xml:id='n3i75ur8' pname='e' oct='3' dur='4' color='lime'/>
+                                    <note xml:id='nn1eg23t' pname='f' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mt63y7sv' n='34'>
+                            <staff xml:id='snpdya7o' n='1'>
+                                <layer xml:id='lkip8rky' n='1'>
+                                    <note xml:id='n7t9umrn' pname='b' oct='4' dur='4'/>
+                                    <beam xml:id='bn3m3qd7'>
+                                        <note xml:id='nslyvk6h' pname='c' oct='5' dur='16' color='blue'/>
+                                        <note xml:id='nvmqd9ua' pname='b' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nz79m64r' pname='a' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ntc8gv8m' pname='b' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nx64p8m2' pname='c' oct='5' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stpsvxgj' n='2'>
+                                <layer xml:id='lstf2chi' n='1'>
+                                    <note xml:id='n87cde13' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='rdksdnbv' dur='4'/>
+                                    <note xml:id='nhb3a8lp' pname='c' oct='4' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sqgddons' n='3'>
+                                <layer xml:id='lh7oziae' n='1'>
+                                    <note xml:id='nfijn3xo' pname='g' oct='3' dur='4'/>
+                                    <rest xml:id='rachlsj2' dur='4'/>
+                                    <note xml:id='n2sv1q76' pname='a' oct='3' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mekbkxlk' n='35'>
+                            <staff xml:id='s7inm25p' n='1'>
+                                <layer xml:id='loeu4hn7' n='1'>
+                                    <note xml:id='n2ucahqu' pname='c' oct='5' dur='4' color='lime'/>
+                                    <beam xml:id='bl156lsb'>
+                                        <note xml:id='n4wsrj9v' pname='b' oct='4' dur='8'/>
+                                        <note xml:id='n3etz1ss' pname='a' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nnlzrbvy' pname='b' oct='4' dur='4'/>
+                                    <note xml:id='np4urp8j' pname='c' oct='5' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s5ijolwz' n='2'>
+                                <layer xml:id='lgsz3eyx' n='1'>
+                                    <note xml:id='n3upxrn3' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rsgu7bws' dur='4'/>
+                                    <note xml:id='nibln3g4' pname='e' oct='4' dur='4'/>
+                                    <rest xml:id='rvzz1r31' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='smfmxky4' n='3'>
+                                <layer xml:id='lndz78ao' n='1'>
+                                    <note xml:id='nfgegzkh' pname='f' oct='3' dur='4'/>
+                                    <rest xml:id='rcxh7r5u' dur='2'/>
+                                    <note xml:id='nep8sxis' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m3zypdnw' n='36'>
+                            <staff xml:id='snd2uss8' n='1'>
+                                <layer xml:id='lkyyznzz' n='1'>
+                                    <note xml:id='ncdgrajp' pname='b' oct='4' dur='4'/>
+                                    <note xml:id='neukzgcf' pname='c' oct='5' dur='4'/>
+                                    <rest xml:id='rhb78pxj' dur='4'/>
+                                    <beam xml:id='b8c8aezl'>
+                                        <note xml:id='nw1h6y25' pname='b' oct='4' dur='8'/>
+                                        <note xml:id='nunwnl13' pname='a' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sgy1u5fe' n='2'>
+                                <layer xml:id='lomlf3by' n='1'>
+                                    <rest xml:id='r3z2v8kl' dur='4'/>
+                                    <note xml:id='npkovd5b' pname='e' oct='4' dur='4'/>
+                                    <note xml:id='n1n213cw' pname='c' oct='4' dur='4'/>
+                                    <note xml:id='nmzv44nq' pname='d' oct='4' dur='8'/>
+                                    <rest xml:id='rbem3725' dur='8'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s8jjhw3j' n='3'>
+                                <layer xml:id='l5jf3zjv' n='1'>
+                                    <note xml:id='nruibtx6' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nlz7l4l9' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='nowaxpa9' pname='f' oct='3' dur='4'/>
+                                    <note xml:id='nj7sjlvc' pname='g' oct='3' dur='8' color='red'/>
+                                    <rest xml:id='rclw1uav' dur='8'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mwwvdm5u' n='37'>
+                            <staff xml:id='so16gl9f' n='1'>
+                                <layer xml:id='ltbzparz' n='1'>
+                                    <note xml:id='nkc3yhhh' pname='g' oct='4' dur='2'/>
+                                    <note xml:id='ned5wnk5' pname='g' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='rz9stl1i' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sjtpudgs' n='2'>
+                                <layer xml:id='ln7pi9ux' n='1'>
+                                    <rest xml:id='rpt7x2af' dur='2' dots='1'/>
+                                    <note xml:id='n8jiisyx' pname='d' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sxx1n4tg' n='3'>
+                                <layer xml:id='lds542bg' n='1'>
+                                    <note xml:id='n72xdcv9' pname='e' oct='3' dur='2'/>
+                                    <note xml:id='nfyveq47' pname='e' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='rsfpsrif' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mf5cg8hx' n='38'>
+                            <staff xml:id='s9cx1whu' n='1'>
+                                <layer xml:id='lokj4xpl' n='1'>
+                                    <rest xml:id='rqj1ija9' dur='2' dots='1'/>
+                                    <note xml:id='nihbm1sw' pname='g' oct='4' accid='s' dur='4' color='red'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s5jt2hdw' n='2'>
+                                <layer xml:id='loxcghwh' n='1'>
+                                    <note xml:id='nkmajrwi' pname='c' oct='4' dur='4'/>
+                                    <beam xml:id='bj5h3nvz'>
+                                        <note xml:id='n7zv9syp' pname='d' oct='4' dur='16' color='red'/>
+                                        <note xml:id='nb5vmlop' pname='c' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nhc7pmyh' pname='b' oct='3' dur='16' color='lime'/>
+                                        <note xml:id='n77ai62m' pname='a' oct='3' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nskwkb7x' pname='b' oct='3' dur='4'/>
+                                    <rest xml:id='rmnhpv6j' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s2a4sdmw' n='3'>
+                                <layer xml:id='leb93nhd' n='1'>
+                                    <note xml:id='nij98ulu' pname='e' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='r98dw6mu' dur='4'/>
+                                    <note xml:id='nr8fybma' pname='e' oct='3' dur='4' color='lime'/>
+                                    <rest xml:id='r1pq8ec8' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mc2er284' n='39'>
+                            <staff xml:id='s9eo8rga' n='1'>
+                                <layer xml:id='lhj71v3z' n='1'>
+                                    <note xml:id='ngivwfqg' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='rmpiiswj' dur='4'/>
+                                    <note xml:id='ne2ufetd' pname='a' oct='4' dur='8' color='lime'/>
+                                    <rest xml:id='rcz9fkv8' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sxnisooy' n='2'>
+                                <layer xml:id='lb1qy8vr' n='1'>
+                                    <note xml:id='ns92ltct' pname='a' oct='3' dur='4'/>
+                                    <beam xml:id='b3uve9s4'>
+                                        <note xml:id='nloswszd' pname='a' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='nya5dj7k' pname='b' oct='3' dur='8'/>
+                                    </beam>
+                                    <beam xml:id='bfi77ryl'>
+                                        <note xml:id='ni1d63ke' pname='c' oct='4' dur='8'/>
+                                        <note xml:id='n9t9l929' pname='d' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nrrit286' pname='e' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sn9hrxyj' n='3'>
+                                <layer xml:id='lp3iyant' n='1'>
+                                    <rest xml:id='rhsxwn8e' dur='4'/>
+                                    <note xml:id='n96vr41r' pname='a' oct='2' dur='8'/>
+                                    <rest xml:id='rq18yjel' dur='8'/>
+                                    <beam xml:id='bp47r2wk'>
+                                        <note xml:id='nokiq7zu' pname='a' oct='2' dur='8' color='lime'/>
+                                        <note xml:id='nyoff51f' pname='b' oct='2' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n14198cy' pname='c' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m5c1asix' n='40'>
+                            <staff xml:id='s5bhpcq3' n='1'>
+                                <layer xml:id='ljlf6iuw' n='1'>
+                                    <note xml:id='nrrb4tvp' pname='f' oct='4' dur='8'/>
+                                    <rest xml:id='r9d62eop' dur='8'/>
+                                    <note xml:id='noyrxg31' pname='e' oct='4' dur='16'/>
+                                    <rest xml:id='r2wpggr2' dur='8'/>
+                                    <beam xml:id='b6bcm9wb'>
+                                        <note xml:id='n5z5f73i' pname='d' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='ny5ig8tp' pname='e' oct='4' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='rnbvpofe' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='srzyyxpi' n='2'>
+                                <layer xml:id='leiqaj5p' n='1'>
+                                    <rest xml:id='rsj6kq6x' dur='8'/>
+                                    <note xml:id='no74gzor' pname='d' oct='4' dur='8'/>
+                                    <rest xml:id='re6hirkm' dur='16'/>
+                                    <beam xml:id='buddkft6'>
+                                        <note xml:id='nl42dyfz' pname='d' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nw8jkj38' pname='c' oct='4' accid='s' dur='16' color='red'/>
+                                    </beam>
+                                    <rest xml:id='rawc7wgm' dur='8' dots='1'/>
+                                    <beam xml:id='bsvg3wj3'>
+                                        <note xml:id='nv6apn9c' pname='c' oct='4' accid.ges='s' dur='8' color='blue'/>
+                                        <note xml:id='nkru3prq' pname='d' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='n18cesod' pname='c' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                        <note xml:id='nsxqyrqq' pname='b' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='nxzzflp3' pname='c' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='szn2rp9x' n='3'>
+                                <layer xml:id='lblvcj6t' n='1'>
+                                    <note xml:id='ndogdjzk' pname='d' oct='3' dur='8'/>
+                                    <rest xml:id='r2c6e6n1' dur='4' dots='1'/>
+                                    <note xml:id='ntdfzy5z' pname='a' oct='2' dur='8'/>
+                                    <rest xml:id='reygdr2h' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m2qdns8c' n='41'>
+                            <staff xml:id='scfldr9t' n='1'>
+                                <layer xml:id='l9t4gljk' n='1'>
+                                    <note xml:id='nve5ggea' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='rzz5ummv' dur='8'/>
+                                    <note xml:id='nikpm7v4' pname='e' oct='4' dur='8'/>
+                                    <beam xml:id='bt5hlr7u'>
+                                        <note xml:id='n8vn1lfe' pname='f' oct='4' dur='8'/>
+                                        <note xml:id='n5lvpzvc' pname='g' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n2ofro79' pname='a' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sw19hx4g' n='2'>
+                                <layer xml:id='l542qfnk' n='1'>
+                                    <note xml:id='nnpok1p9' pname='d' oct='4' dur='4'/>
+                                    <note xml:id='nhnqc8tt' pname='d' oct='4' dur='8' color='lime'/>
+                                    <rest xml:id='radw6d29' dur='4' dots='1'/>
+                                    <note xml:id='n2p4ezzo' pname='c' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s4jxui5p' n='3'>
+                                <layer xml:id='lupsjmnr' n='1'>
+                                    <rest xml:id='r8o18c4q' dur='4'/>
+                                    <note xml:id='nzcj4fam' pname='d' oct='3' dur='8'/>
+                                    <rest xml:id='rqwxlj1o' dur='8'/>
+                                    <beam xml:id='b5ajar9q'>
+                                        <note xml:id='nefbgbwr' pname='d' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='ndqee76j' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nv8s8nwv' pname='f' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mitculvt' n='42'>
+                            <staff xml:id='sjbyxue6' n='1'>
+                                <layer xml:id='lpdyjemd' n='1'>
+                                    <beam xml:id='bwrazlve'>
+                                        <note xml:id='nnbvwymb' pname='a' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='n6ah1xk3' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='n5dqs5jo' pname='g' oct='4' dur='8'/>
+                                    </beam>
+                                    <rest xml:id='rg4iypaf' dur='8' dots='1'/>
+                                    <beam xml:id='bnb3biwk'>
+                                        <note xml:id='ns619ggj' pname='g' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='n11sa6ij' pname='f' oct='4' accid='s' dur='16' color='blue'/>
+                                        <note xml:id='nigzbu6k' pname='e' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nm5zmm6k' pname='g' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='nzlx55pl' pname='f' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                        <note xml:id='nkpmj171' pname='e' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nsn3cvzn' pname='f' oct='4' accid.ges='s' dur='16' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sjq8uuqh' n='2'>
+                                <layer xml:id='l4ch5ni7' n='1'>
+                                    <note xml:id='nzgiiymr' pname='b' oct='3' dur='8'/>
+                                    <rest xml:id='rvuji8tt' dur='8'/>
+                                    <note xml:id='n9dbrm6b' pname='a' oct='3' dur='8'/>
+                                    <beam xml:id='bl74dmr8'>
+                                        <note xml:id='nlazcqko' pname='g' oct='3' dur='8'/>
+                                        <note xml:id='nolbx59n' pname='a' oct='3' dur='16'/>
+                                    </beam>
+                                    <rest xml:id='riyebi1i' dur='4' dots='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='slkqngo7' n='3'>
+                                <layer xml:id='l6uw2pp1' n='1'>
+                                    <note xml:id='nsteh1sj' pname='g' oct='3' dur='8'/>
+                                    <rest xml:id='rfmx7vzz' dur='4' dots='1'/>
+                                    <note xml:id='nhpetv3p' pname='d' oct='3' dur='16'/>
+                                    <rest xml:id='rrfcl48o' dur='4' dots='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mt6gnwdq' n='43'>
+                            <staff xml:id='sw6r4pds' n='1'>
+                                <layer xml:id='lgml6ogg' n='1'>
+                                    <note xml:id='nhx453ck' pname='g' oct='4' dur='4'/>
+                                    <rest xml:id='r2t6tyb8' dur='4'/>
+                                    <note xml:id='nb2lucet' pname='g' oct='4' dur='8' color='lime'/>
+                                    <rest xml:id='rcw4t3jr' dur='8'/>
+                                    <note xml:id='nyh984cx' pname='f' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s196tlwd' n='2'>
+                                <layer xml:id='ll4w7r5s' n='1'>
+                                    <note xml:id='nlkn8so8' pname='g' oct='3' dur='4'/>
+                                    <rest xml:id='reaqa5jt' dur='8'/>
+                                    <note xml:id='ndtfvwm6' pname='a' oct='3' dur='8'/>
+                                    <beam xml:id='biykxsfm'>
+                                        <note xml:id='ngcxf6e9' pname='b' oct='3' dur='8'/>
+                                        <note xml:id='n6jf3esg' pname='c' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nlvwpdip' pname='d' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sgqi43zq' n='3'>
+                                <layer xml:id='lmwbuo5p' n='1'>
+                                    <rest xml:id='r6noqfd5' dur='4'/>
+                                    <note xml:id='nstyfcfd' pname='g' oct='3' dur='8'/>
+                                    <rest xml:id='rzkgqst1' dur='2'/>
+                                    <rest xml:id='rwnn1aop' dur='8'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mbjrz3om' n='44'>
+                            <staff xml:id='spdtrrmk' n='1'>
+                                <layer xml:id='llvhwodb' n='1'>
+                                    <note xml:id='ndjdjgkh' pname='e' oct='4' dur='4'/>
+                                    <beam xml:id='baum7lsz'>
+                                        <note xml:id='nvi3vzys' pname='f' oct='4' dur='16' color='red'/>
+                                        <note xml:id='nga7bdtm' pname='e' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nvvcb1gv' pname='d' oct='4' dur='16' color='lime'/>
+                                        <note xml:id='nby26j3w' pname='c' oct='4' dur='16' color='blue'/>
+                                    </beam>
+                                    <note xml:id='nqn9aiag' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='rl94xjjw' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sbuu8fqx' n='2'>
+                                <layer xml:id='lufr4vub' n='1'>
+                                    <rest xml:id='rxif9cwp' dur='2' dots='1'/>
+                                    <note xml:id='nqbxua1i' pname='b' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='syanj6k4' n='3'>
+                                <layer xml:id='lqurcdxf' n='1'>
+                                    <note xml:id='ne3htaqo' pname='c' oct='4' dur='4'/>
+                                    <rest xml:id='ru6kyyso' dur='4'/>
+                                    <note xml:id='nvctuvov' pname='g' oct='3' dur='4'/>
+                                    <rest xml:id='r4c3qfbq' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mp5yb88x' n='45'>
+                            <staff xml:id='sa64c8jk' n='1'>
+                                <layer xml:id='lloz59cr' n='1'>
+                                    <note xml:id='njnwwink' pname='c' oct='4' dur='4'/>
+                                    <rest xml:id='rdlkhofe' dur='4'/>
+                                    <note xml:id='n1kh8zzx' pname='c' oct='4' dur='4' color='lime'/>
+                                    <rest xml:id='rahxnmgr' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='snhzf73g' n='2'>
+                                <layer xml:id='lrxvjke9' n='1'>
+                                    <note xml:id='n5o2edgz' pname='c' oct='4' dur='4'/>
+                                    <note xml:id='nfk8aehy' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='n4wbmlys' pname='a' oct='3' dur='4' color='lime'/>
+                                    <beam xml:id='b6bq21op'>
+                                        <note xml:id='nzmuozvj' pname='g' oct='3' dur='8'/>
+                                        <note xml:id='nw85472z' pname='f' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stkxiol3' n='3'>
+                                <layer xml:id='l4hqrzgs' n='1'>
+                                    <note xml:id='n9jt2e6r' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rl59tfyq' dur='4'/>
+                                    <note xml:id='n1avkm2r' pname='a' oct='2' dur='4'/>
+                                    <rest xml:id='rc67p7u6' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='midnwxel' n='46'>
+                            <staff xml:id='sjl3t3r5' n='1'>
+                                <layer xml:id='ltn5eldh' n='1'>
+                                    <rest xml:id='rowt55ek' dur='2'/>
+                                    <note xml:id='n1hv6w9n' pname='g' oct='4' dur='4'/>
+                                    <rest xml:id='rxr775ek' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='seckbyui' n='2'>
+                                <layer xml:id='llbwkdyl' n='1'>
+                                    <note xml:id='n866f1cu' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='n4fcsjhl' pname='d' oct='3' dur='4'/>
+                                    <note xml:id='nb2n7g7h' pname='e' oct='3' dur='4'/>
+                                    <rest xml:id='rigbot72' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s58ltrmd' n='3'>
+                                <layer xml:id='l5ke2s85' n='1'>
+                                    <note xml:id='n8jsc1kq' pname='a' oct='2' dur='4' color='lime'/>
+                                    <note xml:id='nk36p3ps' pname='b' oct='2' dur='4'/>
+                                    <note xml:id='nbe1m54l' pname='c' oct='3' dur='4'/>
+                                    <beam xml:id='bri5c3ic'>
+                                        <note xml:id='n2c6ni3x' pname='d' oct='3' dur='8'/>
+                                        <note xml:id='nff98jen' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mozielsa' n='47'>
+                            <staff xml:id='sef8h2ie' n='1'>
+                                <layer xml:id='ley3cg87' n='1'>
+                                    <note xml:id='n6jlqlvu' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='rfj8komy' dur='4'/>
+                                    <note xml:id='nhzrgaph' pname='c' oct='5' dur='4'/>
+                                    <note xml:id='nckiomi6' pname='c' oct='5' dur='4' color='lime'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stknmko4' n='2'>
+                                <layer xml:id='lmo5sqcy' n='1'>
+                                    <rest xml:id='rll7cjdq' dur='4' dots='2'/>
+                                    <note xml:id='n1oib4z9' pname='g' oct='3' dur='16' color='blue'/>
+                                    <note xml:id='nsqeg6u4' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='r9w4yci8' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='scuuwwtk' n='3'>
+                                <layer xml:id='lt7c7vi1' n='1'>
+                                    <note xml:id='ndis5p5o' pname='f' oct='3' dur='4'/>
+                                    <beam xml:id='bglylqad'>
+                                        <note xml:id='ncmffa9i' pname='f' oct='3' dur='16' color='lime'/>
+                                        <note xml:id='ntaynys9' pname='e' oct='3' dur='16' color='blue'/>
+                                        <note xml:id='nvpqgi4z' pname='f' oct='3' dur='16' color='red'/>
+                                    </beam>
+                                    <rest xml:id='rbr2lp1p' dur='16'/>
+                                    <note xml:id='nbv5s8lb' pname='a' oct='2' dur='4'/>
+                                    <rest xml:id='rm977pj3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mx2so199' n='48'>
+                            <staff xml:id='si8fqm93' n='1'>
+                                <layer xml:id='lm6jxbvo' n='1'>
+                                    <note xml:id='nae2n4gp' pname='b' oct='4' dur='4'/>
+                                    <note xml:id='ndoh2174' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='rs4kfwgu' dur='4'/>
+                                    <beam xml:id='b332bs2r'>
+                                        <note xml:id='niowogjy' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='nyqp2elr' pname='f' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='surlxvdu' n='2'>
+                                <layer xml:id='lgys4x7z' n='1'>
+                                    <rest xml:id='rdjlmagp' dur='2'/>
+                                    <note xml:id='nkzexjfy' pname='d' oct='3' dur='4'/>
+                                    <rest xml:id='rjk6xjqx' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sm824e6x' n='3'>
+                                <layer xml:id='lpealwfj' n='1'>
+                                    <note xml:id='nok87xb7' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nlilz5lz' pname='f' oct='3' dur='4'/>
+                                    <rest xml:id='rgq89p89' dur='4'/>
+                                    <beam xml:id='b5v1pajp'>
+                                        <note xml:id='nw1lrym1' pname='e' oct='3' dur='8'/>
+                                        <note xml:id='n4fk9s9h' pname='d' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='msohwoo8' n='49'>
+                            <staff xml:id='srgbyfzd' n='1'>
+                                <layer xml:id='ladzafce' n='1'>
+                                    <note xml:id='nyksz37g' pname='g' oct='4' dur='4'/>
+                                    <note xml:id='n5yr8brv' pname='a' oct='4' dur='4'/>
+                                    <note xml:id='n94kfy6d' pname='d' oct='4' dur='8'/>
+                                    <rest xml:id='rgm753u9' dur='4' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sj1itf7l' n='2'>
+                                <layer xml:id='l7s1c1v8' n='1'>
+                                    <note xml:id='nns5e2ck' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='niplyore' pname='f' oct='3' dur='4'/>
+                                    <beam xml:id='bh8hlgl2'>
+                                        <note xml:id='nzcw42ph' pname='f' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='na9chmlj' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nrn7hi1x' pname='d' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sseapl4i' n='3'>
+                                <layer xml:id='lff1hjwr' n='1'>
+                                    <note xml:id='nd6yrw41' pname='c' oct='3' dur='4'/>
+                                    <rest xml:id='rsstaeiz' dur='2' dots='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mzsluadq' n='50'>
+                            <staff xml:id='sj3rc477' n='1'>
+                                <layer xml:id='lcifgr4t' n='1'>
+                                    <note xml:id='nxrr7g6z' pname='e' oct='4' dur='4'/>
+                                    <note xml:id='nvppndel' pname='f' oct='4' dur='4'/>
+                                    <beam xml:id='b4bq4fha'>
+                                        <note xml:id='n186jezi' pname='f' oct='4' dur='8' color='blue'/>
+                                        <note xml:id='n8fv77ju' pname='e' oct='4' dur='8'/>
+                                        <note xml:id='nx2aw8ma' pname='d' oct='4' dur='8'/>
+                                        <note xml:id='n7aqe8hv' pname='c' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s1vqyl1d' n='2'>
+                                <layer xml:id='ll6bwo61' n='1'>
+                                    <note xml:id='noltt86a' pname='c' oct='3' dur='4'/>
+                                    <note xml:id='n128ktnh' pname='d' oct='3' dur='4'/>
+                                    <rest xml:id='rk6qxzdh' dur='4'/>
+                                    <note xml:id='n9obwax9' pname='f' oct='3' dur='8'/>
+                                    <rest xml:id='rgiqfb26' dur='8'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='shkgtyub' n='3'>
+                                <layer xml:id='lhzowkk5' n='1'>
+                                    <rest xml:id='r495uwi2' dur='4'/>
+                                    <note xml:id='nz6cxnga' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rh88frso' dur='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='morm1cjw' n='51'>
+                            <staff xml:id='stmokjkp' n='1'>
+                                <layer xml:id='lpp5jikh' n='1'>
+                                    <note xml:id='ni36b36m' pname='b' oct='3' dur='4'/>
+                                    <note xml:id='nde6tgyg' pname='a' oct='3' dur='4'/>
+                                    <note xml:id='nwmvthui' pname='b' oct='3' dur='4'/>
+                                    <rest xml:id='rtf5vrlw' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sc97bkmx' n='2'>
+                                <layer xml:id='ljt7kvms' n='1'>
+                                    <note xml:id='n15x75xa' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nt4dfgkw' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='r1f9step' dur='4'/>
+                                    <note xml:id='nzpob6kq' pname='g' oct='3' accid='s' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s9yk8tpx' n='3'>
+                                <layer xml:id='l9428dxh' n='1'>
+                                    <note xml:id='nlg1pvgb' pname='e' oct='3' dur='4'/>
+                                    <note xml:id='n2hl8hu8' pname='c' oct='3' dur='4'/>
+                                    <note xml:id='nt5t63bo' pname='d' oct='3' dur='4'/>
+                                    <note xml:id='n2zwridd' pname='e' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mc6op2vp' n='52'>
+                            <staff xml:id='skjiu2k4' n='1'>
+                                <layer xml:id='l2grkgzu' n='1'>
+                                    <note xml:id='nsfjq4x7' pname='a' oct='3' dur='4'/>
+                                    <beam xml:id='bxowca35'>
+                                        <note xml:id='n7ccbf91' pname='a' oct='3' dur='8' color='blue'/>
+                                        <note xml:id='nsvxvth2' pname='b' oct='3' dur='8'/>
+                                    </beam>
+                                    <beam xml:id='bf2af3je'>
+                                        <note xml:id='nglrmdtt' pname='c' oct='4' dur='8'/>
+                                        <note xml:id='nnx5z1ih' pname='a' oct='3' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nq35vs63' pname='c' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s7jer9g2' n='2'>
+                                <layer xml:id='lemh9nod' n='1'>
+                                    <note xml:id='ntj46d4n' pname='a' oct='3' dur='4'/>
+                                    <rest xml:id='rl429sk7' dur='2' dots='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sb1iql82' n='3'>
+                                <layer xml:id='ll6s2cl7' n='1'>
+                                    <note xml:id='nxuf4c88' pname='a' oct='2' dur='4'/>
+                                    <rest xml:id='rg3szdp1' dur='2'/>
+                                    <note xml:id='newtqbij' pname='a' oct='2' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mkokbe6a' n='53'>
+                            <staff xml:id='s7scogz7' n='1'>
+                                <layer xml:id='lk4tsgox' n='1'>
+                                    <beam xml:id='bqq1c2ev'>
+                                        <note xml:id='nyungncj' pname='c' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nk4ruga4' pname='d' oct='4' dur='8'/>
+                                        <note xml:id='n8txa3lj' pname='e' oct='4' dur='8'/>
+                                        <note xml:id='njngbvc7' pname='c' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nq86h4p5' pname='e' oct='4' dur='4'/>
+                                    <beam xml:id='bvwxh9p6'>
+                                        <note xml:id='nus6c8xe' pname='e' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nz7oelq3' pname='f' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s169bnnq' n='2'>
+                                <layer xml:id='lecraiab' n='1'>
+                                    <note xml:id='nae8deba' pname='a' oct='3' dur='8'/>
+                                    <rest xml:id='rpzws4on' dur='4' dots='1'/>
+                                    <note xml:id='n1rzse3d' pname='g' oct='3' dur='4'/>
+                                    <note xml:id='nq1mput8' pname='c' oct='4' dur='8'/>
+                                    <rest xml:id='rq4e1247' dur='8'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='slceyytn' n='3'>
+                                <layer xml:id='l9talaub' n='1'>
+                                    <beam xml:id='bynrpmdf'>
+                                        <note xml:id='nyc4apza' pname='a' oct='2' dur='8' color='lime'/>
+                                        <note xml:id='n89kn3pm' pname='b' oct='2' dur='8'/>
+                                        <note xml:id='ndxxagfo' pname='c' oct='3' dur='8'/>
+                                        <note xml:id='nw85cewe' pname='a' oct='2' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nfyhdhaq' pname='c' oct='3' dur='4'/>
+                                    <beam xml:id='b5d7f71b'>
+                                        <note xml:id='no7vy92m' pname='c' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='npebudni' pname='d' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='m1qgg7qp' n='54'>
+                            <staff xml:id='sn8nh7w4' n='1'>
+                                <layer xml:id='luhpnotf' n='1'>
+                                    <beam xml:id='bsihg73u'>
+                                        <note xml:id='nrj9lz5h' pname='g' oct='4' dur='8'/>
+                                        <note xml:id='nat49lhd' pname='e' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n291uvqc' pname='g' oct='4' dur='4'/>
+                                    <beam xml:id='b6s8fls2'>
+                                        <note xml:id='nvt4nufr' pname='g' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nkshpz38' pname='a' oct='4' dur='8'/>
+                                        <note xml:id='n7ub82q6' pname='b' oct='4' dur='8'/>
+                                        <note xml:id='n2z1rdm7' pname='g' oct='4' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='si3b9z6w' n='2'>
+                                <layer xml:id='l6xubigr' n='1'>
+                                    <rest xml:id='rdbd2w55' dur='4'/>
+                                    <note xml:id='nk117591' pname='b' oct='3' dur='4'/>
+                                    <rest xml:id='rd1sgl5j' dur='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sq3t9s1y' n='3'>
+                                <layer xml:id='lbcidkos' n='1'>
+                                    <beam xml:id='babzztrf'>
+                                        <note xml:id='n495m1ww' pname='e' oct='3' dur='8'/>
+                                        <note xml:id='nllablt6' pname='c' oct='3' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nvpfzqny' pname='e' oct='3' dur='4'/>
+                                    <beam xml:id='bvdlxtaz'>
+                                        <note xml:id='nagj5o5n' pname='e' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='nsj5cuk7' pname='f' oct='3' dur='8'/>
+                                        <note xml:id='nx9xece5' pname='g' oct='3' dur='8'/>
+                                        <note xml:id='nrg37tsr' pname='e' oct='3' dur='8'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='myekdee7' n='55'>
+                            <staff xml:id='sywev1s8' n='1'>
+                                <layer xml:id='lr8lum3j' n='1'>
+                                    <note xml:id='n69y612n' pname='b' oct='4' dur='4'/>
+                                    <beam xml:id='bc1m53zd'>
+                                        <note xml:id='nqv4n14y' pname='b' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='naczmz1r' pname='c' oct='5' dur='8'/>
+                                    </beam>
+                                    <beam xml:id='b6v1k2mu'>
+                                        <note xml:id='nujxzbv3' pname='d' oct='5' dur='8'/>
+                                        <note xml:id='nn47c63h' pname='b' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nii1pv2r' pname='c' oct='5' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='spl5c6ch' n='2'>
+                                <layer xml:id='l4ccmehq' n='1'>
+                                    <note xml:id='n7ql5drj' pname='d' oct='4' dur='4'/>
+                                    <rest xml:id='r74m9e6d' dur='2'/>
+                                    <note xml:id='ng1cno5p' pname='c' oct='4' dur='4'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sr6qctyf' n='3'>
+                                <layer xml:id='lg4h8mah' n='1'>
+                                    <note xml:id='n2pqip2p' pname='g' oct='3' dur='4'/>
+                                    <beam xml:id='biud72cp'>
+                                        <note xml:id='nabylqxy' pname='g' oct='3' dur='8' color='lime'/>
+                                        <note xml:id='n2sp9wcb' pname='a' oct='3' dur='8'/>
+                                    </beam>
+                                    <beam xml:id='bxfu1vz9'>
+                                        <note xml:id='n6j7muja' pname='b' oct='3' dur='8'/>
+                                        <note xml:id='ndwikte9' pname='g' oct='3' dur='8'/>
+                                    </beam>
+                                    <note xml:id='n4n65vec' pname='a' oct='3' dur='4'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mpkxw59k' n='56'>
+                            <staff xml:id='scpmvk4n' n='1'>
+                                <layer xml:id='lf9hdxa3' n='1'>
+                                    <beam xml:id='bfkwr9en'>
+                                        <note xml:id='ngq2tx2e' pname='c' oct='5' dur='8' color='lime'/>
+                                        <note xml:id='nibdqu5s' pname='b' oct='4' dur='8'/>
+                                    </beam>
+                                    <note xml:id='nwz73aun' pname='a' oct='4' dur='4'/>
+                                    <rest xml:id='r26skczd' dur='16'/>
+                                    <beam xml:id='b1fp48nr'>
+                                        <note xml:id='nbfad27c' pname='a' oct='4' dur='16' color='blue'/>
+                                        <note xml:id='nq6kniew' pname='g' oct='4' accid='s' dur='16' color='blue'/>
+                                        <note xml:id='n5939fzq' pname='f' oct='4' accid='s' dur='16' color='blue'/>
+                                        <note xml:id='nrgrdcxu' pname='a' oct='4' dur='8' color='lime'/>
+                                        <note xml:id='nwt9jnkw' pname='g' oct='4' accid.ges='s' dur='8' color='blue'/>
+                                    </beam>
+                                </layer>
+                            </staff>
+                            <staff xml:id='sekmsv5g' n='2'>
+                                <layer xml:id='lfpg9k2c' n='1'>
+                                    <note xml:id='ni623ymy' pname='a' oct='3' dur='8'/>
+                                    <rest xml:id='rwqs6l2g' dur='4' dots='1'/>
+                                    <note xml:id='njajvude' pname='b' oct='3' dur='16'/>
+                                    <rest xml:id='ry3ym1uw' dur='4' dots='2'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s27fala5' n='3'>
+                                <layer xml:id='lsraxdhk' n='1'>
+                                    <rest xml:id='r47sj84z' dur='4'/>
+                                    <note xml:id='nlmwotg4' pname='f' oct='3' dur='4'/>
+                                    <note xml:id='nja75roa' pname='e' oct='3' dur='16'/>
+                                    <rest xml:id='rejqxim9' dur='4' dots='2'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                        <measure xml:id='mwmdj8bw' n='57' right='end'>
+                            <staff xml:id='sgegr8yt' n='1'>
+                                <layer xml:id='ldi71et1' n='1'>
+                                    <note xml:id='niqh58vq' pname='a' oct='4' dur='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='s9uvxmyg' n='2'>
+                                <layer xml:id='lmkoh5hh' n='1'>
+                                    <note xml:id='n9gzcgz9' pname='a' oct='3' dur='1'/>
+                                </layer>
+                            </staff>
+                            <staff xml:id='stikdk3m' n='3'>
+                                <layer xml:id='lqam5zky' n='1'>
+                                    <note xml:id='nadl1apw' pname='a' oct='2' dur='1'/>
+                                </layer>
+                            </staff>
+                        </measure>
+                    </section>
+                </score>
+            </mdiv>
+        </body>
+    </music>
+</mei>

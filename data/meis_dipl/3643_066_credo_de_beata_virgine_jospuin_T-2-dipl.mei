@@ -1,0 +1,2621 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href='https://music-encoding.org/schema/5.0/mei-all.rng' type='application/xml' schematypens='http://relaxng.org/ns/structure/1.0'?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.0">
+	<meiHead>
+		<fileDesc>
+			<titleStmt>
+				<title>3643_066_credo_de_beata_virgine_jospuin_T-2</title>
+			</titleStmt>
+			<pubStmt />
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application isodate="2025-08-22" version="1.0.0">
+					<name>abtab -- converter</name>
+					<p>Input file: 3643_066_credo_de_beata_virgine_jospuin_T-2.tbp</p>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<workList>
+			<work>
+				<title />
+				<composer />
+				<notesStmt>
+					<annot />
+				</notesStmt>
+			</work>
+		</workList>
+	</meiHead>
+	<music>
+		<body>
+			<mdiv>
+				<score>
+					<scoreDef xml:id="sdb9fr1h">
+						<staffGrp xml:id="sgfz9okb">
+							<staffGrp xml:id="sgPgQR8o">
+								<staffDef xml:id="sdKJILv6" n="1" lines="5" dir.dist="4">
+									<clef xml:id="c6qe70gU" shape="G" line="2" dis="8" dis.place="below" />
+									<keySig xml:id="ksLAAUbA" sig="0f" mode="major" />
+									<meterSig xml:id="mss0uJ31" count="2" unit="1" form="num" />
+								</staffDef>
+							</staffGrp>
+						</staffGrp>
+					</scoreDef>
+					<section xml:id="swyg81tr" n="1">
+						<measure xml:id="m7lkzxot" n="1">
+							<staff xml:id="sVAa7z63" n="1">
+								<layer xml:id="lNWm9FfP" n="1">
+									<chord xml:id="cffqjtEe" dur="1" stem.visible="false">
+										<note xml:id="nPpMn0uJ" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nhjSqBLm" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dNxMYGsR" place="above" startid="#cffqjtEe">
+								<symbol xml:id="s2wf23Pr" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mvhs4rp5" n="2">
+							<staff xml:id="smZd4ewi" n="1">
+								<layer xml:id="lFEnaaM0" n="1">
+									<chord xml:id="csBuFy5t" dur="4" stem.visible="false">
+										<note xml:id="nPItJoUK" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nyz8Q040" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nGi6h5Gy" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cZamPJsE" dur="8" stem.visible="false">
+										<note xml:id="nIhoDUd6" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cZUjlwkg" dur="2" stem.visible="false">
+										<note xml:id="n1eOrYFx" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dC6LBqfa" place="above" startid="#csBuFy5t">
+								<symbol xml:id="sxAKeTGM" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+								<symbol xml:id="sINmcUXg" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dvr1Zv1B" place="above" startid="#cZamPJsE">
+								<symbol xml:id="swkIMBlf" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dslRn44l" place="above" startid="#cZUjlwkg">
+								<symbol xml:id="snijkzlU" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mjidfzar" n="3">
+							<staff xml:id="sjE35MQy" n="1">
+								<layer xml:id="lmOMPy4W" n="1">
+									<chord xml:id="cxYRnqtG" dur="4" stem.visible="false">
+										<note xml:id="nhOkK1ua" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nY93Vf87" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="ndw9XAQE" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cIHBvjWX" dur="8" stem.visible="false">
+										<note xml:id="ngg7fGvv" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cnycO2Nw" dur="2" stem.visible="false">
+										<note xml:id="nps054UH" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d7A9RzWs" place="above" startid="#cxYRnqtG">
+								<symbol xml:id="sl7rBOXs" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+								<symbol xml:id="sndzjAC4" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dMIus5rp" place="above" startid="#cIHBvjWX">
+								<symbol xml:id="sBKGOqWT" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dbrvw2r9" place="above" startid="#cnycO2Nw">
+								<symbol xml:id="sBTx10tS" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m3kzt9lb" n="4">
+							<staff xml:id="seUiCWaL" n="1">
+								<layer xml:id="lzSF29eF" n="1">
+									<chord xml:id="c1I5e6Ca" dur="4" stem.visible="false">
+										<note xml:id="nnKBZOo8" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nMJp1ohB" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="n3ZTNpOE" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cSxv4G8v" dur="8" stem.visible="false">
+										<note xml:id="nTcoI1Al" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cl63TI8F" dur="8" stem.visible="false">
+										<note xml:id="nPRVY4MM" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cU4XSrHS" dur="8" stem.visible="false">
+										<note xml:id="nH51Q00F" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cydWd02k" dur="8" stem.visible="false">
+										<note xml:id="nNoIasUi" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c6jVolfk" dur="8" stem.visible="false">
+										<note xml:id="nHCFYUrf" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d76XFQF4" place="above" startid="#c1I5e6Ca">
+								<symbol xml:id="sxublkcT" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+								<symbol xml:id="sgEZgZn0" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dcl00kiP" place="above" startid="#cSxv4G8v">
+								<symbol xml:id="spLwXOke" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dajENf7s" place="above" startid="#cl63TI8F">
+								<symbol xml:id="swC37W4K" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dgEO5kS7" place="above" startid="#cU4XSrHS">
+								<symbol xml:id="s6gJMH7F" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="db1E3GsS" place="above" startid="#cydWd02k">
+								<symbol xml:id="sQmFjwLN" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dKOkesEw" place="above" startid="#c6jVolfk">
+								<symbol xml:id="sa7LhicZ" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+						</measure>
+						<measure xml:id="m5ki7tc2" n="5">
+							<staff xml:id="ssv3yiuV" n="1">
+								<layer xml:id="lJXBrhL6" n="1">
+									<chord xml:id="cSCRi53i" dur="1" stem.visible="false">
+										<note xml:id="nFqm6maP" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nPyVmq7t" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nrfiOSmx" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="n7N5cRxa" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dEiyRxdO" place="above" startid="#cSCRi53i">
+								<symbol xml:id="sWLfjyok" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m55hym3m" n="6">
+							<staff xml:id="sM3bttod" n="1">
+								<layer xml:id="lVpLSjpg" n="1">
+									<chord xml:id="c7wTiLeY" dur="1" stem.visible="false">
+										<note xml:id="nz2q3cd9" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n2bSG6u2" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="n4LFePYi" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nHMxxAm1" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dgsN4jIs" place="above" startid="#c7wTiLeY">
+								<symbol xml:id="sKuG8wOg" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mkugtwn9" n="7">
+							<staff xml:id="sKWJgGRr" n="1">
+								<layer xml:id="l6VeOljF" n="1">
+									<chord xml:id="cG0ejU7H" dur="2" stem.visible="false">
+										<note xml:id="nonXE0vU" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nDsgeTU1" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nFYOFH8m" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cHFBm9nF" dur="4" stem.visible="false">
+										<note xml:id="niYFUqIc" pname="f" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dxZiS0z8" place="above" startid="#cG0ejU7H">
+								<symbol xml:id="sR3v9eBv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="sywa1neQ" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dIyIg5k7" place="above" startid="#cHFBm9nF">
+								<symbol xml:id="se7fess7" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mfmyyil2" n="8">
+							<staff xml:id="seKTofk4" n="1">
+								<layer xml:id="laHRybio" n="1">
+									<chord xml:id="cTYZmVXy" dur="2" stem.visible="false">
+										<note xml:id="nIJ6Gm2Z" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="n75KEB4t" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="ndERDGgE" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="crcO384z" dur="2" stem.visible="false">
+										<note xml:id="nHZPYwoU" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nxnpkLwD" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="ddtq9gmi" place="above" startid="#cTYZmVXy">
+								<symbol xml:id="sk1hTOdo" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dBrzXZ3C" place="above" startid="#crcO384z">
+								<symbol xml:id="sCNoDaL0" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mqrtf2u1" n="9">
+							<staff xml:id="sEhg4t8f" n="1">
+								<layer xml:id="lO5CucgT" n="1">
+									<chord xml:id="cE0l3yKS" dur="2" stem.visible="false">
+										<note xml:id="nHNvOb34" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n3SbrFL9" pname="f" oct="3" head.fill="solid" />
+									</chord>
+									<rest xml:id="rewudZ87" dur="2" />
+								</layer>
+							</staff>
+							<dir xml:id="dcQbCuPb" place="above" startid="#cE0l3yKS">
+								<symbol xml:id="sr9olw1S" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="daOJzr6Q" place="above" startid="#rewudZ87">
+								<symbol xml:id="sbdqNQ5C" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m27kyyn3" n="10">
+							<staff xml:id="s6gKdpKS" n="1">
+								<layer xml:id="l0vzGmql" n="1">
+									<chord xml:id="cYbSLYhJ" dur="2" stem.visible="false">
+										<note xml:id="nN6xkXvO" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n0vy7xuh" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nA1TktWT" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="noIbJlSV" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cCbn7MoN" dur="4" stem.visible="false">
+										<note xml:id="npzbKhQe" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c3ah2nqb" dur="4" stem.visible="false">
+										<note xml:id="n34N6o8g" pname="b" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d5kp9dSG" place="above" startid="#cYbSLYhJ">
+								<symbol xml:id="sKYRg2km" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dADurXC2" place="above" startid="#cCbn7MoN">
+								<symbol xml:id="swYVkhrz" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dOaQk7fX" place="above" startid="#c3ah2nqb">
+								<symbol xml:id="sRFreAKP" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mbipmvyi" n="11">
+							<staff xml:id="sVc8WSEK" n="1">
+								<layer xml:id="lmKZtsh0" n="1">
+									<chord xml:id="cc6DCGvc" dur="2" stem.visible="false">
+										<note xml:id="nArAQaiZ" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nPwU7uA6" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nt73fGX2" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nykLUR7L" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cl6GURLv" dur="4" stem.visible="false">
+										<note xml:id="nFpGEQre" pname="b" oct="2" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dQzKM7kq" place="above" startid="#cc6DCGvc">
+								<symbol xml:id="smNxU0dF" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="sMS3c5WY" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="d5EjGzev" place="above" startid="#cl6GURLv">
+								<symbol xml:id="sKuw9vKl" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="me2fjd85" n="12">
+							<staff xml:id="s8bn0cKP" n="1">
+								<layer xml:id="lTkywkuL" n="1">
+									<chord xml:id="cWxip8wC" dur="1" stem.visible="false">
+										<note xml:id="nPmuhDqH" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="ng35Fedy" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nX7iBZGC" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nrNjfh9T" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="diwghwMJ" place="above" startid="#cWxip8wC">
+								<symbol xml:id="sAnupzxa" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mkqkm8d4" n="13">
+							<staff xml:id="sOK1A9lo" n="1">
+								<layer xml:id="lywjiEm0" n="1">
+									<chord xml:id="caNZBVrG" dur="2" stem.visible="false">
+										<note xml:id="n3zIGBaj" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nxPH7rA0" pname="c" oct="4" head.fill="solid" accid="s" />
+										<note xml:id="nGTXbZ7O" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cpsNPlh0" dur="2" stem.visible="false">
+										<note xml:id="nUS5K0Dx" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nte7HQBQ" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d8hCUPfr" place="above" startid="#caNZBVrG">
+								<symbol xml:id="siHQhgQ7" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d1oC7ycv" place="above" startid="#cpsNPlh0">
+								<symbol xml:id="sSWKZgin" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mtpu4gak" n="14">
+							<staff xml:id="sPSxn2cx" n="1">
+								<layer xml:id="lPVqGlcR" n="1">
+									<chord xml:id="cfImaHpA" dur="2" stem.visible="false">
+										<note xml:id="npujzR6t" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nWBffKdG" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="n17NPft1" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ccSwMABj" dur="2" stem.visible="false">
+										<note xml:id="ntkEQ0N0" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nCU9vp2q" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dq86Awln" place="above" startid="#cfImaHpA">
+								<symbol xml:id="sRT9sKas" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d3LAS4km" place="above" startid="#ccSwMABj">
+								<symbol xml:id="sVglntKx" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m54amrwp" n="15">
+							<staff xml:id="s74NioxY" n="1">
+								<layer xml:id="lDk0crGh" n="1">
+									<chord xml:id="cBStTVaX" dur="4" stem.visible="false">
+										<note xml:id="nWlOBJkR" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="n9yZCncO" pname="c" oct="4" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="cSUXsvgl" dur="4" stem.visible="false">
+										<note xml:id="nevObL4r" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cDPq415n" dur="2" stem.visible="false">
+										<note xml:id="nofWRSQ4" pname="b" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="n1zkUSak" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="neIxU7JY" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d41BSrnT" place="above" startid="#cBStTVaX">
+								<symbol xml:id="swp6Z3Qs" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dwTFBRBL" place="above" startid="#cSUXsvgl">
+								<symbol xml:id="sV490bvn" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dvXspVz1" place="above" startid="#cDPq415n">
+								<symbol xml:id="sz77Unq1" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m46mneee" n="16">
+							<staff xml:id="s5A9dLim" n="1">
+								<layer xml:id="lnwxFQKy" n="1">
+									<chord xml:id="ct68paWF" dur="4" stem.visible="false">
+										<note xml:id="nFGpgqAE" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nF4yAYi9" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cenv16jP" dur="4" stem.visible="false">
+										<note xml:id="nmt4qrIR" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="crRdtIHh" dur="2" stem.visible="false">
+										<note xml:id="nZjnIcNI" pname="c" oct="4" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dAytP47A" place="above" startid="#ct68paWF">
+								<symbol xml:id="sCwa6ypi" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dR0JcAse" place="above" startid="#cenv16jP">
+								<symbol xml:id="sHQnzr57" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dAGSYNdY" place="above" startid="#crRdtIHh">
+								<symbol xml:id="soxAZwS5" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mwjybcac" n="17">
+							<staff xml:id="s9p2hklG" n="1">
+								<layer xml:id="lQSAyXVZ" n="1">
+									<chord xml:id="cPT23XGX" dur="2" stem.visible="false">
+										<note xml:id="n9ZOJGNo" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="ncUJ7Pos" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="chB7WWln" dur="2" stem.visible="false">
+										<note xml:id="neAt3tVN" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nZdPgM7e" pname="f" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d8Pb0UgZ" place="above" startid="#cPT23XGX">
+								<symbol xml:id="sxofMAJP" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dyAs8FGW" place="above" startid="#chB7WWln">
+								<symbol xml:id="sYaHU2Bn" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m4rew2pz" n="18">
+							<staff xml:id="sfaRXaAq" n="1">
+								<layer xml:id="lnGqBda8" n="1">
+									<chord xml:id="cXG4wTTf" dur="2" stem.visible="false">
+										<note xml:id="nAQQ1ZEH" pname="b" oct="2" head.fill="solid" accid="f" />
+										<note xml:id="nzyxPR21" pname="b" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="nl3eCgaw" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cTOevwxn" dur="2" stem.visible="false">
+										<note xml:id="nWWmbzyU" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="n5pVReoJ" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nSbDoENu" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dDqyByKj" place="above" startid="#cXG4wTTf">
+								<symbol xml:id="sWdlKA0I" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dCOFfL2M" place="above" startid="#cTOevwxn">
+								<symbol xml:id="szZzuN7h" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m3e4zvrv" n="19">
+							<staff xml:id="sDyXld1b" n="1">
+								<layer xml:id="l6H1BS4g" n="1">
+									<chord xml:id="cO4ezk9c" dur="4" stem.visible="false">
+										<note xml:id="nSyaM390" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nQJtsmRi" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="czUSXBqA" dur="4" stem.visible="false">
+										<note xml:id="nOHSkPCK" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ck6HMzpn" dur="2" stem.visible="false">
+										<note xml:id="nwzjv8y1" pname="e" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="n42ar6OZ" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nKalam63" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dBxqQSZK" place="above" startid="#cO4ezk9c">
+								<symbol xml:id="s4Pg4TDE" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dCREwCOn" place="above" startid="#czUSXBqA">
+								<symbol xml:id="sfbTDN9p" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d2rONHdv" place="above" startid="#ck6HMzpn">
+								<symbol xml:id="skd6OsPG" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m5tsbqwn" n="20">
+							<staff xml:id="sC4R97jY" n="1">
+								<layer xml:id="liNuANOg" n="1">
+									<chord xml:id="ctNG3h8w" dur="4" stem.visible="false">
+										<note xml:id="nlpPBEl6" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="ng4HhgKn" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nGLhrxdq" pname="f" oct="4" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="cQQqEPFp" dur="4" stem.visible="false">
+										<note xml:id="nfa9RimT" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="czvD7xo8" dur="4" stem.visible="false">
+										<note xml:id="nqUQRRJ3" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ckYuRElZ" dur="4" stem.visible="false">
+										<note xml:id="nFzloFg9" pname="f" oct="4" head.fill="solid" accid.ges="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dVhV3vxC" place="above" startid="#ctNG3h8w">
+								<symbol xml:id="sVobHAFj" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="daWoBRnm" place="above" startid="#cQQqEPFp">
+								<symbol xml:id="sqbPYFID" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="duDQ7q4w" place="above" startid="#czvD7xo8">
+								<symbol xml:id="s4NibDdo" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dnajVfiV" place="above" startid="#ckYuRElZ">
+								<symbol xml:id="smDlOw25" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mqzq17hf" n="21">
+							<staff xml:id="s12ftDWA" n="1">
+								<layer xml:id="lgWXhSCP" n="1">
+									<chord xml:id="cSXtAJdD" dur="1" stem.visible="false">
+										<note xml:id="n8T5ZorP" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nDs954h0" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="neENSieh" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dg5BnTM0" place="above" startid="#cSXtAJdD">
+								<symbol xml:id="sPSxx2qu" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mma99qkf" n="22">
+							<staff xml:id="sPrRvPMj" n="1">
+								<layer xml:id="lasg57tr" n="1">
+									<chord xml:id="cGG1XKPY" dur="2" stem.visible="false">
+										<note xml:id="nD8KAEEt" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nLyFXV44" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nosXGxYs" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nvLMVwk5" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cG6URpLm" dur="4" stem.visible="false">
+										<note xml:id="nEEjlai0" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c1udDxpz" dur="4" stem.visible="false">
+										<note xml:id="nBoybGGX" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="duP3KnOy" place="above" startid="#cGG1XKPY">
+								<symbol xml:id="s3pt3Tu2" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="db7kZKro" place="above" startid="#cG6URpLm">
+								<symbol xml:id="s0nKShKT" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dAsnLYJT" place="above" startid="#c1udDxpz">
+								<symbol xml:id="srGQUiBX" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mxuctkb7" n="23">
+							<staff xml:id="sEfcRJwO" n="1">
+								<layer xml:id="lsPkQc1k" n="1">
+									<chord xml:id="cLC6Otmm" dur="1" stem.visible="false">
+										<note xml:id="nWkhCvTt" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nkUzeyqk" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nZnCPtbr" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nUgxAmG4" pname="c" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d2xT7Hla" place="above" startid="#cLC6Otmm">
+								<symbol xml:id="s8guktnU" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mbaye87p" n="24">
+							<staff xml:id="sUcXtVR2" n="1">
+								<layer xml:id="l8pC9IHd" n="1">
+									<chord xml:id="c9UYv9iY" dur="4" stem.visible="false">
+										<note xml:id="nv7rfwH0" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nxU33umP" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="n5j1ByfP" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="n8OTmG0c" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfc50gfF" dur="4" stem.visible="false">
+										<note xml:id="nMfHcRFa" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cNzsvtmt" dur="4" stem.visible="false">
+										<note xml:id="nFnnkP23" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cSBIxGzH" dur="4" stem.visible="false">
+										<note xml:id="nGzMtINX" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dpiP1nu3" place="above" startid="#c9UYv9iY">
+								<symbol xml:id="sc6rI3sJ" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dORpRQ2m" place="above" startid="#cfc50gfF">
+								<symbol xml:id="sKsDYWXK" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dgQEWDPv" place="above" startid="#cNzsvtmt">
+								<symbol xml:id="sP5fzl2r" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dDjJPR3d" place="above" startid="#cSBIxGzH">
+								<symbol xml:id="sEQ16H9M" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mr2sbcu5" n="25">
+							<staff xml:id="sUy7FDQB" n="1">
+								<layer xml:id="lCFw5Tfs" n="1">
+									<chord xml:id="cKQlV3qb" dur="1" stem.visible="false">
+										<note xml:id="nr1MCKkd" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nPFFgaN9" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nIk4GnDE" pname="f" oct="4" head.fill="solid" />
+										<note xml:id="nfC0Py07" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dzziwS1x" place="above" startid="#cKQlV3qb">
+								<symbol xml:id="suYv9vew" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mk65cvyy" n="26">
+							<staff xml:id="sostZUYG" n="1">
+								<layer xml:id="l4lRh3Rv" n="1">
+									<chord xml:id="cFmePmRp" dur="2" stem.visible="false">
+										<note xml:id="nJQPoZVk" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nZ64ZLNL" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="ngRoIkMO" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="ndpjCh0N" pname="f" oct="4" head.fill="solid" />
+										<note xml:id="nHZ7yvYG" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cx5CPcbk" dur="2" stem.visible="false">
+										<note xml:id="nmzO4d3Q" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="doZ0FmtN" place="above" startid="#cFmePmRp">
+								<symbol xml:id="sA2So5yf" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dspAdjkx" place="above" startid="#cx5CPcbk">
+								<symbol xml:id="sGvThVXq" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mr1sxn3b" n="27">
+							<staff xml:id="sM0l38rr" n="1">
+								<layer xml:id="lPoqLTYl" n="1">
+									<chord xml:id="cw7V6HG2" dur="2" stem.visible="false">
+										<note xml:id="nKr1xIwd" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nZLbUDWo" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nXsZN96T" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nk0wt46X" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nRlzJN0l" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cZOzfSy7" dur="2" stem.visible="false">
+										<note xml:id="nDj11AMn" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dGHTZro3" place="above" startid="#cw7V6HG2">
+								<symbol xml:id="sZHv8oSw" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d7bVrTJE" place="above" startid="#cZOzfSy7">
+								<symbol xml:id="spNRbme9" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="menhjrrk" n="28">
+							<staff xml:id="sHqj3mVs" n="1">
+								<layer xml:id="lIe23GEW" n="1">
+									<chord xml:id="cxmonW6J" dur="4" stem.visible="false">
+										<note xml:id="nFXmU11T" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nKx6kmfU" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nEIOqiC7" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nKjv40OL" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cCjuCU60" dur="4" stem.visible="false">
+										<note xml:id="nizXAuGv" pname="b" oct="3" head.fill="solid" accid="f" />
+									</chord>
+									<chord xml:id="cooIGlFh" dur="2" stem.visible="false">
+										<note xml:id="nn9VMuop" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dpCoV2fI" place="above" startid="#cxmonW6J">
+								<symbol xml:id="sFAQoIre" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dhpXzB9b" place="above" startid="#cCjuCU60">
+								<symbol xml:id="sDNT4K1A" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="drL6pjLk" place="above" startid="#cooIGlFh">
+								<symbol xml:id="sCMdM9Uu" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mra888jn" n="29">
+							<staff xml:id="sxqCNYbX" n="1">
+								<layer xml:id="lcaiWhQt" n="1">
+									<chord xml:id="c2p50oQ8" dur="2" stem.visible="false">
+										<note xml:id="nkpAXbUN" pname="b" oct="2" head.fill="solid" accid="f" />
+										<note xml:id="nvVWYTOc" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nrlWSZrS" pname="b" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="nFdV7YWM" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nfEfkvlI" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cYbu7s9f" dur="4" stem.visible="false">
+										<note xml:id="n3uibzHV" pname="c" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d5FgYvRG" place="above" startid="#c2p50oQ8">
+								<symbol xml:id="sGUOLlCr" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="smfAOgNn" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dymE940G" place="above" startid="#cYbu7s9f">
+								<symbol xml:id="s6SOQBpz" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mfetf2mr" n="30">
+							<staff xml:id="sdF11sRg" n="1">
+								<layer xml:id="lKeV5Dz8" n="1">
+									<chord xml:id="cTSLXSkb" dur="2" stem.visible="false">
+										<note xml:id="nfypG6yq" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n2J9dByx" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nKhX3ycH" pname="b" oct="3" head.fill="solid" accid="f" />
+									</chord>
+									<chord xml:id="cptukRYB" dur="2" stem.visible="false">
+										<note xml:id="n1ynxYZ6" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nv1Fk15i" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nSGSj1GB" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dOfWTW5C" place="above" startid="#cTSLXSkb">
+								<symbol xml:id="svexm353" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="duDTvgzO" place="above" startid="#cptukRYB">
+								<symbol xml:id="sxlykcuX" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m77yfv9y" n="31">
+							<staff xml:id="smOI7n8m" n="1">
+								<layer xml:id="lNwfRcr3" n="1">
+									<chord xml:id="cwwBILmi" dur="4" stem.visible="false">
+										<note xml:id="nv6RxiZ9" pname="d" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfBloaXc" dur="4" stem.visible="false">
+										<note xml:id="naG0Tb4V" pname="b" oct="2" head.fill="solid" accid="f" />
+									</chord>
+									<chord xml:id="cyKOMavB" dur="4" stem.visible="false">
+										<note xml:id="nwvC3rIb" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nRZPwaoX" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cJJSKKzj" dur="4" stem.visible="false">
+										<note xml:id="n1A99Hx7" pname="g" oct="2" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dupcPKnU" place="above" startid="#cwwBILmi">
+								<symbol xml:id="sPq55RFY" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d6aeL1mU" place="above" startid="#cfBloaXc">
+								<symbol xml:id="sPOla8dI" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dZVw5S7O" place="above" startid="#cyKOMavB">
+								<symbol xml:id="s0yW9p7c" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dQ0Bqi2d" place="above" startid="#cJJSKKzj">
+								<symbol xml:id="s5kQSMy7" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m579d6z7" n="32">
+							<staff xml:id="sQf4Y2qf" n="1">
+								<layer xml:id="lx7Se0bT" n="1">
+									<chord xml:id="cBXICgNT" dur="4" stem.visible="false">
+										<note xml:id="n0TQownt" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n1JJrfKN" pname="c" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cn3xLdcs" dur="4" stem.visible="false">
+										<note xml:id="nZDfLl7p" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cyUjBPM4" dur="2" stem.visible="false">
+										<note xml:id="nRqzEWGU" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dtFKJ5AS" place="above" startid="#cBXICgNT">
+								<symbol xml:id="sqaRr2Lw" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dEsUBZ2F" place="above" startid="#cn3xLdcs">
+								<symbol xml:id="sOzXtF9L" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dj79jdTf" place="above" startid="#cyUjBPM4">
+								<symbol xml:id="sUWhbxZv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mlf24pdy" n="33">
+							<staff xml:id="sUZ5o5Gm" n="1">
+								<layer xml:id="lRo34sRu" n="1">
+									<chord xml:id="cpTsnMii" dur="1" stem.visible="false">
+										<note xml:id="nFLhiCiG" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="njp7dpNz" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nQMc1JAI" pname="g" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dW97LVrs" place="above" startid="#cpTsnMii">
+								<symbol xml:id="s9VWfKLp" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mixpas87" n="34">
+							<staff xml:id="svTs1zlo" n="1">
+								<layer xml:id="lbnC6nmc" n="1">
+									<chord xml:id="cfY2VIkt" dur="1" stem.visible="false">
+										<note xml:id="n6MNDSTJ" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="ntPHlBip" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nZXyyBib" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nH9m5gXb" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="diOl4RIP" place="above" startid="#cfY2VIkt">
+								<symbol xml:id="sVOSWkWM" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mwtdyh6r" n="35">
+							<staff xml:id="slTpxoXC" n="1">
+								<layer xml:id="luKzEQXH" n="1">
+									<chord xml:id="cfhPZgkd" dur="2" stem.visible="false">
+										<note xml:id="n4VG3IYk" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nMKYnspr" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nMvLILLk" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cqWF22qr" dur="2" stem.visible="false">
+										<note xml:id="niKu4Cs1" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dSGuQn4e" place="above" startid="#cfhPZgkd">
+								<symbol xml:id="sky0jYuq" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dzRLgjOE" place="above" startid="#cqWF22qr">
+								<symbol xml:id="ssA1nQTI" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mi5riwfa" n="36">
+							<staff xml:id="s4rOsxB9" n="1">
+								<layer xml:id="lJIwtFGc" n="1">
+									<chord xml:id="cLmxFi4S" dur="2" stem.visible="false">
+										<note xml:id="nB46BF3v" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nGDJcS9L" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nCbe8HGT" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cleszqJe" dur="2" stem.visible="false">
+										<note xml:id="nM6SbVvy" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dReXaXSL" place="above" startid="#cLmxFi4S">
+								<symbol xml:id="sY72rTN6" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d4wN2Oar" place="above" startid="#cleszqJe">
+								<symbol xml:id="sJHCJgma" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m1kjr93i" n="37">
+							<staff xml:id="suED4KNK" n="1">
+								<layer xml:id="loRdk1WN" n="1">
+									<chord xml:id="cseWzURz" dur="1" stem.visible="false">
+										<note xml:id="nFVqDUcp" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nZZkQ0To" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nzj7U2WC" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dqmCYo01" place="above" startid="#cseWzURz">
+								<symbol xml:id="sDVwv4lZ" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mqemd7cy" n="38">
+							<staff xml:id="sqpXnQqS" n="1">
+								<layer xml:id="lkTgcCXn" n="1">
+									<chord xml:id="cyyPnq1a" dur="2" stem.visible="false">
+										<note xml:id="nV5LFHgo" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nkyqeD0J" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="nuQlo2sy" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ccC4PJdQ" dur="4" stem.visible="false">
+										<note xml:id="n0NrKQnh" pname="g" oct="2" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfxMrsmu" dur="4" stem.visible="false">
+										<note xml:id="n9CSnUO7" pname="f" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="datjJbAF" place="above" startid="#cyyPnq1a">
+								<symbol xml:id="sWXiVgv1" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dPrqp1Y5" place="above" startid="#ccC4PJdQ">
+								<symbol xml:id="sCb26I3C" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dXhuVfr1" place="above" startid="#cfxMrsmu">
+								<symbol xml:id="szNXrC6w" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m6hvvmhi" n="39">
+							<staff xml:id="smdSYZc8" n="1">
+								<layer xml:id="lV66h1mC" n="1">
+									<chord xml:id="cL8NUN4J" dur="2" stem.visible="false">
+										<note xml:id="nsUszfid" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nNjfzIwT" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nP1F7YJC" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="ntlrU5IM" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfrnB1O2" dur="2" stem.visible="false">
+										<note xml:id="noPQkaTi" pname="g" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dhhSZhul" place="above" startid="#cL8NUN4J">
+								<symbol xml:id="sgeKHCGy" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dMXmMPeD" place="above" startid="#cfrnB1O2">
+								<symbol xml:id="sK9NOaDy" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mroltsfg" n="40">
+							<staff xml:id="slOXVRB8" n="1">
+								<layer xml:id="lxVUPdSk" n="1">
+									<chord xml:id="crcSpJcD" dur="2" stem.visible="false">
+										<note xml:id="ni1WcGRp" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nM3xaTVZ" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nk5Zi85N" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nymTKtpA" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cTMxrhWu" dur="2" stem.visible="false">
+										<note xml:id="ndcjf32x" pname="c" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dU4bYH2T" place="above" startid="#crcSpJcD">
+								<symbol xml:id="sz7L3oD4" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="diwCg26C" place="above" startid="#cTMxrhWu">
+								<symbol xml:id="s4OhuAh4" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mxi4lnsh" n="41">
+							<staff xml:id="sGu0mCq7" n="1">
+								<layer xml:id="lhIEY92T" n="1">
+									<chord xml:id="c80nGsqB" dur="1" stem.visible="false">
+										<note xml:id="nx6mxCzA" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="ndyQfWlq" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nBrsIrRN" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dyK6kLJA" place="above" startid="#c80nGsqB">
+								<symbol xml:id="sdOEaKkK" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="midbq4r2" n="42">
+							<staff xml:id="sWBjistJ" n="1">
+								<layer xml:id="lhJT6AAX" n="1">
+									<chord xml:id="ckZM7UIG" dur="2" stem.visible="false">
+										<note xml:id="ndnELA41" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="n27Qz9cu" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nt9Ukfv5" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nNxmMEdu" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nDdfcQot" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cNL0Mtxa" dur="2" stem.visible="false">
+										<note xml:id="nNtMkGmE" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="naHLSEwt" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dIGpkmGb" place="above" startid="#ckZM7UIG">
+								<symbol xml:id="sWCwn5ou" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d1SOkmz3" place="above" startid="#cNL0Mtxa">
+								<symbol xml:id="swQGiWDu" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mvmohpkg" n="43">
+							<staff xml:id="syF4FUFM" n="1">
+								<layer xml:id="lwMOen7k" n="1">
+									<chord xml:id="cwof8Dhw" dur="4" stem.visible="false">
+										<note xml:id="nfw8V4xd" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nIGND7cs" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="czDLc2pT" dur="8" stem.visible="false">
+										<note xml:id="nIIsSTGn" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cM7fkPJ1" dur="4" stem.visible="false">
+										<note xml:id="nlx7qayb" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nH2mOyW4" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nv58wVze" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nTCaaXGC" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cWkS5pVr" dur="4" stem.visible="false">
+										<note xml:id="n9EQLW2e" pname="f" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="duCRJSWM" place="above" startid="#cwof8Dhw">
+								<symbol xml:id="suoYi0UY" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+								<symbol xml:id="s50oCJRM" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="d3E698kj" place="above" startid="#czDLc2pT">
+								<symbol xml:id="sVMSyqvC" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="d3qqOeie" place="above" startid="#cM7fkPJ1">
+								<symbol xml:id="sTtHdGQi" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d7PmHAk0" place="above" startid="#cWkS5pVr">
+								<symbol xml:id="sVRVadTh" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="md2sgt2y" n="44">
+							<staff xml:id="sf0gnr9o" n="1">
+								<layer xml:id="lF4xQDsC" n="1">
+									<chord xml:id="c0jD1OF1" dur="4" stem.visible="false">
+										<note xml:id="n7kHOj9M" pname="b" oct="2" head.fill="solid" accid="f" />
+										<note xml:id="nsO7pUL7" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nkxAUUYk" pname="f" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="c5duxtN6" dur="4" stem.visible="false">
+										<note xml:id="nzlXhFMt" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cQx9L6WM" dur="2" stem.visible="false">
+										<note xml:id="nLI7NjOy" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n4EJNBoD" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nxphtJ6q" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="da0JK6PX" place="above" startid="#c0jD1OF1">
+								<symbol xml:id="s1UJZaOT" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dRAAVjSr" place="above" startid="#c5duxtN6">
+								<symbol xml:id="sR9uv3W8" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="daylHpWb" place="above" startid="#cQx9L6WM">
+								<symbol xml:id="sujOyzqv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mfych8g5" n="45">
+							<staff xml:id="slc6swXS" n="1">
+								<layer xml:id="l1JjMOBR" n="1">
+									<chord xml:id="c4sJlhhM" dur="2" stem.visible="false">
+										<note xml:id="nhc27B6x" pname="b" oct="2" head.fill="solid" accid="f" />
+										<note xml:id="nUmEWhaP" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nCsMXbS5" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="ngUN8ocn" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cFmSxgxa" dur="2" stem.visible="false">
+										<note xml:id="n5a8SLgk" pname="d" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dHeYcUuO" place="above" startid="#c4sJlhhM">
+								<symbol xml:id="sXppETBn" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dmxbNLtN" place="above" startid="#cFmSxgxa">
+								<symbol xml:id="s2NUtdEJ" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzbj6jnx" n="46">
+							<staff xml:id="sWuYicrd" n="1">
+								<layer xml:id="loAuu5Tb" n="1">
+									<chord xml:id="cPaK4iSW" dur="2" stem.visible="false">
+										<note xml:id="ny04P8QQ" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nwhzuxUp" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nf7BDTM4" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="n86NyvOi" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nWIjCgrf" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cMJeD6X3" dur="4" stem.visible="false">
+										<note xml:id="nxVCnoCY" pname="a" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cusBSvrk" dur="4" stem.visible="false">
+										<note xml:id="nqwJWsLZ" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dlFwxFvi" place="above" startid="#cPaK4iSW">
+								<symbol xml:id="sEMbYt8b" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dXTgoQHB" place="above" startid="#cMJeD6X3">
+								<symbol xml:id="sSAcHoUX" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d9OH285g" place="above" startid="#cusBSvrk">
+								<symbol xml:id="sWC5aabV" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mmcjv3hf" n="47">
+							<staff xml:id="sqPRFlni" n="1">
+								<layer xml:id="lAWhaNuT" n="1">
+									<chord xml:id="cG2eOt1g" dur="4" stem.visible="false">
+										<note xml:id="nwBrzJzN" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nbyERXUe" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nSJiPtU0" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="naSv1TU4" pname="f" oct="4" head.fill="solid" />
+										<note xml:id="noFIToTp" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cvCZ4Blg" dur="4" stem.visible="false">
+										<note xml:id="nifN76w6" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cQ4Jh4rJ" dur="4" stem.visible="false">
+										<note xml:id="nny14GJ7" pname="a" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="ccT3nYc1" dur="4" stem.visible="false">
+										<note xml:id="n0xyY4Ot" pname="b" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dI6Yf5qS" place="above" startid="#cG2eOt1g">
+								<symbol xml:id="shr4Chtk" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dr7vlnsz" place="above" startid="#cvCZ4Blg">
+								<symbol xml:id="scnzuaSD" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dQ6Nmz2F" place="above" startid="#cQ4Jh4rJ">
+								<symbol xml:id="sQDXVUX3" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dFVKXHU3" place="above" startid="#ccT3nYc1">
+								<symbol xml:id="s7E3FDtZ" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mbkv3bda" n="48">
+							<staff xml:id="sRGEEVQM" n="1">
+								<layer xml:id="lrvopVrX" n="1">
+									<chord xml:id="cbeMHAKf" dur="4" stem.visible="false">
+										<note xml:id="nL8R5HsO" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nQyL5W2n" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nrkggLY7" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nHVe3qzm" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cd3Cg7fT" dur="4" stem.visible="false">
+										<note xml:id="njycCXRo" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cG67jPmN" dur="2" stem.visible="false">
+										<note xml:id="n0F5t7Ya" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dlgBrkGK" place="above" startid="#cbeMHAKf">
+								<symbol xml:id="sLfMI94J" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dJ27Iyem" place="above" startid="#cd3Cg7fT">
+								<symbol xml:id="sIXQQRoF" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dDeuGRGU" place="above" startid="#cG67jPmN">
+								<symbol xml:id="s1ZojVqT" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="miyeoy86" n="49">
+							<staff xml:id="scEtAmET" n="1">
+								<layer xml:id="lH9eAoa1" n="1">
+									<chord xml:id="ca3mK9AP" dur="2" stem.visible="false">
+										<note xml:id="nTozJNZZ" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nBMLqbAC" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nqXNMYO1" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="ndjsZK9z" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ciguieye" dur="2" stem.visible="false">
+										<note xml:id="nyLF6A98" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nIyOtbTY" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="n6rf2pTg" pname="f" oct="4" head.fill="solid" />
+										<note xml:id="n66W3UOs" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dY4SrLBD" place="above" startid="#ca3mK9AP">
+								<symbol xml:id="sgGipnp3" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dYaQdUWG" place="above" startid="#ciguieye">
+								<symbol xml:id="s0e1uiqU" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="makt9xr3" n="50">
+							<staff xml:id="s2KIe6yj" n="1">
+								<layer xml:id="lUoYWFyA" n="1">
+									<chord xml:id="cu1QQAM6" dur="4" stem.visible="false">
+										<note xml:id="nbHRSU9N" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nw2VYPuV" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nYvIzt8g" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nmug6LOB" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cvs8XLMv" dur="4" stem.visible="false">
+										<note xml:id="nEW5XNGc" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cZ9Vb1cJ" dur="4" stem.visible="false">
+										<note xml:id="n8bjjghw" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nyP1xOsA" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cCgnLtXQ" dur="4" stem.visible="false">
+										<note xml:id="nCe5zflR" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dt4rfxI2" place="above" startid="#cu1QQAM6">
+								<symbol xml:id="srDCAv8V" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dKCRbYGB" place="above" startid="#cvs8XLMv">
+								<symbol xml:id="spq6bLXM" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dLU2aUUV" place="above" startid="#cZ9Vb1cJ">
+								<symbol xml:id="semdJXSY" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dVfgsyMW" place="above" startid="#cCgnLtXQ">
+								<symbol xml:id="sbWeFk2d" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m211arks" n="51">
+							<staff xml:id="skQfiBqg" n="1">
+								<layer xml:id="lKb53BEj" n="1">
+									<chord xml:id="cCzhvUBF" dur="2" stem.visible="false">
+										<note xml:id="nXkpCenS" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="naSapyPN" pname="b" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="nhFbJJD5" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cIt5zT3K" dur="4" stem.visible="false">
+										<note xml:id="nW4TiTjC" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cLwENwM8" dur="4" stem.visible="false">
+										<note xml:id="n6w8lLmr" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="datNLAeZ" place="above" startid="#cCzhvUBF">
+								<symbol xml:id="sWUpOld3" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="da50hlSZ" place="above" startid="#cIt5zT3K">
+								<symbol xml:id="sCDQshtf" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dfaKj7Uy" place="above" startid="#cLwENwM8">
+								<symbol xml:id="sKcFT9kJ" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m4ccdewc" n="52">
+							<staff xml:id="scwHZnOS" n="1">
+								<layer xml:id="lRxYhjq7" n="1">
+									<chord xml:id="c49WHEbI" dur="4" stem.visible="false">
+										<note xml:id="nl5vnYa3" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n9UGCMIS" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nP6rLHuo" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nLE2mfdB" pname="f" oct="4" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="cgSV9Ojh" dur="4" stem.visible="false">
+										<note xml:id="nJaQVKbH" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cKcrel7C" dur="4" stem.visible="false">
+										<note xml:id="nuLPLlCY" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cITlj6Tp" dur="4" stem.visible="false">
+										<note xml:id="nodIH4Wf" pname="g" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dccsmA7G" place="above" startid="#c49WHEbI">
+								<symbol xml:id="sBigHoXA" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d139LvR3" place="above" startid="#cgSV9Ojh">
+								<symbol xml:id="si59OvGB" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dRIPMfWM" place="above" startid="#cKcrel7C">
+								<symbol xml:id="smXLLbBg" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dtsFT5f6" place="above" startid="#cITlj6Tp">
+								<symbol xml:id="sGjT7rRJ" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mv59pg9u" n="53">
+							<staff xml:id="s3LNhCa8" n="1">
+								<layer xml:id="lnBaj0wB" n="1">
+									<chord xml:id="chfDvMw2" dur="2" stem.visible="false">
+										<note xml:id="nfY1dzMw" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n2iepGk6" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nTNkYTZ3" pname="a" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="ci72bCO9" dur="2" stem.visible="false">
+										<note xml:id="nIXTibZQ" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nqhHe4me" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="ng7HI8Cy" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dlz2AoT1" place="above" startid="#chfDvMw2">
+								<symbol xml:id="sEpkVa7L" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dbTfiUHG" place="above" startid="#ci72bCO9">
+								<symbol xml:id="skM2CXUw" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="msyt7l8k" n="54">
+							<staff xml:id="sj0leXTc" n="1">
+								<layer xml:id="lubIYNlT" n="1">
+									<chord xml:id="cOXPqR7t" dur="4" stem.visible="false">
+										<note xml:id="nvSVSO4f" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="ntx9dAte" pname="a" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cSZmvPor" dur="4" stem.visible="false">
+										<note xml:id="n3M9cjEg" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cEfz6Dg0" dur="2" stem.visible="false">
+										<note xml:id="nV11ejGM" pname="f" oct="4" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dN2D4PCy" place="above" startid="#cOXPqR7t">
+								<symbol xml:id="suy14y2s" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dVehBVBl" place="above" startid="#cSZmvPor">
+								<symbol xml:id="sJA5n9Wq" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dobF198d" place="above" startid="#cEfz6Dg0">
+								<symbol xml:id="sIKbVUxi" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mn754831" n="55">
+							<staff xml:id="sYbWnr2n" n="1">
+								<layer xml:id="lcfCtFyp" n="1">
+									<chord xml:id="cs8DZvkH" dur="2" stem.visible="false">
+										<note xml:id="nMFef5sq" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nSaqFxPX" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nF9GXXmQ" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="ncqJiLVW" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nKSdLGOr" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cblVFueI" dur="4" stem.visible="false">
+										<note xml:id="neibDvDv" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfN5b1Lj" dur="4" stem.visible="false">
+										<note xml:id="nJ8Pt8cT" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nx9FZlew" pname="c" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dK4gd5GY" place="above" startid="#cs8DZvkH">
+								<symbol xml:id="szD71Ea2" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dQYrVDOh" place="above" startid="#cblVFueI">
+								<symbol xml:id="sRu2CIkF" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dfUvakr3" place="above" startid="#cfN5b1Lj">
+								<symbol xml:id="sOV4BYw5" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mi53429c" n="56">
+							<staff xml:id="sFixHrfS" n="1">
+								<layer xml:id="lL9sofr1" n="1">
+									<chord xml:id="c5IEVDNl" dur="4" stem.visible="false">
+										<note xml:id="nVpDcHOo" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nud5YPPs" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="nGBwX6oE" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cSyoJWmc" dur="4" stem.visible="false">
+										<note xml:id="nfFlPuhq" pname="c" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cKYvMDwp" dur="2" stem.visible="false">
+										<note xml:id="nA68jsgg" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="n0byIylo" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d1dqYAMv" place="above" startid="#c5IEVDNl">
+								<symbol xml:id="szMaO5Hy" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dyUYCJaQ" place="above" startid="#cSyoJWmc">
+								<symbol xml:id="sBjwWqtP" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dx2MSggI" place="above" startid="#cKYvMDwp">
+								<symbol xml:id="sOodR9BL" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mq26clvs" n="57">
+							<staff xml:id="sYkML0gS" n="1">
+								<layer xml:id="lqgXPnYV" n="1">
+									<chord xml:id="ccp0WIcT" dur="2" stem.visible="false">
+										<note xml:id="nAZiSFlZ" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nKGVFOmM" pname="c" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cTjE1PB2" dur="2" stem.visible="false">
+										<note xml:id="nEcmVuTy" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="n8dUFjHS" pname="c" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d54bDH98" place="above" startid="#ccp0WIcT">
+								<symbol xml:id="sXeWtv7F" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dRNJKju7" place="above" startid="#cTjE1PB2">
+								<symbol xml:id="sPMr2U8O" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mgpeeffe" n="58">
+							<staff xml:id="sE5xpDdL" n="1">
+								<layer xml:id="lQySHx4z" n="1">
+									<chord xml:id="cpLgRNNk" dur="4" stem.visible="false">
+										<note xml:id="n4jRBVNV" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n21ZiSl5" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c8nGSEVy" dur="4" stem.visible="false">
+										<note xml:id="nyvMFBBB" pname="c" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cTiQc8y7" dur="2" stem.visible="false">
+										<note xml:id="nD07mYKP" pname="b" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dQoBRO1U" place="above" startid="#cpLgRNNk">
+								<symbol xml:id="sawoou3w" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dFnlqQ34" place="above" startid="#c8nGSEVy">
+								<symbol xml:id="sh3hkqZf" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d7hdwqK1" place="above" startid="#cTiQc8y7">
+								<symbol xml:id="siY2yEGY" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mvjjiwo6" n="59">
+							<staff xml:id="sFEQkplq" n="1">
+								<layer xml:id="lnrUVqYD" n="1">
+									<chord xml:id="cRuxwPd9" dur="2" stem.visible="false">
+										<note xml:id="nmY2a0dq" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nSlpi3sv" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nlFc24Lt" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cjsRhqAP" dur="4" stem.visible="false">
+										<note xml:id="nOQhJvJe" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cOWh50za" dur="4" stem.visible="false">
+										<note xml:id="nspzp3I6" pname="f" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dLZHaty5" place="above" startid="#cRuxwPd9">
+								<symbol xml:id="s1W3zWwO" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dGHwso1S" place="above" startid="#cjsRhqAP">
+								<symbol xml:id="sotR0kST" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dH2ulFkF" place="above" startid="#cOWh50za">
+								<symbol xml:id="sHmglR21" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mtan357x" n="60">
+							<staff xml:id="sVJCloDN" n="1">
+								<layer xml:id="lZNKbDqW" n="1">
+									<chord xml:id="cGcjgriH" dur="2" stem.visible="false">
+										<note xml:id="nkQitmaL" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nrMeYJSc" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n3JuMfWN" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c1Abvki7" dur="2" stem.visible="false">
+										<note xml:id="neQnb3By" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="njU7MGns" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dIZYuljw" place="above" startid="#cGcjgriH">
+								<symbol xml:id="skBd9FGV" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dS4nK59O" place="above" startid="#c1Abvki7">
+								<symbol xml:id="svI6lyMX" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzkljnn6" n="61">
+							<staff xml:id="sWIr5qEB" n="1">
+								<layer xml:id="lZ49M5aV" n="1">
+									<chord xml:id="c7WszRl2" dur="2" stem.visible="false">
+										<note xml:id="nTk3mOjS" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n2jQr9hx" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="ndFr4bKQ" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="csDcvTC6" dur="4" stem.visible="false">
+										<note xml:id="ne2CMNdN" pname="a" oct="2" head.fill="solid" />
+									</chord>
+									<chord xml:id="cLiKrFXz" dur="4" stem.visible="false">
+										<note xml:id="nT8vZAC3" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d6beAQZc" place="above" startid="#c7WszRl2">
+								<symbol xml:id="sjGWwDy6" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="df6xUwVp" place="above" startid="#csDcvTC6">
+								<symbol xml:id="skH5gWtf" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dsTFh5M3" place="above" startid="#cLiKrFXz">
+								<symbol xml:id="sD9WMubq" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mud47hcm" n="62">
+							<staff xml:id="sm56Oudw" n="1">
+								<layer xml:id="l7I6D3Q5" n="1">
+									<chord xml:id="cyKSsspc" dur="4" stem.visible="false">
+										<note xml:id="nkLmk7SH" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nAMpYmLD" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n5VTfxcP" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cVVkSQss" dur="4" stem.visible="false">
+										<note xml:id="n6i9Tdeg" pname="a" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cNny1SEh" dur="2" stem.visible="false">
+										<note xml:id="nzJmxsoa" pname="g" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dnlusx81" place="above" startid="#cyKSsspc">
+								<symbol xml:id="siz2yWwe" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dXFV6HmT" place="above" startid="#cVVkSQss">
+								<symbol xml:id="sAk3rcXN" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dpz10PrO" place="above" startid="#cNny1SEh">
+								<symbol xml:id="s2tUPMn5" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mmp19xjc" n="63">
+							<staff xml:id="s4M7u73E" n="1">
+								<layer xml:id="lNHYQYWj" n="1">
+									<chord xml:id="cbHA3aMR" dur="2" stem.visible="false">
+										<note xml:id="nk26mTwc" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nRBCUX74" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nR2EDi9O" pname="c" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cO2k8ije" dur="2" stem.visible="false">
+										<note xml:id="ncBZRQY2" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nOCEc5Pk" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d6i1NAB3" place="above" startid="#cbHA3aMR">
+								<symbol xml:id="sa4ITCXy" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dqlvVnNL" place="above" startid="#cO2k8ije">
+								<symbol xml:id="sBQk9rg8" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m2j3yt4x" n="64">
+							<staff xml:id="s037kq6H" n="1">
+								<layer xml:id="lxo2koeM" n="1">
+									<chord xml:id="cZiwhKT9" dur="2" stem.visible="false">
+										<note xml:id="nWkQmJnV" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nBOkaTCA" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nbKM1HGF" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c6udOA52" dur="4" stem.visible="false">
+										<note xml:id="noGPROAP" pname="b" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d13YBrPN" place="above" startid="#cZiwhKT9">
+								<symbol xml:id="sBOUIvpj" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="s9l55alK" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dozT6Vrh" place="above" startid="#c6udOA52">
+								<symbol xml:id="sunTiC4p" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="milbdfav" n="65">
+							<staff xml:id="sVBSpeBG" n="1">
+								<layer xml:id="lVCvAjw1" n="1">
+									<chord xml:id="caFakqKK" dur="2" stem.visible="false">
+										<note xml:id="n74Lz454" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nQcwklCe" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="chQRo2ej" dur="4" stem.visible="false">
+										<note xml:id="n1yaQ5uV" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cXcziqLA" dur="4" stem.visible="false">
+										<note xml:id="nUB9rdLm" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dYJSkJcN" place="above" startid="#caFakqKK">
+								<symbol xml:id="s5g8uGZ1" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dx2HvTVO" place="above" startid="#chQRo2ej">
+								<symbol xml:id="s05DRSFi" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dEUdZkVe" place="above" startid="#cXcziqLA">
+								<symbol xml:id="szXkWou8" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mcyinkq8" n="66">
+							<staff xml:id="s2QFqNXZ" n="1">
+								<layer xml:id="lfJujcmB" n="1">
+									<chord xml:id="crP8AKXx" dur="2" stem.visible="false">
+										<note xml:id="nRv1ORPG" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nYdXhJUZ" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cP8YiYA5" dur="2" stem.visible="false">
+										<note xml:id="n2MoTYae" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nuOkz2ES" pname="c" oct="4" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dtNpwrI7" place="above" startid="#crP8AKXx">
+								<symbol xml:id="s8VAfvnB" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dhDnOTDA" place="above" startid="#cP8YiYA5">
+								<symbol xml:id="sG2u4xqY" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m78bd9hr" n="67">
+							<staff xml:id="stkP3AED" n="1">
+								<layer xml:id="lpBGitSx" n="1">
+									<chord xml:id="c3cJo3Xk" dur="2" stem.visible="false">
+										<note xml:id="nOqEBJ3c" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nPAKDgAT" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ci8OzEvA" dur="2" stem.visible="false">
+										<note xml:id="nfAjS7oK" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="njl8MKap" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dTPz3vek" place="above" startid="#c3cJo3Xk">
+								<symbol xml:id="sRZV8ZbP" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="didMWTL7" place="above" startid="#ci8OzEvA">
+								<symbol xml:id="sYOICpw9" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mz4j7kbv" n="68">
+							<staff xml:id="sQGiZvkW" n="1">
+								<layer xml:id="lIDDY86n" n="1">
+									<chord xml:id="cz0IiZE9" dur="2" stem.visible="false">
+										<note xml:id="nbgEwLYu" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nuEKqyQS" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nBCcB8zR" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cbmT318w" dur="4" stem.visible="false">
+										<note xml:id="nvQiVo4K" pname="e" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="drRY0IWO" place="above" startid="#cz0IiZE9">
+								<symbol xml:id="sdvdHtMY" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="srKAlJRJ" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="d3niw8bR" place="above" startid="#cbmT318w">
+								<symbol xml:id="spCAwMqw" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="moqqjjkf" n="69">
+							<staff xml:id="swlv0zFm" n="1">
+								<layer xml:id="llCMXeLR" n="1">
+									<chord xml:id="cmXL99LW" dur="2" stem.visible="false">
+										<note xml:id="n2OZ655o" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n3gD9KAX" pname="b" oct="3" head.fill="solid" accid="f" />
+									</chord>
+									<chord xml:id="cShaAUF1" dur="4" stem.visible="false">
+										<note xml:id="n6uankF1" pname="c" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="crlLHzx4" dur="4" stem.visible="false">
+										<note xml:id="nJzT3QpF" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dVbDh2P3" place="above" startid="#cmXL99LW">
+								<symbol xml:id="skL8xsHl" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="doDSGTRa" place="above" startid="#cShaAUF1">
+								<symbol xml:id="sjxyypqx" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d3nmmNZi" place="above" startid="#crlLHzx4">
+								<symbol xml:id="s3BHeUEU" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m5qkktds" n="70">
+							<staff xml:id="sUWbmtRY" n="1">
+								<layer xml:id="l2UelePF" n="1">
+									<chord xml:id="cNNzq9NJ" dur="2" stem.visible="false">
+										<note xml:id="nwppkFCI" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="n8nFajsi" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cLTAriV6" dur="2" stem.visible="false">
+										<note xml:id="nvEhNBhJ" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n4R1ofPK" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dNhjTz8y" place="above" startid="#cNNzq9NJ">
+								<symbol xml:id="sYdeVc34" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dIBdNp0a" place="above" startid="#cLTAriV6">
+								<symbol xml:id="sWlPGN0D" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="myljnwv8" n="71">
+							<staff xml:id="sWwxV7Pa" n="1">
+								<layer xml:id="lbcdYCbg" n="1">
+									<chord xml:id="cN7NxXvP" dur="2" stem.visible="false">
+										<note xml:id="nRMfd35F" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nkzdGVzZ" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cp3K7h6T" dur="2" stem.visible="false">
+										<note xml:id="nzHBn3Wh" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nXaHHoG2" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n72UkKUG" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n1Vviiu1" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nMKqr8gH" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d0XfHwjo" place="above" startid="#cN7NxXvP">
+								<symbol xml:id="sO28sHTh" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d2IZHzAA" place="above" startid="#cp3K7h6T">
+								<symbol xml:id="siCiO5pf" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mtm3j46q" n="72">
+							<staff xml:id="szhFkAPz" n="1">
+								<layer xml:id="lUeOL6VO" n="1">
+									<chord xml:id="cSRhAOx7" dur="2" stem.visible="false">
+										<note xml:id="n0Tip38F" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="naLjolut" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="n0kHXWzU" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cH25OhMY" dur="2" stem.visible="false">
+										<note xml:id="n3V5JO1O" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="neZLIgTN" pname="c" oct="4" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d9MRvlb3" place="above" startid="#cSRhAOx7">
+								<symbol xml:id="skEfg9V2" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dcizELBS" place="above" startid="#cH25OhMY">
+								<symbol xml:id="saa6Rq0l" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mroxb1wi" n="73">
+							<staff xml:id="s3zhy4JW" n="1">
+								<layer xml:id="lpb3gGae" n="1">
+									<chord xml:id="ckCwPt9b" dur="2" stem.visible="false">
+										<note xml:id="n54HG2Us" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nzO7clkV" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nPS0IF9S" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ciWE1M3E" dur="2" stem.visible="false">
+										<note xml:id="nEkEsUDQ" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nc927XIw" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="n0N18EyK" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dwxD86pK" place="above" startid="#ckCwPt9b">
+								<symbol xml:id="sDMhYzKr" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dMyip5y9" place="above" startid="#ciWE1M3E">
+								<symbol xml:id="sGKgGN3X" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m7c617ca" n="74">
+							<staff xml:id="slhdrBgV" n="1">
+								<layer xml:id="lIyyUzNq" n="1">
+									<chord xml:id="cbZRZC0C" dur="2" stem.visible="false">
+										<note xml:id="nxOlLloD" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="njSP5D2U" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="nw6RRVBw" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cXV00Fa1" dur="2" stem.visible="false">
+										<note xml:id="nfiWRZHg" pname="c" oct="4" head.fill="solid" accid="s" />
+										<note xml:id="ngQ1cz5U" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dLqJIpzt" place="above" startid="#cbZRZC0C">
+								<symbol xml:id="sAsTINaM" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dS1ZsOAh" place="above" startid="#cXV00Fa1">
+								<symbol xml:id="sHhM24bX" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mlyzppiu" n="75">
+							<staff xml:id="spflmeQ4" n="1">
+								<layer xml:id="ldl3dFuj" n="1">
+									<chord xml:id="cxappOEa" dur="2" stem.visible="false">
+										<note xml:id="nf4tUO7V" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nOVtg0Vq" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nwZWtG7Y" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cDmdSnXG" dur="2" stem.visible="false">
+										<note xml:id="nUdNUii7" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="njyKihEb" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nX3IaKNf" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nvrqqHsU" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nc4KKMmd" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dsCG4nUj" place="above" startid="#cxappOEa">
+								<symbol xml:id="sCRatiDk" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dINpkfw9" place="above" startid="#cDmdSnXG">
+								<symbol xml:id="sHYzOuDq" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mwqa3vfr" n="76">
+							<staff xml:id="s0UCLDFw" n="1">
+								<layer xml:id="lii23zAV" n="1">
+									<chord xml:id="cKUXlPJH" dur="2" stem.visible="false">
+										<note xml:id="ndCs857D" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="n16uL0im" pname="e" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cLjZG0qw" dur="4" stem.visible="false">
+										<note xml:id="nIiUkenK" pname="a" oct="2" head.fill="solid" />
+									</chord>
+									<chord xml:id="cCZ3Jj0a" dur="4" stem.visible="false">
+										<note xml:id="nHpAbrEx" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dbRs9DLK" place="above" startid="#cKUXlPJH">
+								<symbol xml:id="sbIxdVkn" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dez7nps1" place="above" startid="#cLjZG0qw">
+								<symbol xml:id="sqkGrdPx" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d97FR5E1" place="above" startid="#cCZ3Jj0a">
+								<symbol xml:id="skGoFJbK" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mfcn85nd" n="77">
+							<staff xml:id="saml4rXA" n="1">
+								<layer xml:id="l3gNv1kC" n="1">
+									<chord xml:id="cHl0cmWc" dur="2" stem.visible="false">
+										<note xml:id="nixoyh02" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nGvXg2Uz" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cOVOAlFq" dur="4" stem.visible="false">
+										<note xml:id="nOdQ3L1n" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nYL3FlGB" pname="d" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cfX0mxfP" dur="4" stem.visible="false">
+										<note xml:id="n7WIRYCy" pname="d" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d8atSpj9" place="above" startid="#cHl0cmWc">
+								<symbol xml:id="srWMmw7c" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dASWn25X" place="above" startid="#cOVOAlFq">
+								<symbol xml:id="siQgW6MC" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dPmbTD2Q" place="above" startid="#cfX0mxfP">
+								<symbol xml:id="skxsYywp" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mtg6txdz" n="78">
+							<staff xml:id="snLOtJdk" n="1">
+								<layer xml:id="lrkW0MYc" n="1">
+									<chord xml:id="cZN2dGLr" dur="2" stem.visible="false">
+										<note xml:id="ncLuYFcW" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nfQF9sRw" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nrrM0HMY" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="crjBkJJP" dur="2" stem.visible="false">
+										<note xml:id="n7rzu973" pname="f" oct="3" head.fill="solid" accid="s" />
+										<note xml:id="norSbcu6" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dGyJUSvf" place="above" startid="#cZN2dGLr">
+								<symbol xml:id="seYrhl7a" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dRzdFTdj" place="above" startid="#crjBkJJP">
+								<symbol xml:id="sv9SBzNl" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mfd7n7pc" n="79">
+							<staff xml:id="sGO3zIt7" n="1">
+								<layer xml:id="lyrcVUk4" n="1">
+									<chord xml:id="czHuMTyx" dur="2" stem.visible="false">
+										<note xml:id="nZW6uceN" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nU4S74xf" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nUMDR8jc" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="ngaDjSGk" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cPrrXXRl" dur="2" stem.visible="false">
+										<note xml:id="nhFcRLiq" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nvdUwyAN" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="nzNmzhyo" pname="d" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dxKHFjm3" place="above" startid="#czHuMTyx">
+								<symbol xml:id="sHKZtJBH" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dgDBuw7Z" place="above" startid="#cPrrXXRl">
+								<symbol xml:id="siNxplDP" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzwymknd" n="80">
+							<staff xml:id="s1Xusv4Q" n="1">
+								<layer xml:id="lbrhyUn7" n="1">
+									<chord xml:id="cHyp2Jpi" dur="2" stem.visible="false">
+										<note xml:id="nj7zX264" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nAwemXKh" pname="c" oct="4" head.fill="solid" />
+										<note xml:id="nYGQbtFm" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cSvwR4Uw" dur="2" stem.visible="false">
+										<note xml:id="nJxoRXL2" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nbalmpeq" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nHz60QqC" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dStW3AdY" place="above" startid="#cHyp2Jpi">
+								<symbol xml:id="sHq9xRal" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dDStElLI" place="above" startid="#cSvwR4Uw">
+								<symbol xml:id="so0DuQ13" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="md6y479v" n="81">
+							<staff xml:id="s22CCaqA" n="1">
+								<layer xml:id="lJAJbG1O" n="1">
+									<chord xml:id="cmtFWxZA" dur="2" stem.visible="false">
+										<note xml:id="nl4aST2U" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nesMkRoc" pname="b" oct="3" head.fill="solid" />
+										<note xml:id="nbngq78L" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cUluN9bV" dur="2" stem.visible="false">
+										<note xml:id="nnO48INc" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nknDYHiV" pname="c" oct="4" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dgrGjWbR" place="above" startid="#cmtFWxZA">
+								<symbol xml:id="sVGUvc2C" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dcu6gctS" place="above" startid="#cUluN9bV">
+								<symbol xml:id="sgZBmarv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mnh4giag" n="82">
+							<staff xml:id="sEgkAjLv" n="1">
+								<layer xml:id="lmmsQpMZ" n="1">
+									<chord xml:id="cYtvS9Bg" dur="2" stem.visible="false">
+										<note xml:id="n9aiWhmg" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nsaWTfeo" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cBH5I6NB" dur="2" stem.visible="false">
+										<note xml:id="nPcLNgTV" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nqvP9aEM" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dJ6RpjHB" place="above" startid="#cYtvS9Bg">
+								<symbol xml:id="sIDrRKoQ" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dgjPFvuE" place="above" startid="#cBH5I6NB">
+								<symbol xml:id="sxIIuqLR" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mh7p6wkj" n="83">
+							<staff xml:id="sKTWtdMG" n="1">
+								<layer xml:id="lwSnuwc7" n="1">
+									<chord xml:id="cwPHcLuY" dur="2" stem.visible="false">
+										<note xml:id="n55tVPAk" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nVZ1jwL8" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cLNQHS0F" dur="2" stem.visible="false">
+										<note xml:id="nbPazNFB" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nSvXLgD6" pname="e" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dXI4eY5f" place="above" startid="#cwPHcLuY">
+								<symbol xml:id="sVgzKAPv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dHMJPr4l" place="above" startid="#cLNQHS0F">
+								<symbol xml:id="sxuDvJdC" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzk9ttyg" n="84">
+							<staff xml:id="sDeFYtWh" n="1">
+								<layer xml:id="lEdfzJnA" n="1">
+									<chord xml:id="cEXMVirj" dur="2" stem.visible="false">
+										<note xml:id="nou3b5MY" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="ntMZ3OCx" pname="f" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cBsfmKzW" dur="2" stem.visible="false">
+										<note xml:id="n1A0JZT9" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nviPkrkI" pname="g" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dCwAVSMh" place="above" startid="#cEXMVirj">
+								<symbol xml:id="sA0tX8gr" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d2oHUDbb" place="above" startid="#cBsfmKzW">
+								<symbol xml:id="sng14yaw" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m1jhdg4w" n="85">
+							<staff xml:id="s3HTpX53" n="1">
+								<layer xml:id="lsKCB0pi" n="1">
+									<chord xml:id="c5wAWhwa" dur="2" stem.visible="false">
+										<note xml:id="nOPKdwKT" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nKYhLgTn" pname="e" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cQ6VtnU7" dur="2" stem.visible="false">
+										<note xml:id="np1LsSkJ" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nMRQjdXA" pname="f" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dsuIW4FI" place="above" startid="#c5wAWhwa">
+								<symbol xml:id="syArspmx" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d2uEkeBf" place="above" startid="#cQ6VtnU7">
+								<symbol xml:id="sNDdBFOV" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mx7n297t" n="86">
+							<staff xml:id="s9P92AIX" n="1">
+								<layer xml:id="lhFAGMGA" n="1">
+									<chord xml:id="cNXoHsEO" dur="2" stem.visible="false">
+										<note xml:id="nMH0FAgO" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nt8Nlwki" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cDm2ecoE" dur="2" stem.visible="false">
+										<note xml:id="nwahOwIn" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nIXqZydH" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nGs09HwZ" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dlM7pO0B" place="above" startid="#cNXoHsEO">
+								<symbol xml:id="sDv2CD8O" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dJbrqr0W" place="above" startid="#cDm2ecoE">
+								<symbol xml:id="sVWnISeh" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m3kb3iex" n="87">
+							<staff xml:id="sl5NCP1T" n="1">
+								<layer xml:id="ls9iw1sX" n="1">
+									<chord xml:id="ccggVFd2" dur="2" stem.visible="false">
+										<note xml:id="nZS4gjsb" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nn0aosGI" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="czN1gNHJ" dur="4" stem.visible="false">
+										<note xml:id="niT3Pfkj" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cMZo016X" dur="4" stem.visible="false">
+										<note xml:id="nRQEJEHG" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dtHjL7Cr" place="above" startid="#ccggVFd2">
+								<symbol xml:id="sljfylEC" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dbfQRuX5" place="above" startid="#czN1gNHJ">
+								<symbol xml:id="svFryR8N" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dXN8dpN2" place="above" startid="#cMZo016X">
+								<symbol xml:id="say9baan" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="misfcdr7" n="88">
+							<staff xml:id="sM68M2Sj" n="1">
+								<layer xml:id="lsCd5Kil" n="1">
+									<chord xml:id="cNy707nt" dur="2" stem.visible="false">
+										<note xml:id="naPsZchS" pname="f" oct="4" head.fill="solid" />
+										<note xml:id="nocnDzbj" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cjSV6II2" dur="2" stem.visible="false">
+										<note xml:id="nARN0U11" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nS780tbm" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dpK4FdKI" place="above" startid="#cNy707nt">
+								<symbol xml:id="sodCRbC3" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dPQzGqSp" place="above" startid="#cjSV6II2">
+								<symbol xml:id="sDTJZ76G" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="migc65vi" n="89">
+							<staff xml:id="sxUgLJlV" n="1">
+								<layer xml:id="laHEA2iG" n="1">
+									<chord xml:id="cmwbwI0I" dur="4" stem.visible="false">
+										<note xml:id="n234hvak" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c0vkETSF" dur="4" stem.visible="false">
+										<note xml:id="nkhRuWwi" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cjfjHl7t" dur="2" stem.visible="false">
+										<note xml:id="nIeggK67" pname="d" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dwyCfpHG" place="above" startid="#cmwbwI0I">
+								<symbol xml:id="scM34i1U" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dyt14oS8" place="above" startid="#c0vkETSF">
+								<symbol xml:id="s2Km382g" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dhTrX1Pq" place="above" startid="#cjfjHl7t">
+								<symbol xml:id="sQ0Y0QiX" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m6fnsjsi" n="90">
+							<staff xml:id="sFO1AI3c" n="1">
+								<layer xml:id="lFXTbttH" n="1">
+									<chord xml:id="cj5DcroF" dur="4" stem.visible="false">
+										<note xml:id="nEWGg7Qy" pname="e" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cnQOMyTx" dur="4" stem.visible="false">
+										<note xml:id="nppnrbaV" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="c1EcDLn6" dur="2" stem.visible="false">
+										<note xml:id="nPtXxqUe" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nPooiLxj" pname="c" oct="4" head.fill="solid" accid="s" />
+										<note xml:id="nQFZez8W" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="drnHMIO1" place="above" startid="#cj5DcroF">
+								<symbol xml:id="s2F2WWCu" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dAXbG42H" place="above" startid="#cnQOMyTx">
+								<symbol xml:id="sZlTIouJ" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="diQzJDCy" place="above" startid="#c1EcDLn6">
+								<symbol xml:id="sjzpRBha" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="merjloc2" n="91">
+							<staff xml:id="s6YLmrzN" n="1">
+								<layer xml:id="lH2ZuFma" n="1">
+									<chord xml:id="c6n9bjrD" dur="2" stem.visible="false">
+										<note xml:id="ngrqbUFk" pname="b" oct="3" head.fill="solid" accid="f" />
+										<note xml:id="nUy3ZLWx" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cYSzZuKC" dur="4" stem.visible="false">
+										<note xml:id="nXxk6vIV" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nKVFzlj5" pname="f" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="c7YxeMwK" dur="4" stem.visible="false">
+										<note xml:id="n5qCes0j" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d3V6A9Fl" place="above" startid="#c6n9bjrD">
+								<symbol xml:id="sGKBCFcv" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dN81XTzz" place="above" startid="#cYSzZuKC">
+								<symbol xml:id="s8odF3U4" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dZ3QciM5" place="above" startid="#c7YxeMwK">
+								<symbol xml:id="swXtjBp0" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m1cevwko" n="92">
+							<staff xml:id="sNt8Xkxf" n="1">
+								<layer xml:id="l7hwMFuz" n="1">
+									<chord xml:id="cK6OJ6WW" dur="2" stem.visible="false">
+										<note xml:id="nqWmF2Nv" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nggQ7YNY" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nEihq3cw" pname="b" oct="3" head.fill="solid" accid="f" />
+									</chord>
+									<chord xml:id="cLTL1WWm" dur="2" stem.visible="false">
+										<note xml:id="nt5VWUVs" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nIvFnQQV" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nZ1nhIJd" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d8Ad1W6Z" place="above" startid="#cK6OJ6WW">
+								<symbol xml:id="sCT3veRs" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dCq3zdLb" place="above" startid="#cLTL1WWm">
+								<symbol xml:id="sBY3vSQI" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzrlpm2d" n="93">
+							<staff xml:id="svwAKszN" n="1">
+								<layer xml:id="lXciv37h" n="1">
+									<chord xml:id="ctB1F5gX" dur="4" stem.visible="false">
+										<note xml:id="nfPdq4h8" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nh9nUmSp" pname="d" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cDO5N48W" dur="4" stem.visible="false">
+										<note xml:id="nDNRj4bS" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cT1yQhCD" dur="2" stem.visible="false">
+										<note xml:id="nMNqwlO1" pname="g" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="drSe4EtI" place="above" startid="#ctB1F5gX">
+								<symbol xml:id="sG5rM6Yh" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dGQSiKMe" place="above" startid="#cDO5N48W">
+								<symbol xml:id="sp0Lih5K" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dqjqyy27" place="above" startid="#cT1yQhCD">
+								<symbol xml:id="soXkBE5u" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m8qluhhf" n="94">
+							<staff xml:id="ssQYsfPF" n="1">
+								<layer xml:id="lWe1CE21" n="1">
+									<chord xml:id="c4eH1I3z" dur="4" stem.visible="false">
+										<note xml:id="nQIN6CIp" pname="a" oct="2" head.fill="solid" />
+										<note xml:id="nk2TpMnB" pname="c" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cK20KijR" dur="4" stem.visible="false">
+										<note xml:id="nLem7Gj4" pname="g" oct="3" head.fill="solid" />
+									</chord>
+									<chord xml:id="cr6gj9Wj" dur="2" stem.visible="false">
+										<note xml:id="nJCwOnDR" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dtN2tkQL" place="above" startid="#c4eH1I3z">
+								<symbol xml:id="sjFZevuu" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="d0ChjyRG" place="above" startid="#cK20KijR">
+								<symbol xml:id="sCx2dbTN" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dYtAU8dv" place="above" startid="#cr6gj9Wj">
+								<symbol xml:id="sgyaudWM" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mqv81zkz" n="95">
+							<staff xml:id="sNKMb3q1" n="1">
+								<layer xml:id="lD7cd6C4" n="1">
+									<chord xml:id="csG5Tu87" dur="1" stem.visible="false">
+										<note xml:id="nS19LfZI" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nSq2w49y" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nyiPgAxa" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nbWH3veu" pname="d" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dZFKkDkj" place="above" startid="#csG5Tu87">
+								<symbol xml:id="s2wGRJBz" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m9gkns66" n="96">
+							<staff xml:id="s5hAuyqt" n="1">
+								<layer xml:id="lL8a8NTU" n="1">
+									<chord xml:id="cFasOPwZ" dur="2" stem.visible="false">
+										<note xml:id="nF4ASLN0" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nUuBiAbl" pname="d" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="crbZuDmR" dur="2" stem.visible="false">
+										<note xml:id="nxOgvySK" pname="c" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dFj1DuDO" place="above" startid="#cFasOPwZ">
+								<symbol xml:id="s0b21Usj" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="d4AMQ82S" place="above" startid="#crbZuDmR">
+								<symbol xml:id="sWToZ5mg" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m3ztxeix" n="97">
+							<staff xml:id="siD3D11q" n="1">
+								<layer xml:id="l8tavbz4" n="1">
+									<chord xml:id="cc9r9dMG" dur="1" stem.visible="false">
+										<note xml:id="nH7zaJYe" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nvNG8Qsa" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n2W1YapQ" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nA93LGYV" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nR1xzYtN" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dy59JlOh" place="above" startid="#cc9r9dMG">
+								<symbol xml:id="sWaMszTC" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m6hsz3ld" n="98">
+							<staff xml:id="syWBILLJ" n="1">
+								<layer xml:id="lHihZVTD" n="1">
+									<chord xml:id="cCR2Zoa2" dur="1" stem.visible="false">
+										<note xml:id="nEQFpBmT" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nxWheql4" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n57kyB2Y" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nbyWZSrF" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dAAKNXAG" place="above" startid="#cCR2Zoa2">
+								<symbol xml:id="sIYrFzwO" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mpzy7nu2" n="99">
+							<staff xml:id="sgtlV36I" n="1">
+								<layer xml:id="lvojOU2j" n="1">
+									<chord xml:id="cWmVsPCv" dur="1" stem.visible="false">
+										<note xml:id="n6ZfTOtk" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nVi4neEB" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="n9wlQiTE" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n6r7tD2c" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nGTQlQ0f" pname="c" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dq1KBbIq" place="above" startid="#cWmVsPCv">
+								<symbol xml:id="seMfApYi" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mer3gdji" n="100">
+							<staff xml:id="sTVDxhXU" n="1">
+								<layer xml:id="l06HUium" n="1">
+									<chord xml:id="c9XmRqiA" dur="2" stem.visible="false">
+										<note xml:id="nm6FVIta" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nBYcONQ1" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="n4st0ndt" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="ncGFKXt1" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="n9XdCY3i" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="cYvVIB2w" dur="2" stem.visible="false">
+										<note xml:id="nBNQ1PDF" pname="f" oct="3" head.fill="solid" accid="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="d5zUPftW" place="above" startid="#c9XmRqiA">
+								<symbol xml:id="s3Gh0KAC" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="de8mrtqK" place="above" startid="#cYvVIB2w">
+								<symbol xml:id="sS6gqSPZ" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mjrviccj" n="101">
+							<staff xml:id="s16RoNRz" n="1">
+								<layer xml:id="l11FNcqi" n="1">
+									<chord xml:id="c4UA63Is" dur="1" stem.visible="false">
+										<note xml:id="nr7HmcKi" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nyyI5JBf" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nVYx7xwl" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n7ejMvZ1" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nymLbk7h" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dSoma9MY" place="above" startid="#c4UA63Is">
+								<symbol xml:id="sPaUKLKc" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mxya2hdl" n="102">
+							<staff xml:id="sOmgXIlv" n="1">
+								<layer xml:id="l8ByfTbY" n="1">
+									<chord xml:id="ckLzYzOw" dur="2" stem.visible="false">
+										<note xml:id="nI1d0GuD" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nRDsiDAi" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="n0dO170M" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nZSgaNVA" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nKtbdGHT" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cUzF3fkz" dur="2" stem.visible="false">
+										<note xml:id="nfSi1Lzv" pname="e" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dLPQbmCs" place="above" startid="#ckLzYzOw">
+								<symbol xml:id="svJJHYuB" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dGpjzMvI" place="above" startid="#cUzF3fkz">
+								<symbol xml:id="sNc9IMc4" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mpmcae3w" n="103">
+							<staff xml:id="sAhBAOjl" n="1">
+								<layer xml:id="lCuJIg0P" n="1">
+									<chord xml:id="cPMh1pv1" dur="1" stem.visible="false">
+										<note xml:id="nmux9kLR" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="njTNLCoU" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="n9kqYl7x" pname="a" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dNf04Bax" place="above" startid="#cPMh1pv1">
+								<symbol xml:id="sgSUvJkr" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mhsoryeq" n="104">
+							<staff xml:id="sYBV80kn" n="1">
+								<layer xml:id="lL3cv3X2" n="1">
+									<chord xml:id="cnHsrefq" dur="1" stem.visible="false">
+										<note xml:id="ngo2FsLf" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="npvzB0NF" pname="f" oct="3" head.fill="solid" />
+										<note xml:id="nuZBWykz" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nVhilkvX" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nLINveDI" pname="a" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dj9wjmTC" place="above" startid="#cnHsrefq">
+								<symbol xml:id="sp1h7m0t" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mcpxjnq3" n="105">
+							<staff xml:id="sBUS5MSw" n="1">
+								<layer xml:id="ldX6fgmN" n="1">
+									<chord xml:id="cgW2Ntd2" dur="1" stem.visible="false">
+										<note xml:id="nGcOS1R6" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="ncIubHYH" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nmNJDpn9" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dMpHQTOl" place="above" startid="#cgW2Ntd2">
+								<symbol xml:id="s4iQV2WL" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mgwx7tem" n="106">
+							<staff xml:id="swwlDRCg" n="1">
+								<layer xml:id="lQE6pw5f" n="1">
+									<chord xml:id="cM4qtHS2" dur="1" stem.visible="false">
+										<note xml:id="ntANSLqA" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nqpK68tf" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nn57jyXe" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nXktWbH0" pname="b" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dYfU8sY0" place="above" startid="#cM4qtHS2">
+								<symbol xml:id="sBgIVAUO" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="m7waap22" n="107">
+							<staff xml:id="sxvAQJJi" n="1">
+								<layer xml:id="lFJl85Cb" n="1">
+									<chord xml:id="cfpVsWaF" dur="1" stem.visible="false">
+										<note xml:id="nkwYdme5" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="nHgCmieG" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nZyu5nzZ" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="n8Y4XZ1x" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="nYheqVyW" pname="c" oct="5" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dggcIyeZ" place="above" startid="#cfpVsWaF">
+								<symbol xml:id="si1MJLH2" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mdfw53rp" n="108">
+							<staff xml:id="se7uI0aT" n="1">
+								<layer xml:id="lcjlKcia" n="1">
+									<chord xml:id="cOIXz4ed" dur="4" stem.visible="false">
+										<note xml:id="nZ8HJ5Wl" pname="c" oct="3" head.fill="solid" />
+										<note xml:id="n2eefBPe" pname="e" oct="3" head.fill="solid" />
+										<note xml:id="nERCm9Zv" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nxb3xDk7" pname="e" oct="4" head.fill="solid" />
+										<note xml:id="na7bbmIy" pname="c" oct="5" head.fill="solid" />
+									</chord>
+									<chord xml:id="ck9kAl5i" dur="8" stem.visible="false">
+										<note xml:id="nixVEzgD" pname="b" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cPo74B8m" dur="8" stem.visible="false">
+										<note xml:id="nfiLdyci" pname="a" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cT5HgFjz" dur="8" stem.visible="false">
+										<note xml:id="nyQixXBi" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cp6yNDSU" dur="8" stem.visible="false">
+										<note xml:id="nXlFGZ2a" pname="f" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cCnhLOe0" dur="8" stem.visible="false">
+										<note xml:id="nazcNKAu" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dxQ8VAGO" place="above" startid="#cOIXz4ed">
+								<symbol xml:id="sgdmF5oL" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+								<symbol xml:id="soMoudaY" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dJeRiuFv" place="above" startid="#ck9kAl5i">
+								<symbol xml:id="sTtuXxsp" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="d4q3malt" place="above" startid="#cPo74B8m">
+								<symbol xml:id="saqWQPIW" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dCKPHs35" place="above" startid="#cT5HgFjz">
+								<symbol xml:id="sFoMotW1" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dnr10tBO" place="above" startid="#cp6yNDSU">
+								<symbol xml:id="sLPM6Ljb" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+							<dir xml:id="dMJVgn35" place="above" startid="#cCnhLOe0">
+								<symbol xml:id="s82nTx2a" glyph.auth="smufl" glyph.name="luteDurationQuarter" />
+							</dir>
+						</measure>
+						<measure xml:id="mozy6op7" n="109">
+							<staff xml:id="sjxeCz0S" n="1">
+								<layer xml:id="lz3z838i" n="1">
+									<chord xml:id="cWjxl9bA" dur="2" stem.visible="false">
+										<note xml:id="nzTsq74E" pname="b" oct="2" head.fill="solid" />
+										<note xml:id="nScoYOQz" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nVP7dat7" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cTgLOEy1" dur="4" stem.visible="false">
+										<note xml:id="nagQ64rt" pname="a" oct="2" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dsZfAxDQ" place="above" startid="#cWjxl9bA">
+								<symbol xml:id="siEIqGTM" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+								<symbol xml:id="skDwytEc" glyph.auth="smufl" glyph.name="augmentationDot" />
+							</dir>
+							<dir xml:id="dwzOq4pM" place="above" startid="#cTgLOEy1">
+								<symbol xml:id="sSu6VcVg" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="misa93oz" n="110">
+							<staff xml:id="suTPoN6R" n="1">
+								<layer xml:id="lGuuPYgi" n="1">
+									<chord xml:id="cld0CMME" dur="2" stem.visible="false">
+										<note xml:id="n2QYybAb" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nj0O09oq" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nbRMO5pW" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nLMWp64I" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="no1KlL8X" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cDfyeI00" dur="2" stem.visible="false">
+										<note xml:id="nXimJdfL" pname="e" oct="3" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dd4RnsCB" place="above" startid="#cld0CMME">
+								<symbol xml:id="sr0lEr5O" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dUfWHnvs" place="above" startid="#cDfyeI00">
+								<symbol xml:id="s7UBkEQQ" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mx6vxuaw" n="111">
+							<staff xml:id="smA0AHoA" n="1">
+								<layer xml:id="lpNhoYvb" n="1">
+									<chord xml:id="cW6mSLqr" dur="2" stem.visible="false">
+										<note xml:id="nBJgOmuL" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nD54WGSo" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nCi7Tohj" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nrrNqstG" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ceHp8y0e" dur="4" stem.visible="false">
+										<note xml:id="nKItrZPw" pname="f" oct="4" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="cn4E74Ek" dur="4" stem.visible="false">
+										<note xml:id="nRmfy4n6" pname="e" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dS3MjUUc" place="above" startid="#cW6mSLqr">
+								<symbol xml:id="sTkmzo2Y" glyph.auth="smufl" glyph.name="luteDurationWhole" />
+							</dir>
+							<dir xml:id="dqJpxT0O" place="above" startid="#ceHp8y0e">
+								<symbol xml:id="sgtcnMRl" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dlb3fk08" place="above" startid="#cn4E74Ek">
+								<symbol xml:id="s6RtiYGX" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="mnbqy83u" n="112">
+							<staff xml:id="sH1taFBh" n="1">
+								<layer xml:id="lBjysEtU" n="1">
+									<chord xml:id="cUYARd5p" dur="4" stem.visible="false">
+										<note xml:id="nREuCDw9" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nS9JpTRE" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nXykH7yC" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="n7SY9dF6" pname="f" oct="4" head.fill="solid" accid="s" />
+									</chord>
+									<chord xml:id="ccfLv5dc" dur="4" stem.visible="false">
+										<note xml:id="nERuBC0F" pname="g" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="ckTM57Pn" dur="4" stem.visible="false">
+										<note xml:id="nXw8J1Fl" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nHmTONX1" pname="a" oct="3" head.fill="solid" />
+										<note xml:id="nWf8cl9B" pname="d" oct="4" head.fill="solid" />
+									</chord>
+									<chord xml:id="cu0Km3UB" dur="4" stem.visible="false">
+										<note xml:id="nEAMZ2ss" pname="f" oct="4" head.fill="solid" accid.ges="s" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dn7D9JpG" place="above" startid="#cUYARd5p">
+								<symbol xml:id="sWaT4sTP" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dDMJIB5u" place="above" startid="#ccfLv5dc">
+								<symbol xml:id="sbuWDVya" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dOEYzUqc" place="above" startid="#ckTM57Pn">
+								<symbol xml:id="sYVZm99y" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+							<dir xml:id="dDvjv4LG" place="above" startid="#cu0Km3UB">
+								<symbol xml:id="s3ZN5wDN" glyph.auth="smufl" glyph.name="luteDurationHalf" />
+							</dir>
+						</measure>
+						<measure xml:id="m2ky5cf1" n="113">
+							<staff xml:id="sFSwKNq5" n="1">
+								<layer xml:id="lNJflEOm" n="1">
+									<chord xml:id="cXvO8gUv" dur="1" stem.visible="false">
+										<note xml:id="n8HFj8Bp" pname="g" oct="2" head.fill="solid" />
+										<note xml:id="nPHFF82s" pname="d" oct="3" head.fill="solid" />
+										<note xml:id="nwHamJ4U" pname="g" oct="3" head.fill="solid" />
+										<note xml:id="nE762Tqe" pname="d" oct="4" head.fill="solid" />
+										<note xml:id="nfjAKYK1" pname="g" oct="4" head.fill="solid" />
+									</chord>
+								</layer>
+							</staff>
+							<dir xml:id="dHjlX5EH" place="above" startid="#cXvO8gUv">
+								<symbol xml:id="sRyJbZuT" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+						<measure xml:id="mzce1qnd" n="114" right="end">
+							<staff xml:id="s2O5ILby" n="1">
+								<layer xml:id="lQXXGU0F" n="1">
+									<rest xml:id="rRnArATO" dur="1" />
+								</layer>
+							</staff>
+							<dir xml:id="dldibdFg" place="above" startid="#rRnArATO">
+								<symbol xml:id="sVdumrYF" glyph.auth="smufl" glyph.name="luteDurationDoubleWhole" />
+							</dir>
+						</measure>
+					</section>
+				</score>
+			</mdiv>
+		</body>
+	</music>
+</mei>
