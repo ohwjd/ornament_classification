@@ -5,40 +5,6 @@ import os
 
 from fractions import Fraction
 
-# TODO: abrupt change in rhythm (change from eg. 1/4 to 1/16), show onsets where this is happening (if at all?)
-
-
-# TODO: fix rests before or after groups (use onset time??)
-
-
-# TODO: is it possible to infer rests within a voice with onset and duration info?
-# add that to dataframe(s)
-
-# TODO: do not use "ornamentation"-flag as starting point but use groups of short consecutive notes as a starting point??
-
-
-# TODO: look up meter in the tbp-file or mei
-
-
-# TODO: make version that uses squished voices and chord context (that's probably the way to go)
-
-
-# TODO: flag weird stuff:
-#   - 16th that does not start on a down beat ("starts with a rest")
-#       - See screen shot: first note is in the wrong voice (Ach unfall Sopran/Alt Measure 7)
-#   - group of ornaments starts or ends on a dissonance
-
-# extract all the ornament-groups (notes tagged as ornamentations and add note before and note after (see other notes))
-# and then check, if groups possibly need to be merged, because they are separated by a not annotated note -> based on onset and duration
-
-
-# def split_bar(bar_value):
-#     """helper function to split bar column, assumes the first value before a space is the measure number and the second is the position within the measure (if there is no second value then we are at position 0 of the measure)"""
-#     parts = str(bar_value).split(" ")
-#     measure = int(parts[0]) if parts[0].isdigit() else None
-#     measure_pos = parts[1] if len(parts) > 1 else "0"
-#     return pd.Series([measure, measure_pos])
-
 
 def preprocess_df(df):
 
@@ -50,22 +16,32 @@ def preprocess_df(df):
     # remove space from column name
     df.rename(columns={"mapped voice": "voice"}, inplace=True)
 
-    # Reinier: bar information in the CSV file is incorrect if there is such an inconsistency as a sudden 3/2 bar in a 2/2 meter, like in the piece we saw yesterday. I don't know how many pieces are like this so perhaps it's safer to just ignore the 'bar' column altogether for now, and instead use the 'onset' column (which is always correct)
-    # split bar column
-    # df[["measure", "measure_pos"]] = df["bar"].apply(split_bar)
     df = df.drop(
         columns=["bar"]
-    )  # remove bar column, could contain wrong information
+    )  # remove bar column, could contain wrong information (when inconsistencies in meter occur (e.g., 3/2 bar in 2/2 meter))
     df = df.drop(columns=["cost"])  # remove cost column
 
-    # Expand multi-voice rows BEFORE computing vertical ordering so each duplicated
-    # row can receive an appropriate rank (otherwise a combined "0 and 1" row would
-    # be treated as a single note at its onset and incorrectly get order 0 only).
+    # Expand multi-voice rows before computing vertical ordering so each duplicated row can receive an appropriate rank (otherwise a combined "0 and 1" row would be treated as a single note at its onset and incorrectly get order 0 only).
     df = expand_and_split_voices(df)
 
     # Add per-onset vertical ordering index (voice_order)
     df = squish_to_one_staff(df, new_col="voice_squished")
     return df
+
+
+def expand_and_split_voices(df):
+    """
+    Some notes are marked as belonging to multiple voices (e.g., "0 and 1").
+    For rows where 'voice' contains 'and', split and duplicate the row for each voice.
+    """
+    expanded_rows = []
+    for _, row in df.iterrows():
+        voices = str(row["voice"]).split(" and ")
+        for v in voices:
+            new_row = row.copy()
+            new_row["voice"] = v.strip()
+            expanded_rows.append(new_row)
+    return pd.DataFrame(expanded_rows).reset_index(drop=True)
 
 
 def squish_to_one_staff(
@@ -74,7 +50,7 @@ def squish_to_one_staff(
     onset_col: str = "onset",
     new_col: str = "voice_order",
 ):
-    """Add a per-onset vertical ordering column across all voices BEFORE splitting.
+    """Add a per-onset vertical ordering column across all voices before splitting.
 
     Logic:
       - Single note at an onset -> 0
@@ -106,29 +82,18 @@ def squish_to_one_staff(
     return df
 
 
-def expand_and_split_voices(df):
+def split_df_by_voice(df, voice_col: str = "voice_squished"):
     """
-    Some notes are marked as belonging to multiple voices (e.g., "0 and 1").
-    For rows where 'voice' contains 'and', split and duplicate the row for each voice.
+    Returns a dictionary of DataFrames, one for each unique voice bucket.
+    Uses the squished voice column by default (vertical order per onset),
+    so sequences are traced along the compressed staff rather than original voice labels.
     """
-    expanded_rows = []
-    for _, row in df.iterrows():
-        voices = str(row["voice"]).split(" and ")
-        for v in voices:
-            new_row = row.copy()
-            new_row["voice"] = v.strip()
-            expanded_rows.append(new_row)
-    return pd.DataFrame(expanded_rows).reset_index(drop=True)
-
-
-def split_df_by_voice(df):
-    """
-    Returns a dictionary of DataFrames, one for each unique voice.
-    Voices are labeled with numbers as strings ("0", "1", "2", ...) starting from the highest voice.
-    """
+    if voice_col not in df.columns:
+        # Fallback to original "voice" if squished not present
+        voice_col = "voice"
     return {
-        voice: df[df["voice"] == voice].copy().reset_index(drop=True)
-        for voice in df["voice"].unique()
+        voice: df[df[voice_col] == voice].copy().reset_index(drop=True)
+        for voice in df[voice_col].dropna().unique()
     }
 
 
@@ -340,12 +305,14 @@ def find_ornament_sequences(
 
 def filter_four_note_step_sequences(
     sequences_df: pd.DataFrame,
+    original_df: pd.DataFrame = None,
     allowed_intervals=(1, 2),
     exact_ornament_note_count: int = 4,
     include_context: bool = True,
     ascending_or_descending_only: bool = False,
     include_same_duration_categories=("adaptation", "repetition", "ficta"),
     require_perfect_fifth_span: bool = False,
+    use_all_chord_pitches: bool = True,
 ):
     """
     Filter ornament sequences to those whose core ornamentation notes consist of exactly
@@ -393,6 +360,68 @@ def filter_four_note_step_sequences(
 
     qualifying_seq_ids = []
     seq_comments = {}
+    # Prepare fast lookup of all pitches per onset from the full texture
+    onset_to_pitches = {}
+    if (
+        original_df is not None
+        and use_all_chord_pitches
+        and "onset" in original_df.columns
+    ):
+        for onset, g in original_df.groupby("onset"):
+            if "pitch" in g.columns:
+                onset_to_pitches[onset] = [
+                    p for p in g["pitch"].tolist() if pd.notna(p)
+                ]
+
+    def exists_allowed_path(onset_list, base_duration_rows):
+        """
+        Given ordered onsets, return one pitch-per-onset path complying with allowed_intervals, if any.
+        If chord sets are unavailable for an onset, fall back to the sequence's own pitch at that onset.
+        """
+        # Build candidate sets per onset
+        candidates = []
+        for o in onset_list:
+            if use_all_chord_pitches and onset_to_pitches.get(o):
+                candidates.append(sorted(set(onset_to_pitches[o])))
+            else:
+                # Fallback: use pitches from sequence rows at that onset
+                rows_here = base_duration_rows[base_duration_rows["onset"] == o]
+                pitches_here = [
+                    p for p in rows_here["pitch"].tolist() if pd.notna(p)
+                ]
+                if not pitches_here:
+                    return None
+                candidates.append(sorted(set(pitches_here)))
+
+        # DFS over small depth (typically 4)
+        path = []
+
+        def dfs(i):
+            if i == len(candidates):
+                return True
+            if i == 0:
+                for p in candidates[0]:
+                    path.append(p)
+                    if dfs(1):
+                        return True
+                    path.pop()
+                return False
+            prev = path[-1]
+            for p in candidates[i]:
+                try:
+                    step = abs(p - prev)
+                except Exception:
+                    continue
+                if step in allowed_intervals:
+                    path.append(p)
+                    if dfs(i + 1):
+                        return True
+                    path.pop()
+            return False
+
+        ok = dfs(0)
+        return path.copy() if ok else None
+
     for seq_id, group in sequences_df.groupby("sequence_id"):
         # Determine base ornament duration (first ornamentation note among non-context rows)
         non_context = group[~group["is_context"]]
@@ -415,20 +444,20 @@ def filter_four_note_step_sequences(
                 )
         if len(core) != exact_ornament_note_count:
             continue
-        # Order core by onset if present to compute melodic intervals
+        # Order core by onset
         if "onset" in core.columns:
             core = core.sort_values("onset", kind="stable")
-        pitches = core["pitch"].tolist()
-        # Skip if any pitch is NaN or non-numeric
-        try:
-            diffs = [
-                abs(pitches[i + 1] - pitches[i])
-                for i in range(len(pitches) - 1)
-            ]
-        except Exception:
+        onset_list = core["onset"].tolist()
+
+        # Build base rows for fallback lookups
+        base_rows_for_fallback = group if include_context else core
+
+        # Try to find a valid pitch path across onsets considering all chord pitches
+        selected_path = exists_allowed_path(onset_list, base_rows_for_fallback)
+        if selected_path is None:
             continue
-        if not all(d in allowed_intervals for d in diffs):
-            continue
+
+        pitches = selected_path
         non_decreasing = all(
             pitches[i + 1] >= pitches[i] for i in range(len(pitches) - 1)
         )
@@ -436,19 +465,37 @@ def filter_four_note_step_sequences(
             pitches[i + 1] <= pitches[i] for i in range(len(pitches) - 1)
         )
         monotonic = non_decreasing or non_increasing
-        # Compute span: between first core note and the (post) context note if it exists, else last core
+
+        # Compute span: from first selected pitch to any candidate at the post onset (if any), else last selected
         span_target_pitch = pitches[-1]
-        if "onset" in group.columns:
-            # Identify post-context note(s): context notes with onset greater than last core onset
-            last_core_onset = (
-                core["onset"].max() if "onset" in core.columns else None
-            )
-            if last_core_onset is not None:
+        last_core_onset = (
+            core["onset"].max() if "onset" in core.columns else None
+        )
+        if last_core_onset is not None:
+            # Prefer using chord set at the immediate next onset in the original texture
+            next_onset_candidates = None
+            if onset_to_pitches:
+                next_onsets = sorted(
+                    o for o in onset_to_pitches.keys() if o > last_core_onset
+                )
+                if next_onsets:
+                    next_onset = next_onsets[0]
+                    next_onset_candidates = onset_to_pitches.get(next_onset)
+            if not next_onset_candidates:
+                # Fallback to any post-context row inside the group
                 post_context = group[
                     (group["is_context"]) & (group["onset"] > last_core_onset)
-                ].sort_values("onset", kind="stable")
-                if not post_context.empty:
-                    span_target_pitch = post_context.iloc[-1]["pitch"]
+                ]
+                if not post_context.empty and "pitch" in post_context.columns:
+                    next_onset_candidates = [
+                        p for p in post_context["pitch"].tolist() if pd.notna(p)
+                    ]
+            if next_onset_candidates:
+                # Choose the candidate minimizing absolute span (we only need span classification)
+                span_target_pitch = min(
+                    next_onset_candidates, key=lambda p: abs(p - pitches[0])
+                )
+
         span = abs(span_target_pitch - pitches[0])
         if ascending_or_descending_only and not monotonic:
             continue
@@ -504,11 +551,16 @@ def add_chord_context_to_sequences(
         sequences_no_context["is_context"] = False
 
     # Work on a copy to avoid mutating inputs
-    original_sorted = (
-        original_df.sort_values(["onset", "voice_order"], kind="stable")
-        if "voice_order" in original_df.columns
-        else original_df.sort_values("onset", kind="stable")
-    )
+    if "voice_squished" in original_df.columns:
+        original_sorted = original_df.sort_values(
+            ["onset", "voice_squished"], kind="stable"
+        )
+    elif "voice_order" in original_df.columns:
+        original_sorted = original_df.sort_values(
+            ["onset", "voice_order"], kind="stable"
+        )
+    else:
+        original_sorted = original_df.sort_values("onset", kind="stable")
     all_onsets = original_sorted["onset"].drop_duplicates().tolist()
 
     augmented_groups = []
@@ -564,7 +616,9 @@ def add_chord_context_to_sequences(
     result = pd.concat(augmented_groups, axis=0, ignore_index=True)
     # Order by sequence then onset then voice_order if available
     sort_cols = ["sequence_id", "onset"]
-    if "voice_order" in result.columns:
+    if "voice_squished" in result.columns:
+        sort_cols.append("voice_squished")
+    elif "voice_order" in result.columns:
         sort_cols.append("voice_order")
     result = result.sort_values(sort_cols, kind="stable").reset_index(drop=True)
     return result
@@ -736,7 +790,9 @@ for f in [
             "sequence_id"
         ].nunique()
         # Four-note variant for combined
-        combined_four = filter_four_note_step_sequences(combined_sequences)
+        combined_four = filter_four_note_step_sequences(
+            combined_sequences, original_df=preprocessed_df
+        )
         if not combined_four.empty:
             combined_four_path = os.path.join(
                 file_output_dir, f"{base_name}_sequences_fourstep_allvoices.csv"
@@ -761,7 +817,7 @@ for f in [
             "sequence_id"
         ].nunique()
         chord_context_four = filter_four_note_step_sequences(
-            chord_context_sequences
+            chord_context_sequences, original_df=preprocessed_df
         )
         if not chord_context_four.empty:
             chord_context_four_path = os.path.join(
@@ -799,7 +855,9 @@ for f in [
                 "sequence_id"
             ].nunique()
             # Second step: filter for four-note small-step sequences
-            filtered_four = filter_four_note_step_sequences(sequences_df)
+            filtered_four = filter_four_note_step_sequences(
+                sequences_df, original_df=preprocessed_df
+            )
             filtered_path = os.path.join(
                 file_output_dir, f"{base_name}_sequences_fourstep_{voice}.csv"
             )
