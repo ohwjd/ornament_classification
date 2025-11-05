@@ -2,14 +2,14 @@ from fractions import Fraction
 import pandas as pd
 
 
-def find_ornament_sequences(
+def find_ornament_sequences_abtab(
     df,
     max_ornament_duration_threshold=Fraction(1, 4),
-    inclusive: bool = False,
     merge_single_bridge: bool = True,
     add_context: bool = True,
     allow_variable_durations: bool = False,
     voice_col: str = "voice",
+    same_duration_categories=("adaptation", "repetition", "ficta"),
 ):
     """
     Identify ornament sequences and return a single DataFrame containing only the
@@ -24,9 +24,12 @@ def find_ornament_sequences(
             - If merge_single_bridge is True: two ornament runs of the same duration separated
                 by exactly one non-ornament note of that SAME duration are merged into a single sequence;
                 that bridging note is treated as part of the sequence (is_context = False).
-            - After a sequence is delimited, optionally (add_context=True) include only the note
-                immediately after its last element (if it exists) marked with is_context=True. The
-                note before the sequence will NOT be included as context.
+            - After a sequence is delimited, optionally (add_context=True) include the note
+                immediately after its last element (if it exists) and the note immediately before
+                the sequence (only when that earlier note ends exactly at the first sequence onset)
+                marked with is_context=True. Any earlier notes with a gap are ignored.
+            - Notes whose category is one of `same_duration_categories` and whose duration matches
+                the base ornament duration are treated as regular sequence members (not context).
 
     Parameters
     ----------
@@ -34,12 +37,15 @@ def find_ornament_sequences(
         Voice-specific DataFrame (assumed already filtered per voice and preprocessed).
     max_ornament_duration_threshold : Fraction or numeric, default 1/4
         Upper bound for ornament note durations.
-    inclusive : bool, default False
-        If True, duration <= threshold counts; else strictly <.
     merge_single_bridge : bool, default True
         Merge ornament runs split by exactly one non-ornament of the same duration.
     add_context : bool, default True
-        Whether to append the immediate pre/post notes of each sequence.
+        Whether to append the immediate post notes of each sequence.
+    allow_variable_durations : bool, default False
+        Allow ornament sequences to contain notes with varying durations.
+    same_duration_categories : iterable or None, default ("adaptation", "repetition", "ficta")
+        Additional categories that, when matching the base ornament duration, are treated as
+        sequence members rather than context. Pass None to allow any non-ornament category.
 
     Returns
     -------
@@ -63,9 +69,12 @@ def find_ornament_sequences(
         if row.get("category") != "ornamentation":
             return False
         dur = row["duration"]
-        if inclusive:
-            return dur <= max_ornament_duration_threshold
         return dur < max_ornament_duration_threshold
+
+    if same_duration_categories is None:
+        allowed_same_duration_categories = None
+    else:
+        allowed_same_duration_categories = set(same_duration_categories)
 
     sequences = []  # list of dicts with keys: indices, context_indices
     in_sequence = False
@@ -74,7 +83,28 @@ def find_ornament_sequences(
 
     n = len(df)
     for i in range(n):
-        if is_ornament(i):
+        row = df.loc[i]
+        row_cat = row.get("category")
+        row_dur = row["duration"]
+        is_orn = (
+            row_cat == "ornamentation"
+            and row_dur < max_ornament_duration_threshold
+        )
+        category_allowed = (
+            allowed_same_duration_categories is None
+            or row_cat in allowed_same_duration_categories
+        )
+        is_same_duration_extra = (
+            in_sequence
+            and row_cat != "ornamentation"
+            and category_allowed
+            and (
+                allow_variable_durations
+                or (base_duration is not None and row_dur == base_duration)
+            )
+        )
+
+        if is_orn:
             # Starting a new sequence
             if not in_sequence:
                 in_sequence = True
@@ -92,19 +122,25 @@ def find_ornament_sequences(
                         sequences.append({"indices": seq_indices})
                     seq_indices = [i]
                     base_duration = df.loc[i, "duration"]
+        elif is_same_duration_extra:
+            # Include same-duration non-ornament notes as part of the active sequence
+            seq_indices.append(i)
         else:
             if in_sequence:
                 # Potential bridging logic
                 can_bridge = False
                 if merge_single_bridge and (
                     allow_variable_durations
-                    or df.loc[i, "duration"] == base_duration
+                    or (base_duration is not None and row_dur == base_duration)
                 ):
                     # Look ahead one note for an ornament continuing with same duration
                     if (
                         i + 1 < n
                         and is_ornament(i + 1)
-                        and df.loc[i + 1, "duration"] == base_duration
+                        and (
+                            allow_variable_durations
+                            or df.loc[i + 1, "duration"] == base_duration
+                        )
                     ):
                         can_bridge = True
                 if can_bridge:
@@ -136,6 +172,22 @@ def find_ornament_sequences(
         context_idxs = set()
         # Only include the immediate post-sequence note as context (if requested).
         if add_context:
+            pre = idxs[0] - 1
+            if pre >= 0:
+                if {"onset", "duration"}.issubset(df.columns):
+                    pre_row = df.loc[pre]
+                    pre_onset = pre_row.get("onset")
+                    pre_duration = pre_row.get("duration")
+                    first_onset = df.loc[idxs[0], "onset"]
+                    if (
+                        pd.notna(pre_onset)
+                        and pd.notna(pre_duration)
+                        and pd.notna(first_onset)
+                        and pre_onset + pre_duration == first_onset
+                    ):
+                        context_idxs.add(pre)
+                else:
+                    context_idxs.add(pre)
             post = idxs[-1] + 1
             if post < n:
                 context_idxs.add(post)
@@ -154,9 +206,16 @@ def find_ornament_sequences(
                     break
                 row_c = df.loc[c_idx]
                 if (
-                    row_c.get("category")
-                    in {"adaptation", "repetition", "ficta"}
-                    and row_c["duration"] == base_orn_dur
+                    row_c.get("category") != "ornamentation"
+                    and (
+                        allowed_same_duration_categories is None
+                        or row_c.get("category")
+                        in allowed_same_duration_categories
+                    )
+                    and (
+                        allow_variable_durations
+                        or row_c["duration"] == base_orn_dur
+                    )
                 ):
                     # Move this note from context to sequence
                     context_idxs.remove(c_idx)
@@ -196,8 +255,6 @@ def find_ornament_sequences(
         output_rows.append(seq_df)
 
     combined = pd.concat(output_rows).reset_index(drop=True)
-
-    # Stable sort: by sequence then onset if available, else by sequence then original index order
     sort_cols = ["sequence_id"]
     if "onset" in combined.columns:
         sort_cols.append("onset")
@@ -209,20 +266,18 @@ def find_ornament_sequences(
 
 def filter_four_note_step_sequences(
     sequences_df: pd.DataFrame,
-    original_df: pd.DataFrame = None,
     allowed_intervals=(1, 2),
     exact_ornament_note_count: int = 4,
     include_context: bool = True,
     ascending_or_descending_only: bool = False,
     include_same_duration_categories=("adaptation", "repetition", "ficta"),
     require_perfect_fifth_span: bool = False,
-    use_all_chord_pitches: bool = True,
 ):
     """
     Filter ornament sequences to those whose core ornamentation notes consist of exactly
     `exact_ornament_note_count` notes moving only by allowed semitone steps (default: half or whole steps).
 
-    Assumptions / Logic:
+    Assumptions:
       - Core notes are those with is_context == False and:
           * category == 'ornamentation'
           * PLUS (if include_adaptation_same_duration) category == 'adaptation' AND duration == base ornament duration
@@ -232,7 +287,7 @@ def filter_four_note_step_sequences(
       - If ascending_or_descending_only is True, the core notes must be monotonic (all up or all down).
       - If require_perfect_fifth_span is True, only sequences spanning exactly a perfect fifth (7 semitones) are retained.
       - Regardless, this function now annotates each qualifying four-step sequence with a 'four_step_comment':
-          * 'perfect_fifth_monotonic' (monotonic and span=7)
+          * 'perfect_fifth_monotonic' (monotonic span where a post-context note supplies the perfect fifth)
           * 'four_step_monotonic_other_span' (monotonic but span != 7)
           * 'four_step_non_monotonic' (direction changes)
       - If include_context is True, return the entire sequence rows (including context notes and any non-ornament bridging notes); otherwise only the core ornamentation rows.
@@ -257,97 +312,23 @@ def filter_four_note_step_sequences(
     Returns
     -------
     pd.DataFrame
-        Filtered DataFrame with same columns plus original sequence_id. Empty if none match.
+    Filtered DataFrame with same columns plus original sequence_id. The
+    four_step_comment value `perfect_fifth_monotonic` is only assigned when a post-context
+    note provides the perfect-fifth span when measured against the first core note; otherwise
+    monotonic sequences receive the
+        `four_step_monotonic_other_span` label. Empty if none match.
     """
     if sequences_df.empty:
         return sequences_df.head(0).copy()
 
     qualifying_seq_ids = []
     seq_comments = {}
-    # Track whether the chord-context (all context rows for the sequence) contains
-    # any pitch a perfect fifth (7 semitones) from the first selected ornament pitch.
-    seq_post_ctx_has_fifth = {}
-    # Prepare fast lookup of all pitches per onset from the full texture
-    onset_to_pitches = {}
-    if (
-        original_df is not None
-        and use_all_chord_pitches
-        and "onset" in original_df.columns
-    ):
-        for onset, g in original_df.groupby("onset"):
-            if "pitch" in g.columns:
-                onset_to_pitches[onset] = [
-                    p for p in g["pitch"].tolist() if pd.notna(p)
-                ]
-
-    def exists_allowed_path(
-        onset_list,
-        base_duration_rows,
-        require_monotonic=False,
-        require_intervals=True,
-    ):
-        """
-        Given ordered onsets, return one pitch-per-onset path complying with allowed_intervals, if any.
-        If chord sets are unavailable for an onset, fall back to the sequence's own pitch at that onset.
-        """
-        # Build candidate sets per onset
-        candidates = []
-        for o in onset_list:
-            if use_all_chord_pitches and onset_to_pitches.get(o):
-                candidates.append(sorted(set(onset_to_pitches[o])))
-            else:
-                # Fallback: use pitches from sequence rows at that onset
-                rows_here = base_duration_rows[base_duration_rows["onset"] == o]
-                pitches_here = [
-                    p for p in rows_here["pitch"].tolist() if pd.notna(p)
-                ]
-                if not pitches_here:
-                    return None
-                candidates.append(sorted(set(pitches_here)))
-
-        # DFS over small depth (typically 4)
-        path = []
-
-        def dfs(i):
-            if i == len(candidates):
-                # If caller requested monotonicity, only accept paths that are
-                # non-decreasing or non-increasing.
-                if require_monotonic:
-                    non_decreasing = all(
-                        path[j + 1] >= path[j] for j in range(len(path) - 1)
-                    )
-                    non_increasing = all(
-                        path[j + 1] <= path[j] for j in range(len(path) - 1)
-                    )
-                    return non_decreasing or non_increasing
-                return True
-            if i == 0:
-                for p in candidates[0]:
-                    path.append(p)
-                    if dfs(1):
-                        return True
-                    path.pop()
-                return False
-            prev = path[-1]
-            for p in candidates[i]:
-                try:
-                    step = abs(p - prev)
-                except Exception:
-                    continue
-                # Only enforce allowed-intervals if requested; otherwise allow any step
-                if (not require_intervals) or (step in allowed_intervals):
-                    path.append(p)
-                    if dfs(i + 1):
-                        return True
-                    path.pop()
-            return False
-
-        ok = dfs(0)
-        return path.copy() if ok else None
 
     for seq_id, group in sequences_df.groupby("sequence_id"):
         # Determine base ornament duration (first ornamentation note among non-context rows)
         non_context = group[~group["is_context"]]
+        if len(non_context) != exact_ornament_note_count:
+            continue
         ornament_rows = non_context[non_context["category"] == "ornamentation"]
         if ornament_rows.empty:
             continue
@@ -367,92 +348,20 @@ def filter_four_note_step_sequences(
                 )
         if len(core) != exact_ornament_note_count:
             continue
-        # Order core by onset
+        # Order core by onset if present to compute melodic intervals
         if "onset" in core.columns:
             core = core.sort_values("onset", kind="stable")
-        onset_list = core["onset"].tolist()
-
-        # Build base rows for fallback lookups
-        base_rows_for_fallback = group if include_context else core
-
-        # Try to find a valid pitch path across onsets considering all chord pitches
-        # Try in order:
-        # 1) monotonic path that respects allowed intervals
-        # 2) any path that respects allowed intervals
-        # 3) monotonic path ignoring allowed intervals (relaxed)
-        # 4) any path ignoring allowed intervals
-        selected_path = exists_allowed_path(
-            onset_list,
-            base_rows_for_fallback,
-            require_monotonic=True,
-            require_intervals=True,
-        )
-        if selected_path is None:
-            selected_path = exists_allowed_path(
-                onset_list,
-                base_rows_for_fallback,
-                require_monotonic=False,
-                require_intervals=True,
-            )
-        if selected_path is None:
-            selected_path = exists_allowed_path(
-                onset_list,
-                base_rows_for_fallback,
-                require_monotonic=True,
-                require_intervals=False,
-            )
-        if selected_path is None:
-            selected_path = exists_allowed_path(
-                onset_list,
-                base_rows_for_fallback,
-                require_monotonic=False,
-                require_intervals=False,
-            )
-
-        # Use actual core ornament pitches (from sequence rows) to test monotonicity.
-        core_pitches_from_rows = []
-        if "pitch" in core.columns:
-            core_pitches_from_rows = [
-                p for p in core["pitch"].tolist() if pd.notna(p)
+        pitches = core["pitch"].tolist()
+        # Skip if any pitch is NaN or non-numeric
+        try:
+            diffs = [
+                abs(pitches[i + 1] - pitches[i])
+                for i in range(len(pitches) - 1)
             ]
-
-        if (
-            core_pitches_from_rows
-            and len(core_pitches_from_rows) == exact_ornament_note_count
-        ):
-            try:
-                core_pitches_int = [int(p) for p in core_pitches_from_rows]
-                non_decreasing = all(
-                    core_pitches_int[i + 1] >= core_pitches_int[i]
-                    for i in range(len(core_pitches_int) - 1)
-                )
-                non_increasing = all(
-                    core_pitches_int[i + 1] <= core_pitches_int[i]
-                    for i in range(len(core_pitches_int) - 1)
-                )
-                monotonic = non_decreasing or non_increasing
-            except Exception:
-                monotonic = False
-        else:
-            # Fallback to using selected_path if core pitches missing
-            pitches = selected_path
-            if pitches is None:
-                monotonic = False
-            else:
-                non_decreasing = all(
-                    pitches[i + 1] >= pitches[i]
-                    for i in range(len(pitches) - 1)
-                )
-                non_increasing = all(
-                    pitches[i + 1] <= pitches[i]
-                    for i in range(len(pitches) - 1)
-                )
-                monotonic = non_decreasing or non_increasing
-
-        if selected_path is None:
+        except Exception:
             continue
-
-        pitches = selected_path
+        if not all(d in allowed_intervals for d in diffs):
+            continue
         non_decreasing = all(
             pitches[i + 1] >= pitches[i] for i in range(len(pitches) - 1)
         )
@@ -460,85 +369,60 @@ def filter_four_note_step_sequences(
             pitches[i + 1] <= pitches[i] for i in range(len(pitches) - 1)
         )
         monotonic = non_decreasing or non_increasing
-
-        # Compute span: from first selected pitch to any candidate at the post onset (if any), else last selected
+        # Compute span: between first core note and the (post) context note if it exists, else last core
         span_target_pitch = pitches[-1]
-        last_core_onset = (
-            core["onset"].max() if "onset" in core.columns else None
-        )
-        if last_core_onset is not None:
-            # Prefer using chord set at the immediate next onset in the original texture
-            next_onset_candidates = None
-            if onset_to_pitches:
-                next_onsets = sorted(
-                    o for o in onset_to_pitches.keys() if o > last_core_onset
-                )
-                if next_onsets:
-                    next_onset = next_onsets[0]
-                    next_onset_candidates = onset_to_pitches.get(next_onset)
-            if not next_onset_candidates:
-                # Fallback to any post-context row inside the group
-                post_context = group[
+        post_context_sorted = pd.DataFrame()
+        if "onset" in group.columns:
+            # Identify post-context note(s): context notes with onset greater than last core onset
+            last_core_onset = (
+                core["onset"].max() if "onset" in core.columns else None
+            )
+            if last_core_onset is not None:
+                post_context_sorted = group[
                     (group["is_context"]) & (group["onset"] > last_core_onset)
-                ]
-                if not post_context.empty and "pitch" in post_context.columns:
-                    next_onset_candidates = [
-                        p for p in post_context["pitch"].tolist() if pd.notna(p)
-                    ]
-            if next_onset_candidates:
-                # Choose the candidate minimizing absolute span (we only need span classification)
-                span_target_pitch = min(
-                    next_onset_candidates, key=lambda p: abs(p - pitches[0])
-                )
-
+                ].sort_values("onset", kind="stable")
+                if not post_context_sorted.empty:
+                    span_target_pitch = post_context_sorted.iloc[-1]["pitch"]
+        else:
+            last_core_idx = core.index.max()
+            post_context_sorted = group[
+                (group["is_context"]) & (group.index > last_core_idx)
+            ].sort_index()
+            if not post_context_sorted.empty:
+                span_target_pitch = post_context_sorted.iloc[-1]["pitch"]
         span = abs(span_target_pitch - pitches[0])
         if ascending_or_descending_only and not monotonic:
             continue
         if require_perfect_fifth_span and span != 7:
             continue
-        if monotonic and span == 7:
+        perfect_fifth_from_context = False
+        if (
+            monotonic
+            and not post_context_sorted.empty
+            and "pitch" in group.columns
+        ):
+            first_core_pitch = pitches[0]
+            last_core_pitch = pitches[-1]
+            if pd.notna(first_core_pitch) and pd.notna(last_core_pitch):
+                for _, ctx_row in post_context_sorted.iterrows():
+                    post_pitch = ctx_row.get("pitch")
+                    if pd.isna(post_pitch):
+                        continue
+                    try:
+                        interval = abs(post_pitch - first_core_pitch)
+                        relation_to_tail = abs(post_pitch - last_core_pitch)
+                    except TypeError:
+                        continue
+                    if interval == 7 and relation_to_tail != 0:
+                        perfect_fifth_from_context = True
+                        break
+        if monotonic and perfect_fifth_from_context and span == 7:
             comment = "perfect_fifth_monotonic"
         elif monotonic:
             comment = "four_step_monotonic_other_span"
         else:
             comment = "four_step_non_monotonic"
         seq_comments[seq_id] = comment
-        # Collect post-context pitches from context rows that occur after the last core onset
-        # (this represents the chord-context). If none are present, fall back to onset_to_pitches
-        # for the immediate next onset.
-        first_pitch = pitches[0]
-        post_context_pitches = []
-        if last_core_onset is not None and "is_context" in group.columns:
-            post_context_pitches = [
-                p
-                for p in group[
-                    (group["is_context"]) & (group["onset"] > last_core_onset)
-                ]["pitch"].tolist()
-                if pd.notna(p)
-            ]
-        # Fallback: if no explicit post-context rows, try onset_to_pitches at next onset
-        if not post_context_pitches and onset_to_pitches:
-            if last_core_onset is not None:
-                next_onsets = sorted(
-                    o for o in onset_to_pitches.keys() if o > last_core_onset
-                )
-                if next_onsets:
-                    next_onset = next_onsets[0]
-                    post_context_pitches = onset_to_pitches.get(next_onset, [])
-
-        has_fifth = any(
-            abs(int(p) - int(first_pitch)) == 7
-            for p in post_context_pitches
-            if pd.notna(p)
-        )
-
-        # Enforce monotonic 4-step core and require at least one post-context perfect fifth.
-        if not monotonic:
-            continue
-        if not has_fifth:
-            continue
-
-        seq_post_ctx_has_fifth[seq_id] = bool(has_fifth)
         qualifying_seq_ids.append(seq_id)
 
     if not qualifying_seq_ids:
@@ -549,10 +433,6 @@ def filter_four_note_step_sequences(
     ].copy()
     # Attach comment per sequence_id
     filtered["four_step_comment"] = filtered["sequence_id"].map(seq_comments)
-    # Attach the post-context perfect-fifth flag per sequence_id
-    filtered["post_context_has_perfect_fifth"] = filtered["sequence_id"].map(
-        seq_post_ctx_has_fifth
-    )
     if not include_context:
         filtered = filtered[
             (~filtered["is_context"])
@@ -566,4 +446,5 @@ def filter_four_note_step_sequences(
     filtered = filtered.sort_values(sort_cols, kind="stable").reset_index(
         drop=True
     )
+
     return filtered

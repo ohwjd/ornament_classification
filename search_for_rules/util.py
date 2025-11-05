@@ -118,3 +118,30 @@ def get_matching_file_path(
         except Exception as e:
             print("Error while matching:", e)
             return None
+
+
+def write_summary(
+    file_output_dir,
+    base_name,
+    tuning,
+    meter_raw,
+    bar_num,
+    diminution,
+    summary_counts,
+):
+    """Write a per-file summary text file and return the path.
+
+    Keeps the same formatting and print side-effect as the original inline code.
+    """
+    summary_lines = [f"Summary for {base_name}"]
+    summary_lines.append(f"tuning: {tuning}")
+    summary_lines.append(f"meter_info: {meter_raw}")
+    summary_lines.append(f"bar_num: {bar_num}")
+    summary_lines.append(f"diminution: {diminution}")
+    summary_lines.append("--------------------------------")
+    for key, val in sorted(summary_counts.items()):
+        summary_lines.append(f"{key}: {val}")
+    summary_path = os.path.join(file_output_dir, f"{base_name}_summary.txt")
+    with open(summary_path, "w") as sf:
+        sf.write("\n".join(summary_lines) + "\n")
+    return summary_path
