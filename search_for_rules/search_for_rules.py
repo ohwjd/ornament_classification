@@ -4,6 +4,10 @@ import pandas as pd
 import os
 
 from fractions import Fraction
+from search_for_rules.util import (
+    extract_tbp_basic_metadata,
+    get_matching_file_path,
+)
 
 
 def preprocess_df(df):
@@ -25,7 +29,7 @@ def preprocess_df(df):
     df = expand_and_split_voices(df)
 
     # Add per-onset vertical ordering index (voice_order)
-    df = squish_to_one_staff(df, new_col="voice_squished")
+    df = squish_to_one_staff(df)
     return df
 
 
@@ -48,7 +52,6 @@ def squish_to_one_staff(
     df: pd.DataFrame,
     voice_col: str = "voice",
     onset_col: str = "onset",
-    new_col: str = "voice_order",
 ):
     """Add a per-onset vertical ordering column across all voices before splitting.
 
@@ -57,6 +60,7 @@ def squish_to_one_staff(
       - Multiple notes: rank unique voices numerically ascending (voice '0' highest) -> 0..N-1
       - Multiple rows sharing the same voice at that onset (if any) all get the same rank.
     """
+    new_col = "voice_tab"
     if voice_col not in df.columns or onset_col not in df.columns:
         return df
 
@@ -76,21 +80,16 @@ def squish_to_one_staff(
         sorted_unique_voices = sorted(voices_here.unique())
         rank_map = {v: i for i, v in enumerate(sorted_unique_voices)}
         df.loc[idxs, new_col] = voices_here.map(rank_map).astype("Int64")
-    # Provide an alias name if user expects a different label (voice_squished)
-    if "voice_squished" not in df.columns:
-        df["voice_squished"] = df[new_col]
+    # Provide an alias name if user expects a different label (voice_tab)
+    if "voice_tab" not in df.columns:
+        df["voice_tab"] = df[new_col]
     return df
 
 
-def split_df_by_voice(df, voice_col: str = "voice_squished"):
+def split_df_by_voice(df, voice_col: str = "voice"):
     """
     Returns a dictionary of DataFrames, one for each unique voice bucket.
-    Uses the squished voice column by default (vertical order per onset),
-    so sequences are traced along the compressed staff rather than original voice labels.
     """
-    if voice_col not in df.columns:
-        # Fallback to original "voice" if squished not present
-        voice_col = "voice"
     return {
         voice: df[df[voice_col] == voice].copy().reset_index(drop=True)
         for voice in df[voice_col].dropna().unique()
@@ -104,6 +103,7 @@ def find_ornament_sequences(
     merge_single_bridge: bool = True,
     add_context: bool = True,
     allow_variable_durations: bool = False,
+    voice_col: str = "voice",
 ):
     """
     Identify ornament sequences and return a single DataFrame containing only the
@@ -111,16 +111,16 @@ def find_ornament_sequences(
       - 'sequence_id' (zero-based)
       - 'is_context' (bool) True for added context notes (before/after), False otherwise.
 
-    Definition of a sequence:
-      - One or more consecutive notes where category == 'ornamentation' AND
-        duration < (or <= if inclusive=True) max_ornament_duration_threshold.
-      - All ornament notes in a sequence must share the same duration value.
-      - If merge_single_bridge is True: two ornament runs of the same duration separated
-        by exactly one non-ornament note of that SAME duration are merged into a single sequence;
-        that bridging note is treated as part of the sequence (is_context = False).
-      - After a sequence is delimited, optionally (add_context=True) include the note
-        immediately before its first element and immediately after its last element (if they exist)
-        marked with is_context=True.
+        Definition of a sequence:
+            - One or more consecutive notes where category == 'ornamentation' AND
+                duration < (or <= if inclusive=True) max_ornament_duration_threshold.
+            - All ornament notes in a sequence must share the same duration value.
+            - If merge_single_bridge is True: two ornament runs of the same duration separated
+                by exactly one non-ornament note of that SAME duration are merged into a single sequence;
+                that bridging note is treated as part of the sequence (is_context = False).
+            - After a sequence is delimited, optionally (add_context=True) include only the note
+                immediately after its last element (if it exists) marked with is_context=True. The
+                note before the sequence will NOT be included as context.
 
     Parameters
     ----------
@@ -228,11 +228,9 @@ def find_ornament_sequences(
     for seq_id, seq in enumerate(sequences):
         idxs = seq["indices"]
         context_idxs = set()
+        # Only include the immediate post-sequence note as context (if requested).
         if add_context:
-            pre = idxs[0] - 1
             post = idxs[-1] + 1
-            if pre >= 0:
-                context_idxs.add(pre)
             if post < n:
                 context_idxs.add(post)
         # Reclassify adaptation context notes that have same duration as ornaments into sequence
@@ -360,6 +358,9 @@ def filter_four_note_step_sequences(
 
     qualifying_seq_ids = []
     seq_comments = {}
+    # Track whether the chord-context (all context rows for the sequence) contains
+    # any pitch a perfect fifth (7 semitones) from the first selected ornament pitch.
+    seq_post_ctx_has_fifth = {}
     # Prepare fast lookup of all pitches per onset from the full texture
     onset_to_pitches = {}
     if (
@@ -373,7 +374,12 @@ def filter_four_note_step_sequences(
                     p for p in g["pitch"].tolist() if pd.notna(p)
                 ]
 
-    def exists_allowed_path(onset_list, base_duration_rows):
+    def exists_allowed_path(
+        onset_list,
+        base_duration_rows,
+        require_monotonic=False,
+        require_intervals=True,
+    ):
         """
         Given ordered onsets, return one pitch-per-onset path complying with allowed_intervals, if any.
         If chord sets are unavailable for an onset, fall back to the sequence's own pitch at that onset.
@@ -398,6 +404,16 @@ def filter_four_note_step_sequences(
 
         def dfs(i):
             if i == len(candidates):
+                # If caller requested monotonicity, only accept paths that are
+                # non-decreasing or non-increasing.
+                if require_monotonic:
+                    non_decreasing = all(
+                        path[j + 1] >= path[j] for j in range(len(path) - 1)
+                    )
+                    non_increasing = all(
+                        path[j + 1] <= path[j] for j in range(len(path) - 1)
+                    )
+                    return non_decreasing or non_increasing
                 return True
             if i == 0:
                 for p in candidates[0]:
@@ -412,7 +428,8 @@ def filter_four_note_step_sequences(
                     step = abs(p - prev)
                 except Exception:
                     continue
-                if step in allowed_intervals:
+                # Only enforce allowed-intervals if requested; otherwise allow any step
+                if (not require_intervals) or (step in allowed_intervals):
                     path.append(p)
                     if dfs(i + 1):
                         return True
@@ -453,7 +470,79 @@ def filter_four_note_step_sequences(
         base_rows_for_fallback = group if include_context else core
 
         # Try to find a valid pitch path across onsets considering all chord pitches
-        selected_path = exists_allowed_path(onset_list, base_rows_for_fallback)
+        # Try in order:
+        # 1) monotonic path that respects allowed intervals
+        # 2) any path that respects allowed intervals
+        # 3) monotonic path ignoring allowed intervals (relaxed)
+        # 4) any path ignoring allowed intervals
+        selected_path = exists_allowed_path(
+            onset_list,
+            base_rows_for_fallback,
+            require_monotonic=True,
+            require_intervals=True,
+        )
+        if selected_path is None:
+            selected_path = exists_allowed_path(
+                onset_list,
+                base_rows_for_fallback,
+                require_monotonic=False,
+                require_intervals=True,
+            )
+        if selected_path is None:
+            selected_path = exists_allowed_path(
+                onset_list,
+                base_rows_for_fallback,
+                require_monotonic=True,
+                require_intervals=False,
+            )
+        if selected_path is None:
+            selected_path = exists_allowed_path(
+                onset_list,
+                base_rows_for_fallback,
+                require_monotonic=False,
+                require_intervals=False,
+            )
+
+        # Use actual core ornament pitches (from sequence rows) to test monotonicity.
+        core_pitches_from_rows = []
+        if "pitch" in core.columns:
+            core_pitches_from_rows = [
+                p for p in core["pitch"].tolist() if pd.notna(p)
+            ]
+
+        if (
+            core_pitches_from_rows
+            and len(core_pitches_from_rows) == exact_ornament_note_count
+        ):
+            try:
+                core_pitches_int = [int(p) for p in core_pitches_from_rows]
+                non_decreasing = all(
+                    core_pitches_int[i + 1] >= core_pitches_int[i]
+                    for i in range(len(core_pitches_int) - 1)
+                )
+                non_increasing = all(
+                    core_pitches_int[i + 1] <= core_pitches_int[i]
+                    for i in range(len(core_pitches_int) - 1)
+                )
+                monotonic = non_decreasing or non_increasing
+            except Exception:
+                monotonic = False
+        else:
+            # Fallback to using selected_path if core pitches missing
+            pitches = selected_path
+            if pitches is None:
+                monotonic = False
+            else:
+                non_decreasing = all(
+                    pitches[i + 1] >= pitches[i]
+                    for i in range(len(pitches) - 1)
+                )
+                non_increasing = all(
+                    pitches[i + 1] <= pitches[i]
+                    for i in range(len(pitches) - 1)
+                )
+                monotonic = non_decreasing or non_increasing
+
         if selected_path is None:
             continue
 
@@ -508,6 +597,42 @@ def filter_four_note_step_sequences(
         else:
             comment = "four_step_non_monotonic"
         seq_comments[seq_id] = comment
+        # Collect post-context pitches from context rows that occur after the last core onset
+        # (this represents the chord-context). If none are present, fall back to onset_to_pitches
+        # for the immediate next onset.
+        first_pitch = pitches[0]
+        post_context_pitches = []
+        if last_core_onset is not None and "is_context" in group.columns:
+            post_context_pitches = [
+                p
+                for p in group[
+                    (group["is_context"]) & (group["onset"] > last_core_onset)
+                ]["pitch"].tolist()
+                if pd.notna(p)
+            ]
+        # Fallback: if no explicit post-context rows, try onset_to_pitches at next onset
+        if not post_context_pitches and onset_to_pitches:
+            if last_core_onset is not None:
+                next_onsets = sorted(
+                    o for o in onset_to_pitches.keys() if o > last_core_onset
+                )
+                if next_onsets:
+                    next_onset = next_onsets[0]
+                    post_context_pitches = onset_to_pitches.get(next_onset, [])
+
+        has_fifth = any(
+            abs(int(p) - int(first_pitch)) == 7
+            for p in post_context_pitches
+            if pd.notna(p)
+        )
+
+        # Enforce monotonic 4-step core and require at least one post-context perfect fifth.
+        if not monotonic:
+            continue
+        if not has_fifth:
+            continue
+
+        seq_post_ctx_has_fifth[seq_id] = bool(has_fifth)
         qualifying_seq_ids.append(seq_id)
 
     if not qualifying_seq_ids:
@@ -518,6 +643,10 @@ def filter_four_note_step_sequences(
     ].copy()
     # Attach comment per sequence_id
     filtered["four_step_comment"] = filtered["sequence_id"].map(seq_comments)
+    # Attach the post-context perfect-fifth flag per sequence_id
+    filtered["post_context_has_perfect_fifth"] = filtered["sequence_id"].map(
+        seq_post_ctx_has_fifth
+    )
     if not include_context:
         filtered = filtered[
             (~filtered["is_context"])
@@ -538,7 +667,8 @@ def add_chord_context_to_sequences(
     sequences_no_context: pd.DataFrame, original_df: pd.DataFrame
 ):
     """Given sequences WITHOUT context (is_context column present but all False or absent),
-    add full chords (all notes at previous distinct onset and next distinct onset) as context.
+    add the full chord (all notes) at the immediate next distinct onset after the sequence
+    as context. The previous chord (before the sequence) is NOT added.
 
     Returns a new DataFrame with is_context boolean properly set.
     """
@@ -566,24 +696,12 @@ def add_chord_context_to_sequences(
     augmented_groups = []
     for seq_id, group in sequences_no_context.groupby("sequence_id"):
         group = group.sort_values("onset", kind="stable")
-        start_onset = group["onset"].min()
         end_onset = group["onset"].max()
-        # Locate previous and next onset values
-        prev_onset_candidates = [o for o in all_onsets if o < start_onset]
+        # Locate the next onset value only (post-sequence). Do NOT include previous onset.
         next_onset_candidates = [o for o in all_onsets if o > end_onset]
-        prev_onset = (
-            prev_onset_candidates[-1] if prev_onset_candidates else None
-        )
         next_onset = next_onset_candidates[0] if next_onset_candidates else None
 
         context_rows = []
-        if prev_onset is not None:
-            prev_rows = original_sorted[original_sorted["onset"] == prev_onset]
-            if not prev_rows.empty:
-                prev_rows_ctx = prev_rows.copy()
-                prev_rows_ctx["sequence_id"] = seq_id
-                prev_rows_ctx["is_context"] = True
-                context_rows.append(prev_rows_ctx)
         if next_onset is not None:
             next_rows = original_sorted[original_sorted["onset"] == next_onset]
             if not next_rows.empty:
@@ -622,75 +740,6 @@ def add_chord_context_to_sequences(
         sort_cols.append("voice_order")
     result = result.sort_values(sort_cols, kind="stable").reset_index(drop=True)
     return result
-
-
-def get_matching_file_path(
-    file_name,
-    files_list,
-    first_replace_str="-mapping",
-    second_replace_str="-score",
-    folder_path="",
-):
-    # Remove "-score" and extension for matching
-    base_name = os.path.splitext(file_name.replace(first_replace_str, ""))[0]
-    for file_name in files_list:
-        base = os.path.splitext(file_name.replace(second_replace_str, ""))[0]
-        try:
-            if base == base_name:
-                return os.path.join(folder_path, file_name)
-        except Exception as e:
-            print("Error while matching:", e)
-            return None
-
-
-def extract_tbp_basic_metadata(path):
-    """Read the beginning of a .tbp file and return (tuning, meter_info, diminution).
-
-    Assumes header lines look like {TUNING:G}, {METER_INFO:2/2 (1-56)}, {DIMINUTION:2}.
-    Stops scanning once musical content appears (line starting with '|', or a dot-containing syllable line),
-    keeping implementation intentionally minimal.
-    """
-    tuning = None
-    meter_info = None
-    diminution = None
-    try:
-        with open(path, "r", encoding="utf-8") as fh:
-            for raw in fh:
-                line = raw.strip()
-                if not line:
-                    continue
-                # Heuristic: music/content begins
-                if (
-                    line.startswith("|")
-                    or line.startswith(".")
-                    or line.startswith("br.")
-                ):
-                    break
-                if not (line.startswith("{") and line.endswith("}")):
-                    continue
-                inner = line[1:-1]
-                if ":" not in inner:
-                    continue
-                key, val = inner.split(":", 1)
-                key = key.strip().upper()
-                val = val.strip()
-                if key == "TUNING":
-                    tuning = val
-                elif key in ("METER_INFO", "METER"):
-                    meter_info = val
-                elif key == "DIMINUTION":
-                    # Try int, else keep raw
-                    try:
-                        diminution = int(val)
-                    except ValueError:
-                        diminution = val
-                # Early exit if we've got all three
-                if tuning and meter_info and (diminution is not None):
-                    # keep going a tiny bit in case order differs, but we could break
-                    pass
-    except FileNotFoundError:
-        return None, None, None
-    return tuning, meter_info, diminution
 
 
 csv_folder_path = "data/tabmapper_output/mapping_csvs/"
@@ -751,13 +800,9 @@ for f in [
         )
         continue
 
-    tuning, meter_info, diminution = extract_tbp_basic_metadata(
-        matching_tab_file
+    tuning, meter_info, bar_num, diminution, meter_raw = (
+        extract_tbp_basic_metadata(matching_tab_file)
     )
-    print("  TBP header extracted:")
-    print(f"    tuning: {tuning}")
-    print(f"    meter_info: {meter_info}")
-    print(f"    diminution: {diminution}")
 
     # initial preprocessing
     preprocessed_df = preprocess_df(csv_df)
@@ -766,17 +811,16 @@ for f in [
     output_root = "output"
     file_output_dir = os.path.join(output_root, base_name)
     os.makedirs(file_output_dir, exist_ok=True)
-    # Optional info
-    print(f"  Writing outputs to {file_output_dir}")
 
     # Preprocessing already expanded multi-voice rows and added voice_order
     voice_dfs = split_df_by_voice(preprocessed_df)
 
     # Also process the combined dataframe (all voices) using voice_order / voice_squished
+    # max_ornament_duration_threshold is set to a quarter of the meter_info or two levels below beat level (in accordance to JosquinTab data set conventions)
     combined_sequences = find_ornament_sequences(
         preprocessed_df,
         allow_variable_durations=False,
-        max_ornament_duration_threshold=Fraction(1, 1),
+        max_ornament_duration_threshold=meter_info / 4,
     )
     # Track counts for summary
     summary_counts = {}
@@ -872,8 +916,12 @@ for f in [
             summary_counts[f"voice_{voice}"] = 0
             summary_counts[f"voice_{voice}_fourstep"] = 0
 
-    # Write per-file summary
+    # Write per-file summary (include basic TBP header info)
     summary_lines = [f"Summary for {base_name}"]
+    summary_lines.append(f"tuning: {tuning}")
+    summary_lines.append(f"meter_info: {meter_raw}")
+    summary_lines.append(f"bar_num: {bar_num}")
+    summary_lines.append(f"diminution: {diminution}")
     for key, val in sorted(summary_counts.items()):
         summary_lines.append(f"{key}: {val}")
     summary_path = os.path.join(file_output_dir, f"{base_name}_summary.txt")
