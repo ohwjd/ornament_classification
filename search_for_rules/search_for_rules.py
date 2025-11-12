@@ -91,6 +91,12 @@ for f in [
     file_output_dir = os.path.join(output_root, base_name)
     os.makedirs(file_output_dir, exist_ok=True)
 
+    fourstep_dir = os.path.join(file_output_dir, "fourstep")
+    os.makedirs(fourstep_dir, exist_ok=True)
+
+    voices_dir = os.path.join(file_output_dir, "voices")
+    os.makedirs(voices_dir, exist_ok=True)
+
     # Preprocessing already expanded multi-voice rows and added voice_order
     voice_dfs = split_df_by_voice(preprocessed_df)
 
@@ -104,9 +110,7 @@ for f in [
     summary_counts = {}
 
     if not combined_sequences.empty:
-        voice_tab_path = os.path.join(
-            file_output_dir, f"{base_name}_ornament_sequences_voice_tab.csv"
-        )
+        voice_tab_path = os.path.join(file_output_dir, f"{base_name}_tab.csv")
         combined_sequences.to_csv(voice_tab_path, index=False)
         summary_counts["voice_tab_sequences"] = combined_sequences[
             "sequence_id"
@@ -115,15 +119,15 @@ for f in [
         voice_tab_four = filter_four_note_step_sequences(combined_sequences)
         if not voice_tab_four.empty:
             voice_tab_four_path = os.path.join(
-                file_output_dir,
-                f"{base_name}_ornament_sequences_voice_tab_fourstep.csv",
+                fourstep_dir,
+                f"{base_name}_tab_fourstep.csv",
             )
             voice_tab_four.to_csv(voice_tab_four_path, index=False)
-            summary_counts["voice_tab_sequences_fourstep"] = voice_tab_four[
+            summary_counts["tab_fourstep"] = voice_tab_four[
                 "sequence_id"
             ].nunique()
         else:
-            summary_counts["voice_tab_sequences_fourstep"] = 0
+            summary_counts["tab_fourstep"] = 0
 
         # Chord context alternative: first strip existing context then add chord context
         core_only = combined_sequences[~combined_sequences["is_context"]].copy()
@@ -132,42 +136,41 @@ for f in [
         )
         chord_context_path = os.path.join(
             file_output_dir,
-            f"{base_name}_ornament_sequences_voice_tab_chordcontext.csv",
+            f"{base_name}_tab_chordcontext.csv",
         )
         chord_context_sequences.to_csv(chord_context_path, index=False)
-        summary_counts["voice_tab_chordcontext_sequences"] = (
-            chord_context_sequences["sequence_id"].nunique()
-        )
+        summary_counts["tab_chordcontext"] = chord_context_sequences[
+            "sequence_id"
+        ].nunique()
         chord_context_four = filter_four_note_step_sequences(
             chord_context_sequences
         )
         if not chord_context_four.empty:
             chord_context_four_path = os.path.join(
-                file_output_dir,
-                f"{base_name}_ornament_sequences_voice_tab_chordcontext_fourstep.csv",
+                fourstep_dir,
+                f"{base_name}_tab_chordcontext_fourstep.csv",
             )
             chord_context_four.to_csv(chord_context_four_path, index=False)
-            summary_counts["voice_tab_chordcontext_sequences_fourstep"] = (
-                chord_context_four["sequence_id"].nunique()
-            )
+            summary_counts["tab_chordcontext_fourstep"] = chord_context_four[
+                "sequence_id"
+            ].nunique()
         else:
-            summary_counts["voice_tab_chordcontext_sequences_fourstep"] = 0
+            summary_counts["tab_chordcontext_fourstep"] = 0
     else:
         summary_counts.update(
             {
-                "voice_tab_sequences": 0,
-                "voice_tab_sequences_fourstep": 0,
-                "voice_tab_chordcontext_sequences": 0,
-                "voice_tab_chordcontext_sequences_fourstep": 0,
+                "tab_sequences": 0,
+                "tab_sequences_fourstep": 0,
+                "tab_chordcontext": 0,
+                "tab_chordcontext_fourstep": 0,
             }
         )
 
     merged_by_voice_parts = []
     merged_sequence_offset = 0
+
     for voice, df_voice in voice_dfs.items():
-        output_path = os.path.join(
-            file_output_dir, f"{base_name}_ornament_sequences_voice-{voice}.csv"
-        )
+        output_path = os.path.join(voices_dir, f"{base_name}_voice-{voice}.csv")
         sequences_df = find_ornament_sequences_abtab(
             df_voice, allow_variable_durations=False
         )
@@ -181,8 +184,8 @@ for f in [
             # Second step: filter for four-note small-step sequences
             filtered_four = filter_four_note_step_sequences(sequences_df)
             filtered_path = os.path.join(
-                file_output_dir,
-                f"{base_name}_ornament_sequences_voice-{voice}_fourstep.csv",
+                voices_dir,
+                f"{base_name}_voice-{voice}_fourstep.csv",
             )
             if not filtered_four.empty:
                 filtered_four.to_csv(filtered_path, index=False)
@@ -220,7 +223,7 @@ for f in [
         ).reset_index(drop=True)
         merged_path = os.path.join(
             file_output_dir,
-            f"{base_name}_ornament_sequences_voices_merged.csv",
+            f"{base_name}_voices_merged.csv",
         )
         merged_by_voice.to_csv(merged_path, index=False)
         summary_counts["voices_merged_sequences"] = merged_by_voice[
@@ -230,18 +233,18 @@ for f in [
         merged_four = filter_four_note_step_sequences(merged_by_voice)
         if not merged_four.empty:
             merged_four_path = os.path.join(
-                file_output_dir,
-                f"{base_name}_ornament_sequences_voices_merged_fourstep.csv",
+                fourstep_dir,
+                f"{base_name}_voices_merged_fourstep.csv",
             )
             merged_four.to_csv(merged_four_path, index=False)
-            summary_counts["voices_merged_sequences_fourstep"] = merged_four[
+            summary_counts["voices_merged_fourstep"] = merged_four[
                 "sequence_id"
             ].nunique()
         else:
-            summary_counts["voices_merged_sequences_fourstep"] = 0
+            summary_counts["voices_merged_fourstep"] = 0
     else:
-        summary_counts["voices_merged_sequences"] = 0
-        summary_counts["voices_merged_sequences_fourstep"] = 0
+        summary_counts["voices_merged"] = 0
+        summary_counts["voices_merged_fourstep"] = 0
 
     write_summary(
         file_output_dir,
