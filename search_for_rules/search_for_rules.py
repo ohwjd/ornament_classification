@@ -21,7 +21,7 @@ from search_for_rules.preprocess import (
 
 
 csv_folder_path = "data/tabmapper_output/mapping_csvs/"
-score_mei_folder_path = "data/tabmapper_output/voiced_meis/"
+# score_mei_folder_path = "data/tabmapper_output/voiced_meis/"
 dipl_mei_folder_path = "data/meis_dipl/"
 tab_folder_path = "data/tabs/"
 
@@ -29,9 +29,9 @@ csv_file_names = sorted(
     [f for f in os.listdir(csv_folder_path) if f.endswith(".csv")]
 )
 
-score_mei_file_names = sorted(
-    [f for f in os.listdir(score_mei_folder_path) if f.endswith(".mei")]
-)
+# score_mei_file_names = sorted(
+#     [f for f in os.listdir(score_mei_folder_path) if f.endswith(".mei")]
+# )
 
 dipl_mei_file_names = sorted(
     [f for f in os.listdir(dipl_mei_folder_path) if f.endswith(".mei")]
@@ -59,12 +59,12 @@ for f in [
         folder_path=tab_folder_path,
     )
 
-    matching_score_mei_file = get_matching_file_path(
-        f,
-        score_mei_file_names,
-        second_replace_str="-score",
-        folder_path=score_mei_folder_path,
-    )
+    # matching_score_mei_file = get_matching_file_path(
+    #     f,
+    #     score_mei_file_names,
+    #     second_replace_str="-score",
+    #     folder_path=score_mei_folder_path,
+    # )
 
     matching_dipl_mei_file = get_matching_file_path(
         f,
