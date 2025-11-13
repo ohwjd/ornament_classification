@@ -45,7 +45,7 @@ tab_file_names = sorted(
 for f in [
     f
     for f in csv_file_names
-    if f.startswith("4400_45_ach_unfall") or f.startswith("4481_49_ach_unfal")
+    # if f.startswith("4400_45_ach_unfall") or f.startswith("4481_49_ach_unfal")
 ]:
     csv_file_path = csv_folder_path + f
     print(f"Processing file {csv_file_path}.")

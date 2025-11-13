@@ -23,6 +23,7 @@ from typing import Iterable
 
 try:
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import MaxNLocator
 except ImportError as exc:  # pragma: no cover - dependency guard
     raise SystemExit(
         "matplotlib is required for plotting. Install it with 'pip install matplotlib'."
@@ -124,7 +125,9 @@ def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
         ax.set_yticks(range(len(series)))
         ax.set_yticklabels(series.index, fontsize=9)
         ax.set_xlabel("Sequences containing comment")
-        ax.set_title(f"four_step_comment counts: {csv_label}")
+        title_label = Path(csv_label).name
+        ax.set_title(f"counts: {title_label}")
+        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
         for idx, value in enumerate(series.values):
             ax.text(value + 0.1, idx, str(int(value)), va="center", fontsize=8)
