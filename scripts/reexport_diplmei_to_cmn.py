@@ -1,18 +1,18 @@
 import os
 import sys
+import tempfile
 
 from fractions import Fraction
 
 import music21 as m21
 import pandas as pd
+import xml.etree.ElementTree as ET
 
 
 score_mei_folder_path = "data/tabmapper_output/voiced_meis/"
 dipl_mei_folder_path = "data/meis_dipl/"
 csv_folder_path = "data/tabmapper_output/mapping_csvs/"
 
-DEFAULT_DIPL_FILE = "4400_45_ach_unfall_was-dipl.mei"
-DEFAULT_SCORE_FILE = DEFAULT_DIPL_FILE.replace("-dipl", "")
 
 score_mei_file_names = sorted(
     [f for f in os.listdir(score_mei_folder_path) if f.endswith(".mei")]
@@ -26,16 +26,126 @@ csv_file_names = sorted(
     [f for f in os.listdir(csv_folder_path) if f.endswith(".csv")]
 )
 
+MEI_NS = "http://www.music-encoding.org/ns/mei"
+XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
 
-def filter_score_files(score_files, prefixes, default_limit=1):
-    if prefixes:
-        filtered = [
-            f for f in score_files if any(f.startswith(p) for p in prefixes)
-        ]
-        return filtered
-    if DEFAULT_SCORE_FILE in score_files:
-        return [DEFAULT_SCORE_FILE]
-    return score_files[:default_limit]
+
+def _safe_unlink(path):
+    try:
+        os.remove(path)
+    except FileNotFoundError:
+        pass
+
+
+def augment_mei_dir_durations(mei_path):
+    ET.register_namespace("", MEI_NS)
+    ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
+    tree = ET.parse(mei_path)
+    root = tree.getroot()
+
+    id_lookup = {}
+    for element in root.iter():
+        elem_id = element.attrib.get(XML_ID)
+        if elem_id:
+            id_lookup[elem_id] = element
+
+    changed = False
+
+    for dir_elem in root.findall(f".//{{{MEI_NS}}}dir"):
+        startid = dir_elem.attrib.get("startid")
+        if not startid:
+            continue
+        ref_id = startid.lstrip("#")
+        target = id_lookup.get(ref_id)
+        if target is None:
+            continue
+
+        dot_count = 0
+
+        for symbol in dir_elem.findall(f"{{{MEI_NS}}}symbol"):
+            glyph_name = symbol.attrib.get("glyph.name")
+            if glyph_name == "augmentationDot":
+                dot_count += 1
+                continue
+
+        if dot_count > 0:
+            if target.get("dots") != str(dot_count):
+                target.set("dots", str(dot_count))
+                changed = True
+        elif "dots" in target.attrib:
+            del target.attrib["dots"]
+            changed = True
+
+    if not changed:
+        return mei_path, None
+
+    tmp_fd, tmp_path = tempfile.mkstemp(suffix=".mei")
+    with os.fdopen(tmp_fd, "wb") as tmp_file:
+        tmp_file.write(
+            ET.tostring(root, encoding="utf-8", xml_declaration=True)
+        )
+    return tmp_path, lambda: _safe_unlink(tmp_path)
+
+
+def parse_mei_with_dir_durations(mei_path):
+    prepared_path, cleanup = augment_mei_dir_durations(mei_path)
+    try:
+        return m21.converter.parse(prepared_path)
+    finally:
+        if cleanup is not None:
+            cleanup()
+
+
+def filter_score_files(score_files, args):
+    if not args:
+        raise ValueError(
+            "Provide at least one MEI file path, diplomatic file, or prefix."
+        )
+
+    resolved = []
+    for raw_arg in args:
+        arg = os.path.basename(raw_arg)
+
+        if arg in score_files:
+            resolved.append(arg)
+            continue
+
+        if arg.endswith("-dipl.mei"):
+            base = os.path.splitext(arg)[0]
+            if base.endswith("-dipl"):
+                base = base[: -len("-dipl")]
+
+            candidate_variants = [
+                f"{base}-score.mei",
+                f"{base}.mei",
+            ]
+            for candidate in candidate_variants:
+                if candidate in score_files:
+                    resolved.append(candidate)
+                    break
+            else:
+                raise ValueError(
+                    "No score MEI file found for diplomatic file "
+                    f"'{raw_arg}'."
+                )
+            continue
+
+        prefix_matches = [f for f in score_files if f.startswith(arg)]
+        if prefix_matches:
+            resolved.extend(prefix_matches)
+            continue
+
+        raise ValueError(f"No score MEI file found matching '{raw_arg}'.")
+
+    # Preserve argument order while removing duplicates
+    seen = set()
+    ordered_unique = []
+    for name in resolved:
+        if name not in seen:
+            ordered_unique.append(name)
+            seen.add(name)
+
+    return ordered_unique
 
 
 def merged_df_to_stream(merged_df):
@@ -86,14 +196,14 @@ def get_matching_file_path(
         base = os.path.splitext(file_name.replace(base_replace_str, ""))[0]
         try:
             if base == base_name:
-                return folder_path + file_name
+                return os.path.join(folder_path, file_name)
         except Exception as e:
             print("No matching file found:", e)
             return None
 
 
 def parse_and_chordify(mei_path):
-    parsed = m21.converter.parse(mei_path)
+    parsed = parse_mei_with_dir_durations(mei_path)
     return parsed.chordify()
 
 
@@ -310,14 +420,20 @@ def find_error_in_df(df):
     return None  # No divergence found
 
 
-selected_score_files = filter_score_files(score_mei_file_names, sys.argv[1:])
+try:
+    selected_score_files = filter_score_files(
+        score_mei_file_names, sys.argv[1:]
+    )
+except ValueError as err:
+    print(err)
+    sys.exit(1)
 
 if not selected_score_files:
-    print("No score MEI files matched the provided prefixes.")
-    sys.exit(0)
+    print("No score MEI files matched the provided arguments.")
+    sys.exit(1)
 
 for f in selected_score_files:
-    score_mei_path = score_mei_folder_path + f
+    score_mei_path = os.path.join(score_mei_folder_path, f)
 
     chordified_score = parse_and_chordify(score_mei_path)
     score_measures, score_chords, score_notes_df = extract_notes(
@@ -335,7 +451,7 @@ for f in selected_score_files:
         continue
 
     try:
-        dipl_stream = m21.converter.parse(dipl_mei_path)
+        dipl_stream = parse_mei_with_dir_durations(dipl_mei_path)
     except Exception as parse_err:
         print("Diplomatic parse failed; skipping annotation:", parse_err)
         continue
