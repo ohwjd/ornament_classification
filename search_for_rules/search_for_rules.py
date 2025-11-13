@@ -10,13 +10,13 @@ from search_for_rules.util import (
 )
 from search_for_rules.search_operations import (
     find_ornament_sequences_abtab,
+    find_ornament_sequences_raw,
     filter_four_note_step_sequences,
 )
 
 from search_for_rules.preprocess import (
     preprocess_df,
     split_df_by_voice,
-    add_chord_context_to_sequences,
 )
 
 
@@ -109,12 +109,12 @@ for f in [
     # Track counts for summary
     summary_counts = {}
 
+    raw_sequences = find_ornament_sequences_raw(preprocessed_df)
+
     if not combined_sequences.empty:
         voice_tab_path = os.path.join(file_output_dir, f"{base_name}_tab.csv")
         combined_sequences.to_csv(voice_tab_path, index=False)
-        summary_counts["voice_tab_sequences"] = combined_sequences[
-            "sequence_id"
-        ].nunique()
+        summary_counts["tab"] = combined_sequences["sequence_id"].nunique()
         # Four-note variant for combined
         voice_tab_four = filter_four_note_step_sequences(combined_sequences)
         if not voice_tab_four.empty:
@@ -122,49 +122,40 @@ for f in [
                 fourstep_dir,
                 f"{base_name}_tab_fourstep.csv",
             )
-            voice_tab_four.to_csv(voice_tab_four_path, index=False)
+            voice_tab_four.to_csv(voice_tab_four_path, index=False, sep=";")
             summary_counts["tab_fourstep"] = voice_tab_four[
                 "sequence_id"
             ].nunique()
         else:
             summary_counts["tab_fourstep"] = 0
 
-        # Chord context alternative: first strip existing context then add chord context
-        core_only = combined_sequences[~combined_sequences["is_context"]].copy()
-        chord_context_sequences = add_chord_context_to_sequences(
-            core_only, preprocessed_df
-        )
-        chord_context_path = os.path.join(
-            file_output_dir,
-            f"{base_name}_tab_chordcontext.csv",
-        )
-        chord_context_sequences.to_csv(chord_context_path, index=False)
-        summary_counts["tab_chordcontext"] = chord_context_sequences[
-            "sequence_id"
-        ].nunique()
-        chord_context_four = filter_four_note_step_sequences(
-            chord_context_sequences
-        )
-        if not chord_context_four.empty:
-            chord_context_four_path = os.path.join(
-                fourstep_dir,
-                f"{base_name}_tab_chordcontext_fourstep.csv",
-            )
-            chord_context_four.to_csv(chord_context_four_path, index=False)
-            summary_counts["tab_chordcontext_fourstep"] = chord_context_four[
-                "sequence_id"
-            ].nunique()
-        else:
-            summary_counts["tab_chordcontext_fourstep"] = 0
     else:
         summary_counts.update(
             {
-                "tab_sequences": 0,
-                "tab_sequences_fourstep": 0,
-                "tab_chordcontext": 0,
-                "tab_chordcontext_fourstep": 0,
+                "tab": 0,
+                "tab_fourstep": 0,
             }
         )
+
+    if not raw_sequences.empty:
+        raw_tab_path = os.path.join(file_output_dir, f"{base_name}_tab_raw.csv")
+        raw_sequences.to_csv(raw_tab_path, index=False)
+        summary_counts["tab_raw"] = raw_sequences["sequence_id"].nunique()
+        raw_four = filter_four_note_step_sequences(raw_sequences)
+        if not raw_four.empty:
+            raw_four_path = os.path.join(
+                fourstep_dir,
+                f"{base_name}_tab_raw_fourstep.csv",
+            )
+            raw_four.to_csv(raw_four_path, index=False, sep=";")
+            summary_counts["tab_raw_fourstep"] = raw_four[
+                "sequence_id"
+            ].nunique()
+        else:
+            summary_counts["tab_raw_fourstep"] = 0
+    else:
+        summary_counts["tab_raw"] = 0
+        summary_counts["tab_raw_fourstep"] = 0
 
     merged_by_voice_parts = []
     merged_sequence_offset = 0
@@ -188,7 +179,7 @@ for f in [
                 f"{base_name}_voice-{voice}_fourstep.csv",
             )
             if not filtered_four.empty:
-                filtered_four.to_csv(filtered_path, index=False)
+                filtered_four.to_csv(filtered_path, index=False, sep=";")
                 summary_counts[f"voice_{voice}_fourstep"] = filtered_four[
                     "sequence_id"
                 ].nunique()
@@ -226,7 +217,7 @@ for f in [
             f"{base_name}_voices_merged.csv",
         )
         merged_by_voice.to_csv(merged_path, index=False)
-        summary_counts["voices_merged_sequences"] = merged_by_voice[
+        summary_counts["voices_merged"] = merged_by_voice[
             "sequence_id"
         ].nunique()
 
@@ -236,7 +227,7 @@ for f in [
                 fourstep_dir,
                 f"{base_name}_voices_merged_fourstep.csv",
             )
-            merged_four.to_csv(merged_four_path, index=False)
+            merged_four.to_csv(merged_four_path, index=False, sep=";")
             summary_counts["voices_merged_fourstep"] = merged_four[
                 "sequence_id"
             ].nunique()
