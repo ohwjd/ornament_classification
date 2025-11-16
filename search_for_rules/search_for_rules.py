@@ -25,6 +25,9 @@ csv_folder_path = "data/tabmapper_output/mapping_csvs/"
 dipl_mei_folder_path = "data/meis_dipl/"
 tab_folder_path = "data/tabs/"
 
+category_csv_path = "data/josquintab_file_categories.csv"
+category_lookup_df = pd.read_csv(category_csv_path)
+
 csv_file_names = sorted(
     [f for f in os.listdir(csv_folder_path) if f.endswith(".csv")]
 )
@@ -51,7 +54,12 @@ for f in [
     print(f"Processing file {csv_file_path}.")
     csv_df = pd.read_csv(csv_file_path)
     base_name = os.path.splitext(f)[0].replace("-mapping", "")
-
+    category_row = category_lookup_df[category_lookup_df["file_name"] == f]
+    category = (
+        category_row["category"].values[0]
+        if not category_row.empty
+        else "Unknown"
+    )
     matching_tab_file = get_matching_file_path(
         f,
         tab_file_names,
@@ -245,4 +253,5 @@ for f in [
         bar_num,
         diminution,
         summary_counts,
+        category,
     )

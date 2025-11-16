@@ -128,6 +128,7 @@ def write_summary(
     bar_num,
     diminution,
     summary_counts,
+    category,
 ):
     """Write a per-file summary text file and return the path.
 
@@ -138,6 +139,7 @@ def write_summary(
     summary_lines.append(f"meter_info: {meter_raw}")
     summary_lines.append(f"bar_num: {bar_num}")
     summary_lines.append(f"diminution: {diminution}")
+    summary_lines.append(f"category: {category}")
     summary_lines.append("--------------------------------")
     for key, val in sorted(summary_counts.items()):
         summary_lines.append(f"{key}: {val}")
