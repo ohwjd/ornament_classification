@@ -178,9 +178,7 @@ def find_ornament_sequences_abtab(
     max_ornament_duration_threshold=Fraction(1, 4),
     merge_single_bridge: bool = True,
     add_context: bool = True,
-    allow_variable_durations: bool = False,
     voice_col: str = "voice",
-    same_duration_categories=None,
 ):
     """
     Identify ornament sequences and return a single DataFrame containing only the
@@ -189,8 +187,8 @@ def find_ornament_sequences_abtab(
       - 'is_context' (bool) True for added context notes (before/after), False otherwise.
 
         Definition of a sequence:
-            - One or more consecutive notes where category == 'ornamentation' AND
-                duration < (or <= if inclusive=True) max_ornament_duration_threshold.
+            - One or more consecutive notes where for at least one note the category == 'ornamentation' AND
+                duration < max_ornament_duration_threshold.
             - All ornament notes in a sequence must share the same duration value.
             - If merge_single_bridge is True: two ornament runs of the same duration separated
                 by exactly one non-ornament note of that SAME duration are merged into a single sequence;
@@ -198,7 +196,6 @@ def find_ornament_sequences_abtab(
             - After a sequence is delimited, optionally (add_context=True) include the entire onset
                 immediately following its last element as context (is_context=True).
             - Any adjacent notes sharing the base ornament duration are absorbed into the sequence
-                (regardless of category unless `same_duration_categories` explicitly restricts them).
 
     Parameters
     ----------
@@ -210,11 +207,6 @@ def find_ornament_sequences_abtab(
         Merge ornament runs split by exactly one non-ornament of the same duration.
     add_context : bool, default True
         Whether to append the immediate post notes of each sequence.
-    allow_variable_durations : bool, default False
-        Allow ornament sequences to contain notes with varying durations.
-    same_duration_categories : iterable or None, default None
-        Optional whitelist of non-ornament categories that may be merged into the sequence.
-        When None, any category is eligible if it satisfies the duration rules.
 
     Returns
     -------
@@ -240,11 +232,6 @@ def find_ornament_sequences_abtab(
         dur = row["duration"]
         return dur < max_ornament_duration_threshold
 
-    if same_duration_categories is None:
-        allowed_same_duration_categories = None
-    else:
-        allowed_same_duration_categories = set(same_duration_categories)
-
     sequences = []  # list of dicts with keys: indices, base_duration
     in_sequence = False
     seq_indices = []
@@ -259,18 +246,10 @@ def find_ornament_sequences_abtab(
             row_cat == "ornamentation"
             and row_dur < max_ornament_duration_threshold
         )
-        category_allowed = (
-            allowed_same_duration_categories is None
-            or row_cat in allowed_same_duration_categories
-        )
         is_same_duration_extra = (
             in_sequence
             and row_cat != "ornamentation"
-            and category_allowed
-            and (
-                allow_variable_durations
-                or (base_duration is not None and row_dur == base_duration)
-            )
+            and (base_duration is not None and row_dur == base_duration)
         )
 
         if is_orn:
@@ -280,11 +259,8 @@ def find_ornament_sequences_abtab(
                 seq_indices = [i]
                 base_duration = df.loc[i, "duration"]
             else:
-                # Continue only if duration matches base_duration, unless variable durations allowed
-                if (
-                    allow_variable_durations
-                    or df.loc[i, "duration"] == base_duration
-                ):
+                # Continue only if duration matches base_duration
+                if df.loc[i, "duration"] == base_duration:
                     seq_indices.append(i)
                 else:
                     if seq_indices:
@@ -301,20 +277,15 @@ def find_ornament_sequences_abtab(
             seq_indices.append(i)
         else:
             if in_sequence:
-                # Potential bridging logic
                 can_bridge = False
                 if merge_single_bridge and (
-                    allow_variable_durations
-                    or (base_duration is not None and row_dur == base_duration)
+                    base_duration is not None and row_dur == base_duration
                 ):
                     # Look ahead one note for an ornament continuing with same duration
                     if (
                         i + 1 < n
                         and is_ornament(i + 1)
-                        and (
-                            allow_variable_durations
-                            or df.loc[i + 1, "duration"] == base_duration
-                        )
+                        and df.loc[i + 1, "duration"] == base_duration
                     ):
                         can_bridge = True
                 if can_bridge:
@@ -358,30 +329,15 @@ def find_ornament_sequences_abtab(
         base_duration = seq.get("base_duration")
         context_idxs = set()
 
-        # Phase 1: expand the sequence boundaries to absorb adjacent same-duration notes
-        def _category_allowed(row_cat: str) -> bool:
-            return (
-                row_cat == "ornamentation"
-                or allowed_same_duration_categories is None
-                or row_cat in allowed_same_duration_categories
-            )
-
         left_idx = idxs[0] - 1
         while left_idx >= 0:
             row_left = df.loc[left_idx]
-            row_left_cat = row_left.get("category")
             row_left_dur = row_left.get("duration")
-            if allow_variable_durations:
-                can_absorb_left = _category_allowed(row_left_cat) and pd.notna(
-                    row_left_dur
-                )
-            else:
-                can_absorb_left = (
-                    _category_allowed(row_left_cat)
-                    and pd.notna(row_left_dur)
-                    and base_duration is not None
-                    and row_left_dur == base_duration
-                )
+            can_absorb_left = (
+                pd.notna(row_left_dur)
+                and base_duration is not None
+                and row_left_dur == base_duration
+            )
             if can_absorb_left:
                 idxs.insert(0, left_idx)
                 left_idx -= 1
@@ -391,19 +347,12 @@ def find_ornament_sequences_abtab(
         right_idx = idxs[-1] + 1
         while right_idx < n:
             row_right = df.loc[right_idx]
-            row_right_cat = row_right.get("category")
             row_right_dur = row_right.get("duration")
-            if allow_variable_durations:
-                can_absorb_right = _category_allowed(
-                    row_right_cat
-                ) and pd.notna(row_right_dur)
-            else:
-                can_absorb_right = (
-                    _category_allowed(row_right_cat)
-                    and pd.notna(row_right_dur)
-                    and base_duration is not None
-                    and row_right_dur == base_duration
-                )
+            can_absorb_right = (
+                pd.notna(row_right_dur)
+                and base_duration is not None
+                and row_right_dur == base_duration
+            )
             if can_absorb_right:
                 idxs.append(right_idx)
                 right_idx += 1
@@ -427,19 +376,12 @@ def find_ornament_sequences_abtab(
                     post_idx += 1
                     continue
                 row_post = df.loc[post_idx]
-                row_post_cat = row_post.get("category")
                 row_post_dur = row_post.get("duration")
-                if allow_variable_durations:
-                    can_absorb_post = _category_allowed(
-                        row_post_cat
-                    ) and pd.notna(row_post_dur)
-                else:
-                    can_absorb_post = (
-                        _category_allowed(row_post_cat)
-                        and pd.notna(row_post_dur)
-                        and base_duration is not None
-                        and row_post_dur == base_duration
-                    )
+                can_absorb_post = (
+                    pd.notna(row_post_dur)
+                    and base_duration is not None
+                    and row_post_dur == base_duration
+                )
                 if can_absorb_post:
                     idxs.append(post_idx)
                     if "onset" in df.columns:

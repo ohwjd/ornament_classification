@@ -48,7 +48,7 @@ tab_file_names = sorted(
 for f in [
     f
     for f in csv_file_names
-    # if f.startswith("4400_45_ach_unfall") or f.startswith("4481_49_ach_unfal")
+    if f.startswith("4400_45_ach_unfall") or f.startswith("4481_49_ach_unfal")
 ]:
     csv_file_path = csv_folder_path + f
     print(f"Processing file {csv_file_path}.")
@@ -108,16 +108,14 @@ for f in [
     # Preprocessing already expanded multi-voice rows and added voice_order
     voice_dfs = split_df_by_voice(preprocessed_df)
 
-    # max_ornament_duration_threshold is set to a quarter of the meter_info or two levels below beat level (in accordance to JosquinTab data set conventions)
-    combined_sequences = find_ornament_sequences_abtab(
-        preprocessed_df,
-        allow_variable_durations=False,
-        max_ornament_duration_threshold=meter_info / 4,
-    )
     # Track counts for summary
     summary_counts = {}
 
-    raw_sequences = find_ornament_sequences_raw(preprocessed_df)
+    # max_ornament_duration_threshold is set to a quarter of the meter_info or two levels below beat level (in accordance to JosquinTab data set conventions)
+    combined_sequences = find_ornament_sequences_abtab(
+        preprocessed_df,
+        max_ornament_duration_threshold=meter_info / 4,
+    )
 
     if not combined_sequences.empty:
         voice_tab_path = os.path.join(file_output_dir, f"{base_name}_tab.csv")
@@ -136,7 +134,6 @@ for f in [
             ].nunique()
         else:
             summary_counts["tab_fourstep"] = 0
-
     else:
         summary_counts.update(
             {
@@ -144,6 +141,8 @@ for f in [
                 "tab_fourstep": 0,
             }
         )
+
+    raw_sequences = find_ornament_sequences_raw(preprocessed_df)
 
     if not raw_sequences.empty:
         raw_tab_path = os.path.join(file_output_dir, f"{base_name}_tab_raw.csv")
@@ -170,11 +169,8 @@ for f in [
 
     for voice, df_voice in voice_dfs.items():
         output_path = os.path.join(voices_dir, f"{base_name}_voice-{voice}.csv")
-        sequences_df = find_ornament_sequences_abtab(
-            df_voice, allow_variable_durations=False
-        )
+        sequences_df = find_ornament_sequences_abtab(df_voice)
 
-        # Save only if there are sequences
         if not sequences_df.empty:
             sequences_df.to_csv(output_path, index=False)
             summary_counts[f"voice_{voice}"] = sequences_df[
