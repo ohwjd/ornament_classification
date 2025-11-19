@@ -1,5 +1,5 @@
 from fractions import Fraction
-from typing import Any, Dict, List, Sequence
+from typing import Any, Dict, List, Set
 
 import pandas as pd
 
@@ -9,20 +9,22 @@ def find_ornament_sequences_raw(
     onset_col: str = "onset",
     duration_col: str = "duration",
     min_sequence_length: int = 4,
-    add_context: bool = True,
+    max_ornament_duration_threshold: Fraction = Fraction(1, 4),
 ) -> pd.DataFrame:
     """
     Identify ornament sequences purely from onset ordering and duration uniformity.
 
     A sequence is defined as at least `min_sequence_length` consecutive onsets (after
-    sorting by onset) that all share the same duration value. The first onset in a
-    qualifying span may contain multiple notes (a chord); every subsequent onset in
-    the span must be represented by exactly one note row. Durations are required to be
-    homogeneous within each onset (all notes at that onset share the same duration).
+    sorting by onset) that all share the same duration value. Any onset in a
+    qualifying span may contain multiple notes (a chord) provided every note at that
+    onset shares the same duration. Durations are required to be homogeneous within
+    each onset (all notes at that onset share the same duration).
+    Candidate sequences are further restricted to those whose shared duration is
+    strictly shorter than `max_ornament_duration_threshold`.
 
-        Context handling:
-            - If `add_context` is True, the full chord (all rows) at the immediate onset
-                following each detected sequence is added as context where available.
+    Context handling:
+      - the full chord (all rows) at the onsets immediately preceding and
+        following each detected sequence is added as context where available.
       - Context rows are marked with `is_context = True`; core sequence rows remain
         `False`.
 
@@ -36,8 +38,8 @@ def find_ornament_sequences_raw(
         Column containing duration values (Fractions or numbers).
     min_sequence_length : int
         Minimum number of consecutive onsets required to form a sequence.
-    add_context : bool
-        Whether to append immediate pre/post onset chords as context.
+    max_ornament_duration_threshold : Fraction or numeric, default Fraction(1, 4)
+        Upper bound for acceptable shared duration across a candidate sequence.
 
     Returns
     -------
@@ -92,7 +94,17 @@ def find_ornament_sequences_raw(
     i = 0
     while i < num_groups:
         info = group_infos[i]
-        if not info["homogeneous"] or pd.isna(info["duration"]):
+        duration_value = info["duration"]
+        if not info["homogeneous"] or pd.isna(duration_value):
+            i += 1
+            continue
+
+        try:
+            duration_ok = duration_value < max_ornament_duration_threshold
+        except TypeError:
+            duration_ok = False
+
+        if not duration_ok:
             i += 1
             continue
 
@@ -100,13 +112,12 @@ def find_ornament_sequences_raw(
         j = i + 1
         while j < num_groups:
             next_info = group_infos[j]
+            next_duration = next_info["duration"]
             if (
                 not next_info["homogeneous"]
-                or pd.isna(next_info["duration"])
-                or next_info["duration"] != info["duration"]
+                or pd.isna(next_duration)
+                or next_duration != duration_value
             ):
-                break
-            if next_info["size"] != 1:
                 break
             run.append(next_info)
             j += 1
@@ -117,7 +128,7 @@ def find_ornament_sequences_raw(
                     "groups": run,
                     "start_group_idx": i,
                     "end_group_idx": j - 1,
-                    "duration": info["duration"],
+                    "duration": duration_value,
                 }
             )
             i = j
@@ -137,18 +148,24 @@ def find_ornament_sequences_raw(
         for grp in seq["groups"]:
             core_indices.extend(grp["indices"])
 
-        context_indices: Sequence[int] = ()
-        if add_context:
-            post_idx = seq["end_group_idx"] + 1
-            if post_idx < num_groups:
-                post_indices = set(group_infos[post_idx]["indices"])
-                core_index_set = set(core_indices)
-                context_indices = tuple(
-                    sorted(
-                        idx for idx in post_indices if idx not in core_index_set
-                    )
-                )
-        selected_indices = sorted(set(core_indices) | set(context_indices))
+        core_index_set: Set[int] = set(core_indices)
+        context_indices: Set[int] = set()
+
+        post_idx = seq["end_group_idx"] + 1
+        if post_idx < num_groups:
+            post_indices = set(group_infos[post_idx]["indices"])
+            context_indices.update(
+                idx for idx in post_indices if idx not in core_index_set
+            )
+
+        pre_idx = seq["start_group_idx"] - 1
+        if pre_idx >= 0:
+            pre_indices = set(group_infos[pre_idx]["indices"])
+            context_indices.update(
+                idx for idx in pre_indices if idx not in core_index_set
+            )
+
+        selected_indices = sorted(core_index_set | context_indices)
 
         seq_df = df.loc[selected_indices].copy()
         seq_df["sequence_id"] = seq_id
@@ -177,7 +194,6 @@ def find_ornament_sequences_abtab(
     df,
     max_ornament_duration_threshold=Fraction(1, 4),
     merge_single_bridge: bool = True,
-    add_context: bool = True,
     voice_col: str = "voice",
 ):
     """
@@ -186,16 +202,17 @@ def find_ornament_sequences_abtab(
       - 'sequence_id' (zero-based)
       - 'is_context' (bool) True for added context notes (before/after), False otherwise.
 
-        Definition of a sequence:
-            - One or more consecutive notes where for at least one note the category == 'ornamentation' AND
-                duration < max_ornament_duration_threshold.
-            - All ornament notes in a sequence must share the same duration value.
-            - If merge_single_bridge is True: two ornament runs of the same duration separated
-                by exactly one non-ornament note of that SAME duration are merged into a single sequence;
-                that bridging note is treated as part of the sequence (is_context = False).
-            - After a sequence is delimited, optionally (add_context=True) include the entire onset
-                immediately following its last element as context (is_context=True).
-            - Any adjacent notes sharing the base ornament duration are absorbed into the sequence
+    Definition of a sequence:
+        - One or more consecutive notes where for at least one note the category == 'ornamentation' AND
+            duration < max_ornament_duration_threshold.
+        - All ornament notes in a sequence must share the same duration value.
+        - If merge_single_bridge is True: two ornament runs of the same duration separated
+            by exactly one non-ornament note of that SAME duration are merged into a single sequence;
+            that bridging note is treated as part of the sequence (is_context = False).
+        - After a sequence is delimited, include the entire onset
+            immediately preceding its first element and the entire onset
+            immediately following its last element as context (is_context=True).
+        - Any adjacent notes sharing the base ornament duration are absorbed into the sequence
 
     Parameters
     ----------
@@ -205,8 +222,6 @@ def find_ornament_sequences_abtab(
         Upper bound for ornament note durations.
     merge_single_bridge : bool, default True
         Merge ornament runs split by exactly one non-ornament of the same duration.
-    add_context : bool, default True
-        Whether to append the immediate post notes of each sequence.
 
     Returns
     -------
@@ -330,6 +345,7 @@ def find_ornament_sequences_abtab(
         context_idxs = set()
 
         left_idx = idxs[0] - 1
+        left_context_candidate = None
         while left_idx >= 0:
             row_left = df.loc[left_idx]
             row_left_dur = row_left.get("duration")
@@ -342,6 +358,7 @@ def find_ornament_sequences_abtab(
                 idxs.insert(0, left_idx)
                 left_idx -= 1
                 continue
+            left_context_candidate = left_idx
             break
 
         right_idx = idxs[-1] + 1
@@ -365,11 +382,80 @@ def find_ornament_sequences_abtab(
         if "onset" in df.columns:
             onset_series = df.loc[idxs, "onset"]
             valid_onsets = onset_series[pd.notna(onset_series)]
-            last_onset = valid_onsets.max() if not valid_onsets.empty else None
+            if not valid_onsets.empty:
+                first_onset = valid_onsets.min()
+                last_onset = valid_onsets.max()
+            else:
+                first_onset = None
+                last_onset = None
         else:
+            first_onset = None
             last_onset = None
 
-        if add_context and right_context_candidate is not None:
+        if left_context_candidate is not None:
+            pre_idx = left_context_candidate
+            while pre_idx is not None and pre_idx >= 0:
+                if pre_idx in idxs:
+                    pre_idx -= 1
+                    continue
+                row_pre = df.loc[pre_idx]
+                row_pre_dur = row_pre.get("duration")
+                can_absorb_pre = (
+                    pd.notna(row_pre_dur)
+                    and base_duration is not None
+                    and row_pre_dur == base_duration
+                )
+                if can_absorb_pre:
+                    idxs.insert(0, pre_idx)
+                    if "onset" in df.columns:
+                        pre_onset = row_pre.get("onset")
+                        if pd.notna(pre_onset):
+                            if first_onset is None or pre_onset < first_onset:
+                                first_onset = pre_onset
+                    pre_idx -= 1
+                    continue
+                added_context = False
+                if "onset" in df.columns:
+                    pre_onset = row_pre.get("onset")
+                    if pd.notna(pre_onset):
+                        if first_onset is None or pre_onset < first_onset:
+                            same_onset_mask = df["onset"] == pre_onset
+                            same_onset_indices = df.index[same_onset_mask]
+                            for idx_candidate in same_onset_indices:
+                                if idx_candidate not in idxs:
+                                    context_idxs.add(idx_candidate)
+                            added_context = True
+                        else:
+                            pre_idx -= 1
+                            continue
+                    else:
+                        context_idxs.add(pre_idx)
+                        added_context = True
+                else:
+                    context_idxs.add(pre_idx)
+                    added_context = True
+
+                if added_context:
+                    break
+
+                pre_idx -= 1
+
+            idxs = sorted(set(idxs))
+
+            if "onset" in df.columns:
+                onset_series = df.loc[idxs, "onset"]
+                valid_onsets = onset_series[pd.notna(onset_series)]
+                if not valid_onsets.empty:
+                    first_onset = valid_onsets.min()
+                    last_onset = valid_onsets.max()
+                else:
+                    first_onset = None
+                    last_onset = None
+            else:
+                first_onset = None
+                last_onset = None
+
+        if right_context_candidate is not None:
             post_idx = right_context_candidate
             while post_idx is not None and post_idx < n:
                 if post_idx in idxs:
@@ -450,7 +536,8 @@ def filter_four_note_step_sequences(
 ):
     """
     Filter ornament sequences to those whose core ornamentation notes consist of exactly
-    `exact_ornament_note_count` notes moving only by allowed semitone steps (default: half or whole steps).
+    `exact_ornament_note_count` unique onsets moving only by allowed semitone steps
+    (default: half or whole steps).
 
         Assumptions:
             - Core notes are determined solely from the ordering of non-context rows.
@@ -531,6 +618,18 @@ def filter_four_note_step_sequences(
         comments_for_sequence: List[str] = []
         for start in range(max_start + 1):
             core = ordered.iloc[start : start + exact_ornament_note_count]
+
+            if "onset" in core.columns:
+                core_onsets = core["onset"].dropna()
+                if len(core_onsets) != exact_ornament_note_count:
+                    continue
+                onset_counts = core_onsets.value_counts()
+                if not all(count == 1 for count in onset_counts):
+                    continue
+            else:
+                if len(core) != exact_ornament_note_count:
+                    continue
+
             pitches = core["pitch"].tolist()
             if any(pd.isna(p) for p in pitches):
                 continue
@@ -675,3 +774,249 @@ def filter_four_note_step_sequences(
     )
 
     return filtered
+
+
+def filter_non_chord_sequences(
+    sequences_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Filter ornament sequences to those whose core ornamentation notes do not form chords
+    (i.e., only one note per onset in the core sequence).
+
+        Definition:
+            - Core notes are determined solely from the ordering of non-context rows.
+            - If any two core notes share the same onset value, the sequence is excluded.
+
+    Parameters
+    ----------
+    sequences_df : pd.DataFrame
+        Output of find_ornament_sequences (may contain multiple sequence_id values).
+
+    Returns
+    -------
+    pd.DataFrame
+        Filtered DataFrame with same columns plus original sequence_id.
+    """
+    if sequences_df.empty:
+        return sequences_df.head(0).copy()
+
+    qualifying_seq_ids = []
+
+    for seq_id, group in sequences_df.groupby("sequence_id"):
+        non_context = group[~group["is_context"]]
+        if non_context.empty:
+            continue
+
+        if "onset" in non_context.columns:
+            onset_counts = non_context["onset"].value_counts()
+            if all(count == 1 for count in onset_counts):
+                qualifying_seq_ids.append(seq_id)
+        else:
+            qualifying_seq_ids.append(seq_id)
+
+    if not qualifying_seq_ids:
+        return sequences_df.head(0).copy()
+
+    filtered = sequences_df[
+        sequences_df["sequence_id"].isin(qualifying_seq_ids)
+    ].copy()
+
+    # Preserve ordering
+    sort_cols = ["sequence_id"]
+    if "onset" in filtered.columns:
+        sort_cols.append("onset")
+    filtered = filtered.sort_values(sort_cols, kind="stable").reset_index(
+        drop=True
+    )
+
+    return filtered
+
+
+# def start_with_chord_sequences(
+#     sequences_df: pd.DataFrame,
+# ) -> pd.DataFrame:
+#     """
+#     Filter ornament sequences to those whose core ornamentation notes start with a chord
+#     (i.e., more than one note at the first onset in the core sequence).
+
+#         Definition:
+#             - Core notes are determined solely from the ordering of non-context rows.
+#             - If the first onset in the core sequence contains more than one note, the
+#               sequence is retained.
+
+#     Parameters
+#     ----------
+#     sequences_df : pd.DataFrame
+#         Output of find_ornament_sequences (may contain multiple sequence_id values).
+
+#     Returns
+#     -------
+#     pd.DataFrame
+#         Filtered DataFrame with same columns plus original sequence_id.
+#     """
+#     if sequences_df.empty:
+#         return sequences_df.head(0).copy()
+
+#     qualifying_seq_ids = []
+
+#     for seq_id, group in sequences_df.groupby("sequence_id"):
+#         non_context = group[~group["is_context"]]
+#         if non_context.empty:
+#             continue
+
+#         if "onset" in non_context.columns:
+#             first_onset_value = non_context["onset"].min()
+#             first_onset_notes = non_context[
+#                 non_context["onset"] == first_onset_value
+#             ]
+#             if len(first_onset_notes) > 1:
+#                 qualifying_seq_ids.append(seq_id)
+
+#     if not qualifying_seq_ids:
+#         return sequences_df.head(0).copy()
+
+#     filtered = sequences_df[
+#         sequences_df["sequence_id"].isin(qualifying_seq_ids)
+#     ].copy()
+
+#     # Preserve ordering
+#     sort_cols = ["sequence_id"]
+#     if "onset" in filtered.columns:
+#         sort_cols.append("onset")
+#     filtered = filtered.sort_values(sort_cols, kind="stable").reset_index(
+#         drop=True
+#     )
+
+#     return filtered
+
+
+def only_starting_chord_and_then_non_chord_sequences(
+    sequences_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Filter ornament sequences to those whose core ornamentation notes start with a chord
+    (i.e., more than one note at the first onset in the core sequence) and are followed
+    only by non-chord notes.
+
+        Definition:
+            - Core notes are determined solely from the ordering of non-context rows.
+            - If the first onset in the core sequence contains more than one note, and
+              all subsequent onsets contain only one note, the sequence is retained.
+
+    Parameters
+    ----------
+    sequences_df : pd.DataFrame
+        Output of find_ornament_sequences (may contain multiple sequence_id values).
+
+    Returns
+    -------
+    pd.DataFrame
+        Filtered DataFrame with same columns plus original sequence_id.
+    """
+    if sequences_df.empty:
+        return sequences_df.head(0).copy()
+
+    qualifying_seq_ids = []
+
+    for seq_id, group in sequences_df.groupby("sequence_id"):
+        non_context = group[~group["is_context"]]
+        if non_context.empty:
+            continue
+
+        if "onset" in non_context.columns:
+            onset_counts = non_context["onset"].value_counts().sort_index()
+            first_onset_count = onset_counts.iloc[0]
+            subsequent_counts = onset_counts.iloc[1:]
+            if first_onset_count > 1 and all(
+                count == 1 for count in subsequent_counts
+            ):
+                qualifying_seq_ids.append(seq_id)
+
+    if not qualifying_seq_ids:
+        return sequences_df.head(0).copy()
+
+    filtered = sequences_df[
+        sequences_df["sequence_id"].isin(qualifying_seq_ids)
+    ].copy()
+
+    # Preserve ordering
+    sort_cols = ["sequence_id"]
+    if "onset" in filtered.columns:
+        sort_cols.append("onset")
+    filtered = filtered.sort_values(sort_cols, kind="stable").reset_index(
+        drop=True
+    )
+
+    return filtered
+
+
+def count_ornaments_by_length(
+    sequences_df: pd.DataFrame,
+) -> Dict[int, int]:
+    """
+    Count the number of unique ornament sequences by their core ornament note length.
+
+    Parameters
+    ----------
+    sequences_df : pd.DataFrame
+        Output of find_ornament_sequences (may contain multiple sequence_id values).
+
+    Returns
+    -------
+    Dict[int, int]
+        Dictionary mapping core ornament note lengths to counts of unique sequences.
+    """
+    length_counts: Dict[int, int] = {}
+
+    if sequences_df.empty:
+        return length_counts
+
+    for seq_id, group in sequences_df.groupby("sequence_id"):
+        non_context = group[~group["is_context"]]
+        if non_context.empty:
+            continue
+        if "onset" in non_context.columns:
+            core_length = int(non_context["onset"].nunique(dropna=True))
+            if core_length == 0:
+                core_length = len(non_context)
+        else:
+            core_length = len(non_context)
+        if core_length not in length_counts:
+            length_counts[core_length] = 0
+        length_counts[core_length] += 1
+
+    return length_counts
+
+
+def count_ornaments_by_duration(
+    sequences_df: pd.DataFrame,
+) -> Dict[Fraction, int]:
+    """
+    Count the number of unique ornament sequences by their common duration value.
+
+    Parameters
+    ----------
+    sequences_df : pd.DataFrame
+        Output of find_ornament_sequences (may contain multiple sequence_id values).
+
+    Returns
+    -------
+    Dict[Fraction, int]
+        Dictionary mapping common duration values to counts of unique sequences.
+    """
+    duration_counts: Dict[Fraction, int] = {}
+
+    if sequences_df.empty:
+        return duration_counts
+
+    for seq_id, group in sequences_df.groupby("sequence_id"):
+        non_context = group[~group["is_context"]]
+        durations = non_context["duration"].unique()
+        if len(durations) != 1:
+            continue
+        duration_value = durations[0]
+        if duration_value not in duration_counts:
+            duration_counts[duration_value] = 0
+        duration_counts[duration_value] += 1
+
+    return duration_counts
