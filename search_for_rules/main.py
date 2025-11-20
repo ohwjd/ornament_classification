@@ -13,10 +13,17 @@ from search_for_rules.util import (
 from search_for_rules.search_operations import (
     find_ornament_sequences_abtab,
     find_ornament_sequences_raw,
+)
+
+from search_for_rules.filters import (
     filter_four_note_step_sequences,
     filter_non_chord_sequences,
     only_starting_chord_and_then_non_chord_sequences,
+)
+
+from search_for_rules.counters import (
     count_ornaments_by_length,
+    count_ornaments_by_duration,
 )
 
 from search_for_rules.preprocess import (
@@ -102,18 +109,23 @@ for f in [
     # Track counts for summary
     summary_counts = {}
     length_summary_records: List[Dict[str, object]] = []
+    duration_summary_records: List[Dict[str, object]] = []
 
     def record_length_summary(
         output_path: str, sequences_df: pd.DataFrame
     ) -> None:
-        counts = count_ornaments_by_length(sequences_df)
+        counts, length_seq_ids = count_ornaments_by_length(sequences_df)
         if counts:
             for seq_length, count in sorted(counts.items()):
+                seq_ids = length_seq_ids.get(seq_length, [])
                 length_summary_records.append(
                     {
                         "output_csv": output_path,
                         "sequence_length": int(seq_length),
                         "count": int(count),
+                        "sequence_ids": ",".join(
+                            [str(seq_id) for seq_id in seq_ids]
+                        ),
                     }
                 )
         else:
@@ -122,6 +134,39 @@ for f in [
                     "output_csv": output_path,
                     "sequence_length": pd.NA,
                     "count": 0,
+                    "sequence_ids": "",
+                }
+            )
+
+    def record_duration_summary(
+        output_path: str, sequences_df: pd.DataFrame
+    ) -> None:
+        counts, duration_seq_ids = count_ornaments_by_duration(sequences_df)
+        if counts:
+            for duration_value, count in sorted(
+                counts.items(),
+                key=lambda item: (
+                    float(item[0]) if hasattr(item[0], "__float__") else item[0]
+                ),
+            ):
+                seq_ids = duration_seq_ids.get(duration_value, [])
+                duration_summary_records.append(
+                    {
+                        "output_csv": output_path,
+                        "duration": str(duration_value),
+                        "count": int(count),
+                        "sequence_ids": ",".join(
+                            [str(seq_id) for seq_id in seq_ids]
+                        ),
+                    }
+                )
+        else:
+            duration_summary_records.append(
+                {
+                    "output_csv": output_path,
+                    "duration": pd.NA,
+                    "count": 0,
+                    "sequence_ids": "",
                 }
             )
 
@@ -140,6 +185,7 @@ for f in [
         )
         ornament_sequences_abtab.to_csv(voice_tab_path, index=False)
         record_length_summary(voice_tab_path, ornament_sequences_abtab)
+        record_duration_summary(voice_tab_path, ornament_sequences_abtab)
         summary_counts["tab_abtab"] = ornament_sequences_abtab[
             "sequence_id"
         ].nunique()
@@ -154,6 +200,7 @@ for f in [
             )
             voice_tab_four.to_csv(voice_tab_four_path, index=False, sep=";")
             record_length_summary(voice_tab_four_path, voice_tab_four)
+            record_duration_summary(voice_tab_four_path, voice_tab_four)
             summary_counts["tab_abtab_fourstep"] = voice_tab_four[
                 "sequence_id"
             ].nunique()
@@ -179,6 +226,9 @@ for f in [
         record_length_summary(
             voice_tab_eight_path, ornament_sequences_abtab_eight
         )
+        record_duration_summary(
+            voice_tab_eight_path, ornament_sequences_abtab_eight
+        )
         summary_counts["tab_abtab_eighth"] = ornament_sequences_abtab_eight[
             "sequence_id"
         ].nunique()
@@ -194,6 +244,9 @@ for f in [
                 voice_tab_eight_four_path, index=False, sep=";"
             )
             record_length_summary(
+                voice_tab_eight_four_path, voice_tab_eight_four
+            )
+            record_duration_summary(
                 voice_tab_eight_four_path, voice_tab_eight_four
             )
             summary_counts["tab_abtab_eighth_fourstep"] = voice_tab_eight_four[
@@ -216,6 +269,7 @@ for f in [
         raw_tab_path = os.path.join(file_output_dir, f"{base_name}_tab_raw.csv")
         ornament_sequences_raw.to_csv(raw_tab_path, index=False)
         record_length_summary(raw_tab_path, ornament_sequences_raw)
+        record_duration_summary(raw_tab_path, ornament_sequences_raw)
         summary_counts["tab_raw"] = ornament_sequences_raw[
             "sequence_id"
         ].nunique()
@@ -227,6 +281,7 @@ for f in [
             )
             raw_four.to_csv(raw_four_path, index=False, sep=";")
             record_length_summary(raw_four_path, raw_four)
+            record_duration_summary(raw_four_path, raw_four)
             summary_counts["tab_raw_fourstep"] = raw_four[
                 "sequence_id"
             ].nunique()
@@ -240,11 +295,48 @@ for f in [
             )
             raw_non_chord.to_csv(raw_non_chord_path, index=False, sep=";")
             record_length_summary(raw_non_chord_path, raw_non_chord)
+            record_duration_summary(raw_non_chord_path, raw_non_chord)
             summary_counts["tab_raw_non_chord"] = raw_non_chord[
                 "sequence_id"
             ].nunique()
         else:
             summary_counts["tab_raw_non_chord"] = 0
+
+        ornament_sequences_raw_eight = find_ornament_sequences_raw(
+            preprocessed_df,
+            max_ornament_duration_threshold=meter_info / 8,
+        )
+
+        if not ornament_sequences_raw_eight.empty:
+            raw_eight_path = os.path.join(
+                file_output_dir, f"{base_name}_tab_raw_eighth.csv"
+            )
+            ornament_sequences_raw_eight.to_csv(raw_eight_path, index=False)
+            record_length_summary(raw_eight_path, ornament_sequences_raw_eight)
+            record_duration_summary(
+                raw_eight_path, ornament_sequences_raw_eight
+            )
+            summary_counts["tab_raw_eighth"] = ornament_sequences_raw_eight[
+                "sequence_id"
+            ].nunique()
+            raw_eight_four = filter_four_note_step_sequences(
+                ornament_sequences_raw_eight
+            )
+            if not raw_eight_four.empty:
+                raw_eight_four_path = os.path.join(
+                    fourstep_dir,
+                    f"{base_name}_tab_raw_eighth_fourstep.csv",
+                )
+                raw_eight_four.to_csv(raw_eight_four_path, index=False, sep=";")
+                record_length_summary(raw_eight_four_path, raw_eight_four)
+                record_duration_summary(raw_eight_four_path, raw_eight_four)
+                summary_counts["tab_raw_eighth_fourstep"] = raw_eight_four[
+                    "sequence_id"
+                ].nunique()
+            else:
+                summary_counts["tab_raw_eighth_fourstep"] = 0
+        else:
+            summary_counts["tab_raw_eighth"] = 0
 
         raw_starting_chord = only_starting_chord_and_then_non_chord_sequences(
             ornament_sequences_raw
@@ -258,6 +350,7 @@ for f in [
                 raw_starting_chord_path, index=False, sep=";"
             )
             record_length_summary(raw_starting_chord_path, raw_starting_chord)
+            record_duration_summary(raw_starting_chord_path, raw_starting_chord)
             summary_counts["tab_raw_starting_chord"] = raw_starting_chord[
                 "sequence_id"
             ].nunique()
@@ -277,6 +370,7 @@ for f in [
         if not sequences_df.empty:
             sequences_df.to_csv(output_path, index=False)
             record_length_summary(output_path, sequences_df)
+            record_duration_summary(output_path, sequences_df)
             summary_counts[f"voice_{voice}"] = sequences_df[
                 "sequence_id"
             ].nunique()
@@ -289,6 +383,7 @@ for f in [
             if not filtered_four.empty:
                 filtered_four.to_csv(filtered_path, index=False, sep=";")
                 record_length_summary(filtered_path, filtered_four)
+                record_duration_summary(filtered_path, filtered_four)
                 summary_counts[f"voice_{voice}_fourstep"] = filtered_four[
                     "sequence_id"
                 ].nunique()
@@ -327,6 +422,7 @@ for f in [
         )
         merged_by_voice.to_csv(merged_path, index=False)
         record_length_summary(merged_path, merged_by_voice)
+        record_duration_summary(merged_path, merged_by_voice)
         summary_counts["voices_merged"] = merged_by_voice[
             "sequence_id"
         ].nunique()
@@ -339,6 +435,7 @@ for f in [
             )
             merged_four.to_csv(merged_four_path, index=False, sep=";")
             record_length_summary(merged_four_path, merged_four)
+            record_duration_summary(merged_four_path, merged_four)
             summary_counts["voices_merged_fourstep"] = merged_four[
                 "sequence_id"
             ].nunique()
@@ -347,9 +444,6 @@ for f in [
     else:
         summary_counts["voices_merged"] = 0
         summary_counts["voices_merged_fourstep"] = 0
-
-    length_counts = count_ornaments_by_length(ornament_sequences_abtab)
-    summary_counts.update({f"length_{k}": v for k, v in length_counts.items()})
 
     write_summary(
         file_output_dir,
@@ -369,6 +463,27 @@ for f in [
         length_summary_df = pd.DataFrame(length_summary_records)
     else:
         length_summary_df = pd.DataFrame(
-            columns=["output_csv", "sequence_length", "count"]
+            columns=[
+                "output_csv",
+                "sequence_length",
+                "count",
+                "sequence_ids",
+            ]
         )
     length_summary_df.to_csv(summary_csv_path, index=False)
+
+    duration_summary_csv_path = os.path.join(
+        file_output_dir, f"{base_name}_duration_summary.csv"
+    )
+    if duration_summary_records:
+        duration_summary_df = pd.DataFrame(duration_summary_records)
+    else:
+        duration_summary_df = pd.DataFrame(
+            columns=[
+                "output_csv",
+                "duration",
+                "count",
+                "sequence_ids",
+            ]
+        )
+    duration_summary_df.to_csv(duration_summary_csv_path, index=False)
