@@ -91,7 +91,6 @@ def find_ornament_sequences(
     df,
     max_ornament_duration_threshold=Fraction(1, 4),
     inclusive: bool = False,
-    merge_single_bridge: bool = True,
     add_context: bool = True,
     allow_variable_durations: bool = False,
 ):
@@ -105,9 +104,9 @@ def find_ornament_sequences(
       - One or more consecutive notes where category == 'ornamentation' AND
         duration < (or <= if inclusive=True) max_ornament_duration_threshold.
       - All ornament notes in a sequence must share the same duration value.
-      - If merge_single_bridge is True: two ornament runs of the same duration separated
-        by exactly one non-ornament note of that SAME duration are merged into a single sequence;
-        that bridging note is treated as part of the sequence (is_context = False).
+            - Two ornament runs of the same duration separated by exactly one non-ornament
+                note of that SAME duration are merged into a single sequence; that bridging
+                note is treated as part of the sequence (is_context = False).
       - After a sequence is delimited, optionally (add_context=True) include the note
         immediately before its first element and immediately after its last element (if they exist)
         marked with is_context=True.
@@ -120,8 +119,6 @@ def find_ornament_sequences(
         Upper bound for ornament note durations.
     inclusive : bool, default False
         If True, duration <= threshold counts; else strictly <.
-    merge_single_bridge : bool, default True
-        Merge ornament runs split by exactly one non-ornament of the same duration.
     add_context : bool, default True
         Whether to append the immediate pre/post notes of each sequence.
 
@@ -179,7 +176,7 @@ def find_ornament_sequences(
         else:
             if in_sequence:
                 can_bridge = False
-                if merge_single_bridge and (
+                if (
                     allow_variable_durations
                     or df.loc[i, "duration"] == base_duration
                 ):
