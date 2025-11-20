@@ -8,8 +8,7 @@ def filter_four_note_step_sequences(
 ):
     """
     Filter ornament sequences to those whose core ornamentation notes consist of
-    four unique onsets moving only by allowed semitone steps
-    (default: half or whole steps).
+    four unique onsets moving only by allowed semitone steps (default: half or whole steps).
 
         Assumptions:
             - Core notes are determined solely from the ordering of non-context rows.
@@ -46,6 +45,21 @@ def filter_four_note_step_sequences(
     if sequences_df.empty:
         return sequences_df.head(0).copy()
 
+    allowed_step_values = set()
+    for interval in allowed_intervals:
+        try:
+            if pd.isna(interval):
+                continue
+        except TypeError:
+            pass
+        try:
+            allowed_step_values.add(abs(float(interval)))
+        except (TypeError, ValueError):
+            continue
+
+    if not allowed_step_values:
+        return sequences_df.head(0).copy()
+
     def _format_voice_label(val):
         if pd.isna(val):
             return "unknown"
@@ -63,6 +77,45 @@ def filter_four_note_step_sequences(
             if label not in unique_labels:
                 unique_labels.append(label)
         return "[" + ", ".join(unique_labels) + "]"
+
+    def _normalize_pitch(val):
+        if pd.isna(val):
+            return None
+        try:
+            return float(val)
+        except (TypeError, ValueError):
+            return None
+
+    def _generate_stepwise_paths(pitch_options):
+        paths: List[List[float]] = []
+
+        def backtrack(index: int, current: List[float]):
+            if index == len(pitch_options):
+                paths.append(current.copy())
+                return
+            for pitch in pitch_options[index]:
+                if (
+                    not current
+                    or abs(pitch - current[-1]) in allowed_step_values
+                ):
+                    current.append(pitch)
+                    backtrack(index + 1, current)
+                    current.pop()
+
+        backtrack(0, [])
+        return paths
+
+    def _is_non_decreasing(values: List[float]) -> bool:
+        return all(values[i + 1] >= values[i] for i in range(len(values) - 1))
+
+    def _is_non_increasing(values: List[float]) -> bool:
+        return all(values[i + 1] <= values[i] for i in range(len(values) - 1))
+
+    def _is_strictly_increasing(values: List[float]) -> bool:
+        return all(values[i + 1] > values[i] for i in range(len(values) - 1))
+
+    def _is_strictly_decreasing(values: List[float]) -> bool:
+        return all(values[i + 1] < values[i] for i in range(len(values) - 1))
 
     qualifying_seq_ids = []
     seq_comments = {}
@@ -98,9 +151,53 @@ def filter_four_note_step_sequences(
         if len(core) != ORNAMENT_ONSET_COUNT:
             continue
 
-        pitches = core["pitch"].tolist()
-        if any(pd.isna(p) for p in pitches):
+        pitch_options: List[List[float]] = []
+        invalid_pitch_found = False
+        for onset_value in core["onset"].tolist():
+            onset_rows = ordered[ordered["onset"] == onset_value]
+            normalized_pitches = [
+                normalized
+                for normalized in (
+                    _normalize_pitch(val)
+                    for val in onset_rows["pitch"].tolist()
+                )
+                if normalized is not None
+            ]
+            if not normalized_pitches:
+                invalid_pitch_found = True
+                break
+            pitch_options.append(normalized_pitches)
+        if invalid_pitch_found:
             continue
+
+        stepwise_paths = _generate_stepwise_paths(pitch_options)
+        if not stepwise_paths:
+            continue
+
+        strictly_increasing_paths = [
+            path for path in stepwise_paths if _is_strictly_increasing(path)
+        ]
+        strictly_decreasing_paths = [
+            path for path in stepwise_paths if _is_strictly_decreasing(path)
+        ]
+        non_decreasing_paths = [
+            path for path in stepwise_paths if _is_non_decreasing(path)
+        ]
+        non_increasing_paths = [
+            path for path in stepwise_paths if _is_non_increasing(path)
+        ]
+
+        if strictly_increasing_paths:
+            pitches = strictly_increasing_paths[0]
+        elif strictly_decreasing_paths:
+            pitches = strictly_decreasing_paths[0]
+        elif non_decreasing_paths:
+            pitches = non_decreasing_paths[0]
+        elif non_increasing_paths:
+            pitches = non_increasing_paths[0]
+        else:
+            pitches = stepwise_paths[0]
+
         try:
             diffs = [
                 abs(pitches[i + 1] - pitches[i])
@@ -108,23 +205,20 @@ def filter_four_note_step_sequences(
             ]
         except Exception:
             continue
-        if not all(d in allowed_intervals for d in diffs):
+
+        if len(pitches) != ORNAMENT_ONSET_COUNT:
             continue
 
-        non_decreasing = all(
-            pitches[i + 1] >= pitches[i] for i in range(len(pitches) - 1)
-        )
-        non_increasing = all(
-            pitches[i + 1] <= pitches[i] for i in range(len(pitches) - 1)
-        )
+        if not all(d in allowed_step_values for d in diffs):
+            continue
+
+        non_decreasing = _is_non_decreasing(pitches)
+        non_increasing = _is_non_increasing(pitches)
         monotonic = non_decreasing or non_increasing
 
-        strictly_increasing = all(
-            pitches[i + 1] > pitches[i] for i in range(len(pitches) - 1)
-        )
-        strictly_decreasing = all(
-            pitches[i + 1] < pitches[i] for i in range(len(pitches) - 1)
-        )
+        strictly_increasing = _is_strictly_increasing(pitches)
+        strictly_decreasing = _is_strictly_decreasing(pitches)
+
         if strictly_increasing:
             directional_allowed = {7, -5}
         elif strictly_decreasing:

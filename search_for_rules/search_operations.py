@@ -210,7 +210,7 @@ def find_ornament_sequences_abtab(
         - After a sequence is delimited, include the entire onset
             immediately preceding its first element and the entire onset
             immediately following its last element as context (is_context=True).
-        - Any adjacent notes sharing the base ornament duration are absorbed into the sequence.
+        - Any adjacent notes sharing the base ornament duration are absorbed into the sequence
 
     Parameters
     ----------
@@ -218,8 +218,6 @@ def find_ornament_sequences_abtab(
         Voice-specific DataFrame (assumed already filtered per voice and preprocessed).
     max_ornament_duration_threshold : Fraction or numeric, default 1/4
         Upper bound for ornament note durations.
-    voice_col : str, default "voice"
-        Column name indicating the voice label (kept for API symmetry; not modified).
 
     Returns
     -------

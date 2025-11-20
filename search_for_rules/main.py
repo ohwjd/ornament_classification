@@ -24,6 +24,8 @@ from search_for_rules.filters import (
 from search_for_rules.counters import (
     count_ornaments_by_length,
     count_ornaments_by_duration,
+    count_abrupt_duration_changes,
+    count_consonant_beginning_sequences,
 )
 
 from search_for_rules.preprocess import (
@@ -189,6 +191,27 @@ for f in [
         summary_counts["tab_abtab"] = ornament_sequences_abtab[
             "sequence_id"
         ].nunique()
+        abrupt_count, abrupt_ids = count_abrupt_duration_changes(
+            ornament_sequences_abtab
+        )
+        (
+            consonant_count,
+            non_consonant_ids,
+        ) = count_consonant_beginning_sequences(ornament_sequences_abtab)
+        summary_counts["tab_abtab_count_abrupt_duration_changes"] = abrupt_count
+        summary_counts["tab_abtab_count_consonant_beginning_sequences"] = (
+            consonant_count
+        )
+        if abrupt_count > 0:
+            summary_counts["tab_abtab_abrupt_duration_change_sequence_ids"] = (
+                "[" + ",".join(str(seq_id) for seq_id in abrupt_ids) + "]"
+            )
+        if non_consonant_ids:
+            summary_counts["tab_abtab_non_consonant_beginning_sequence_ids"] = (
+                "["
+                + ",".join(str(seq_id) for seq_id in non_consonant_ids)
+                + "]"
+            )
         # Four-note variant for ornament
         voice_tab_four = filter_four_note_step_sequences(
             ornament_sequences_abtab
@@ -211,6 +234,8 @@ for f in [
             {
                 "tab_abtab": 0,
                 "tab_abtab_fourstep": 0,
+                "tab_abtab_count_abrupt_duration_changes": 0,
+                "tab_abtab_count_consonant_beginning_sequences": 0,
             }
         )
 
@@ -232,6 +257,27 @@ for f in [
         summary_counts["tab_abtab_eighth"] = ornament_sequences_abtab_eight[
             "sequence_id"
         ].nunique()
+        abrupt_eight_count, abrupt_eight_ids = count_abrupt_duration_changes(
+            ornament_sequences_abtab_eight
+        )
+        (
+            consonant_eight_count,
+            non_consonant_eight_ids,
+        ) = count_consonant_beginning_sequences(ornament_sequences_abtab_eight)
+        if abrupt_eight_count > 0:
+            summary_counts[
+                "tab_abtab_eighth_abrupt_duration_change_sequence_ids"
+            ] = (
+                "[" + ",".join(str(seq_id) for seq_id in abrupt_eight_ids) + "]"
+            )
+        if non_consonant_eight_ids:
+            summary_counts[
+                "tab_abtab_eighth_non_consonant_beginning_sequence_ids"
+            ] = (
+                "["
+                + ",".join(str(seq_id) for seq_id in non_consonant_eight_ids)
+                + "]"
+            )
         voice_tab_eight_four = filter_four_note_step_sequences(
             ornament_sequences_abtab_eight
         )
@@ -273,6 +319,29 @@ for f in [
         summary_counts["tab_raw"] = ornament_sequences_raw[
             "sequence_id"
         ].nunique()
+        raw_abrupt_count, raw_abrupt_ids = count_abrupt_duration_changes(
+            ornament_sequences_raw
+        )
+        (
+            raw_consonant_count,
+            raw_non_consonant_ids,
+        ) = count_consonant_beginning_sequences(ornament_sequences_raw)
+        summary_counts["tab_raw_count_abrupt_duration_changes"] = (
+            raw_abrupt_count
+        )
+        summary_counts["tab_raw_count_consonant_beginning_sequences"] = (
+            raw_consonant_count
+        )
+        if raw_abrupt_count > 0:
+            summary_counts["tab_raw_abrupt_duration_change_sequence_ids"] = (
+                "[" + ",".join(str(seq_id) for seq_id in raw_abrupt_ids) + "]"
+            )
+        if raw_non_consonant_ids:
+            summary_counts["tab_raw_non_consonant_beginning_sequence_ids"] = (
+                "["
+                + ",".join(str(seq_id) for seq_id in raw_non_consonant_ids)
+                + "]"
+            )
         raw_four = filter_four_note_step_sequences(ornament_sequences_raw)
         if not raw_four.empty:
             raw_four_path = os.path.join(
@@ -319,6 +388,34 @@ for f in [
             summary_counts["tab_raw_eighth"] = ornament_sequences_raw_eight[
                 "sequence_id"
             ].nunique()
+            (
+                raw_eight_abrupt_count,
+                raw_eight_abrupt_ids,
+            ) = count_abrupt_duration_changes(ornament_sequences_raw_eight)
+            (
+                raw_eight_consonant_count,
+                raw_eight_non_consonant_ids,
+            ) = count_consonant_beginning_sequences(
+                ornament_sequences_raw_eight
+            )
+            if raw_eight_abrupt_count > 0:
+                summary_counts[
+                    "tab_raw_eighth_abrupt_duration_change_sequence_ids"
+                ] = (
+                    "["
+                    + ",".join(str(seq_id) for seq_id in raw_eight_abrupt_ids)
+                    + "]"
+                )
+            if raw_eight_non_consonant_ids:
+                summary_counts[
+                    "tab_raw_eighth_non_consonant_beginning_sequence_ids"
+                ] = (
+                    "["
+                    + ",".join(
+                        str(seq_id) for seq_id in raw_eight_non_consonant_ids
+                    )
+                    + "]"
+                )
             raw_eight_four = filter_four_note_step_sequences(
                 ornament_sequences_raw_eight
             )
@@ -359,6 +456,9 @@ for f in [
     else:
         summary_counts["tab_raw"] = 0
         summary_counts["tab_raw_fourstep"] = 0
+        summary_counts["tab_raw_count_abrupt_duration_changes"] = 0
+        summary_counts["tab_raw_count_consonant_beginning_sequences"] = 0
+        summary_counts["tab_raw_eighth"] = 0
 
     merged_by_voice_parts = []
     merged_sequence_offset = 0
