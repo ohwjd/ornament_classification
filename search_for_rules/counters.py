@@ -225,11 +225,10 @@ def count_consonant_beginning_sequences(
     sequences_df: pd.DataFrame,
 ) -> Tuple[int, List[int]]:
     """
-    Count the number of unique ornament sequences that begin with a consonant pitch span (or with a single note).
+    Count the number of unique ornament sequences that begin with a consonant interval (or with a single note).
 
-    A consonant span is defined as a unison, minor third, major third, perfect fourth,
-    perfect fifth, minor sixth, major sixth, or octave, evaluated via MIDI semitone
-    differences (absolute span and mod-12 class).
+    A consonant interval is defined as a unison, minor third, major third, perfect fourth,
+    perfect fifth, minor sixth, major sixth, or octave, evaluated modulo twelve semitones.
 
     Parameters
     ----------
@@ -278,19 +277,34 @@ def count_consonant_beginning_sequences(
 
         note_count = int(same_onset_rows.shape[0])
 
-        interval_classes = set()
-        if "pitch" in same_onset_rows.columns:
+        interval_classes: List[int] = []
+        if "interval" in same_onset_rows.columns:
+            unique_intervals = same_onset_rows["interval"].dropna().unique()
+            for raw_interval in unique_intervals:
+                try:
+                    numeric_interval = float(raw_interval)
+                except (TypeError, ValueError):
+                    continue
+                if pd.isna(numeric_interval):
+                    continue
+                numeric_interval = int(round(numeric_interval))
+                # Capture the exact semitone span and its reduced class so octaves and extended consonances match.
+                interval_classes.append(abs(numeric_interval))
+                interval_classes.append(abs(numeric_interval) % 12)
+
+        if not interval_classes and "pitch" in same_onset_rows.columns:
+            # Derive intervals from MIDI pitches when explicit interval data is absent.
             pitch_series = same_onset_rows["pitch"].dropna()
             if not pitch_series.empty:
                 pitches = [int(round(p)) for p in pitch_series.tolist()]
                 if len(pitches) == 1:
-                    interval_classes.add(0)
+                    interval_classes.append(0)
                 else:
                     for i in range(len(pitches)):
                         for j in range(i + 1, len(pitches)):
                             diff = abs(pitches[i] - pitches[j])
-                            interval_classes.add(diff)
-                            interval_classes.add(diff % 12)
+                            interval_classes.append(diff)
+                            interval_classes.append(diff % 12)
 
         # Evaluate all notes at the first onset to capture chord consonance modulo 12.
         is_consonant = any(
