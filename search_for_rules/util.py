@@ -237,9 +237,7 @@ def create_latex_table(
     for key in ("category", "tuning", "meter_info", "bar_num", "diminution"):
         value = header_info.get(key)
         if value not in (None, ""):
-            caption_parts.append(
-                f"{latex_escape(key)}: {latex_escape(value)}"
-            )
+            caption_parts.append(f"{latex_escape(key)}: {latex_escape(value)}")
 
     if caption_parts:
         latex_lines.append(f"\\caption{{{' ; '.join(caption_parts)}}}")
