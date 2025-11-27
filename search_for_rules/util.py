@@ -195,12 +195,12 @@ def create_latex_table(
     columns = ["count"]
     pretty_names = {
         "count": "count",
-        "eighth": "8th",
-        "eighth_fourstep": "8th 4-step",
-        "fourstep": "4-step",
-        "count_abrupt_duration_changes": "abrupt",
+        "eighth": "eighth",
+        "eighth_fourstep": "eighth fourstep",
+        "fourstep": "fourstep",
+        "count_abrupt_duration_changes": "abrupt dur changes",
         "abrupt_duration_change_sequence_ids": None,
-        "count_consonant_beginning_sequences": "cons start",
+        "count_consonant_beginning_sequences": "consonant start",
         "non_chord": "non-chord",
         "starting_chord": "start chord",
     }
@@ -240,7 +240,7 @@ def create_latex_table(
             caption_parts.append(f"{latex_escape(key)}: {latex_escape(value)}")
 
     if caption_parts:
-        latex_lines.append(f"\\caption{{{' ; '.join(caption_parts)}}}")
+        latex_lines.append(f"\\caption{{{'; '.join(caption_parts)}}}")
 
     latex_lines.append(f"\\begin{{tabular}}{{{col_spec}}}")
     latex_lines.append("\\hline")
@@ -250,7 +250,7 @@ def create_latex_table(
         pretty = pretty_names.get(col, col)
         if not pretty:
             continue
-        header_cells.append(latex_escape(pretty))
+        header_cells.append(f"\\rotatebox{{90}}{{{latex_escape(pretty)}}}")
 
     row_end = " \\\\"  # space then LaTeX line break
     latex_lines.append(" & ".join(header_cells) + row_end)
