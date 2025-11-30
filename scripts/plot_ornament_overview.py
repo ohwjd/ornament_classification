@@ -10,15 +10,61 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
-DEFAULT_FIGURE_PATH = OUTPUT_DIR / "ornament_overview.png"
-DEFAULT_LATEX_PATH = OUTPUT_DIR / "ornament_top_tables.tex"
+DEFAULT_COUNTS_FIGURE_PATH = OUTPUT_DIR / "ornament_counts_breakdown.png"
+
+CM_TO_IN = 1 / 2.54
+BASE_SUBPLOT_HEIGHT_IN = 5.0
+ADDITIONAL_SUBPLOT_HEIGHT_CM = 2.0
+TOP_PADDING_MM = 3.0
+
 NUMERIC_FIELDS = {
     "bar_num",
     "tab",
     "tab_fourstep",
     "tab_raw",
     "tab_raw_fourstep",
+    "abtab",
+    "abtab_fourstep",
+    "abtab_count_abrupt_duration_changes",
+    "abtab_count_consonant_beginning_sequences",
+    "abtab_non_chord",
+    "raw",
+    "raw_fourstep",
+    "raw_count_abrupt_duration_changes",
+    "raw_count_consonant_beginning_sequences",
+    "raw_non_chord",
 }
+
+COUNT_METRICS = {
+    "abtab": {
+        "Count": "abtab",
+        "Abrupt dur changes": "abtab_count_abrupt_duration_changes",
+        "Non-consonant start": "abtab_non_consonant_start",
+        "Fourstep": "abtab_fourstep",
+        "Non-chord": "abtab_non_chord",
+    },
+    "raw": {
+        "Count": "raw",
+        "Abrupt dur changes": "raw_count_abrupt_duration_changes",
+        "Non-consonant start": "raw_non_consonant_start",
+        "Fourstep": "raw_fourstep",
+        "Non-chord": "raw_non_chord",
+    },
+}
+
+
+def _add_non_consonant_start_column(
+    frame: pd.DataFrame,
+    *,
+    total_col: str,
+    consonant_col: str,
+    target_col: str,
+) -> None:
+    """Derive non-consonant count from total and consonant-start counts."""
+    if total_col in frame.columns and consonant_col in frame.columns:
+        total = frame[total_col].fillna(0)
+        consonant = frame[consonant_col].fillna(0)
+        frame[target_col] = (total - consonant).clip(lower=0)
 
 
 def parse_summary_file(summary_path: Path) -> Dict[str, int | float | str]:
@@ -48,7 +94,7 @@ def parse_summary_file(summary_path: Path) -> Dict[str, int | float | str]:
         if field not in metrics:
             continue
         raw_value = metrics[field]
-        if raw_value in {None, "", "None"}:
+        if raw_value in {None, "", "None", "--"}:
             metrics[field] = None
             continue
         try:
@@ -77,7 +123,7 @@ def collect_metrics(output_root: Path) -> pd.DataFrame:
         raise RuntimeError(f"No summary files found under {output_root}")
 
     frame = pd.DataFrame(records)
-    required_columns = {"piece", "bar_num", "tab_raw", "tab_raw_fourstep"}
+    required_columns = {"piece", "bar_num"}
     missing = required_columns - set(frame.columns)
     if missing:
         raise RuntimeError(
@@ -92,211 +138,80 @@ def collect_metrics(output_root: Path) -> pd.DataFrame:
     frame["bar_num"] = frame["bar_num"].astype(int)
     frame = frame.sort_values("bar_num").reset_index(drop=True)
 
-    frame["mean_tab_raw_per_bar"] = frame["tab_raw"] / frame["bar_num"]
-    frame["mean_tab_raw_fourstep_per_bar"] = (
-        frame["tab_raw_fourstep"] / frame["bar_num"]
+    _add_non_consonant_start_column(
+        frame,
+        total_col="abtab",
+        consonant_col="abtab_count_consonant_beginning_sequences",
+        target_col="abtab_non_consonant_start",
     )
+    _add_non_consonant_start_column(
+        frame,
+        total_col="raw",
+        consonant_col="raw_count_consonant_beginning_sequences",
+        target_col="raw_non_consonant_start",
+    )
+
+    safe_bars = frame["bar_num"].replace(0, pd.NA)
+
+    if "tab_raw" in frame.columns:
+        frame["mean_tab_raw_per_bar"] = frame["tab_raw"] / safe_bars
+    if "tab_raw_fourstep" in frame.columns:
+        frame["mean_tab_raw_fourstep_per_bar"] = (
+            frame["tab_raw_fourstep"] / safe_bars
+        )
+    if "abtab" in frame.columns:
+        frame["mean_abtab_per_bar"] = frame["abtab"] / safe_bars
+    if "abtab_fourstep" in frame.columns:
+        frame["mean_abtab_fourstep_per_bar"] = (
+            frame["abtab_fourstep"] / safe_bars
+        )
+    if "raw" in frame.columns:
+        frame["mean_raw_per_bar"] = frame["raw"] / safe_bars
+    if "raw_fourstep" in frame.columns:
+        frame["mean_raw_fourstep_per_bar"] = frame["raw_fourstep"] / safe_bars
 
     return frame
 
 
-def _escape_latex(value: str) -> str:
-    """Escape a string for safe use in LaTeX tabular output."""
-    replacements = {
-        "\\": r"\textbackslash{}",
-        "&": r"\&",
-        "%": r"\%",
-        "$": r"\$",
-        "#": r"\#",
-        "_": r"\_",
-        "{": r"\{",
-        "}": r"\}",
-        "~": r"\textasciitilde{}",
-        "^": r"\textasciicircum{}",
-    }
-    escaped = value
-    for original, replacement in replacements.items():
-        escaped = escaped.replace(original, replacement)
-    return escaped
-
-
-def _slugify(value: str) -> str:
-    """Return a file-system friendly slug derived from the given value."""
-    if not value:
-        return "unknown"
-    slug_chars = [ch.lower() if ch.isalnum() else "_" for ch in value]
-    slug = "".join(slug_chars).strip("_")
-    while "__" in slug:
-        slug = slug.replace("__", "_")
-    return slug or "unknown"
-
-
-def generate_latex_tables(frame: pd.DataFrame, tex_path: Path) -> None:
-    """Create individual LaTeX tables with the top ten entries per metric."""
-    metrics = [
-        (
-            "tab",
-            "Top 10 pieces by tab ornaments",
-            "tab ornaments",
-        ),
-        (
-            "tab_raw",
-            "Top 10 pieces by tab raw ornaments",
-            "tab raw ornaments",
-        ),
-        (
-            "tab_raw_fourstep",
-            "Top 10 pieces by four-step raw ornaments",
-            "tab raw fourstep ornaments",
-        ),
-        (
-            "mean_tab_raw_per_bar",
-            "Top 10 pieces by ornaments per bar (tab raw)",
-            "mean tab raw per bar",
-        ),
-        (
-            "mean_tab_raw_fourstep_per_bar",
-            "Top 10 pieces by ornaments per bar (tab raw fourstep)",
-            "mean tab raw fourstep per bar",
-        ),
-    ]
-
-    lines: List[str] = [
-        "% Auto-generated LaTeX tables listing ornament statistics.",
-        "% Generated by plot_ornament_overview.py",
-        "",
-    ]
-
-    def _format_value(value: float) -> str:
-        if pd.isna(value):
-            return "--"
-        if float(value).is_integer():
-            return f"{int(value)}"
-        return f"{value:.3f}"
-
-    if "category" in frame.columns:
-        categories = [
-            str(category)
-            for category in sorted(frame["category"].dropna().unique())
-        ]
-    else:
-        categories = [None]
-
-    for category in categories:
-        category_frame = (
-            frame.copy()
-            if category is None
-            else frame[frame["category"] == category].copy()
-        )
-
-        if category_frame.empty:
-            continue
-
-        if category is not None:
-            lines.extend([f"% Category: {category}", ""])
-
-        for column, caption, col_label in metrics:
-            if column not in category_frame.columns:
-                continue
-            subset = category_frame[["piece", "bar_num", column]].dropna()
-            if subset.empty:
-                continue
-            top_ten = subset.sort_values(column, ascending=False).head(10)
-
-            caption_text = (
-                caption if category is None else f"{caption} ({category})"
-            )
-
-            lines.extend(
-                [
-                    r"\begin{table}[htbp]",
-                    r"  \centering",
-                    f"  \\caption{{{_escape_latex(caption_text)}}}",
-                    r"  \begin{tabular}{lrr}",
-                    r"    \toprule",
-                    r"    Piece & Bars & " + _escape_latex(col_label) + r" \\",
-                    r"    \midrule",
-                ]
-            )
-
-            for _, row in top_ten.iterrows():
-                piece = _escape_latex(str(row["piece"]))
-                bars = _format_value(row["bar_num"])
-                metric_value = _format_value(row[column])
-                lines.append(
-                    "    {} & {} & {} \\\\".format(piece, bars, metric_value)
-                )
-
-            lines.extend(
-                [
-                    r"    \bottomrule",
-                    r"  \end{tabular}",
-                    r"\end{table}",
-                    "",
-                ]
-            )
-
-    tex_path.parent.mkdir(parents=True, exist_ok=True)
-    tex_path.write_text("\n".join(lines), encoding="utf-8")
-
-
-def plot_overview(
+def plot_count_breakdown(
     frame: pd.DataFrame,
     figure_path: Path,
     title_suffix: str | None = None,
 ) -> None:
-    """Create the overview figure with the requested subplots."""
-    metrics = [
-        ("tab", "Tab ornaments (absolute)", "Total ornaments (tab)", "#1f77b4"),
-        (
-            "tab_raw",
-            "Tab raw ornaments (absolute)",
-            "Total ornaments (tab_raw)",
-            "#ff7f0e",
-        ),
-        (
-            "tab_raw_fourstep",
-            "Tab raw fourstep ornaments (absolute)",
-            "Total ornaments (tab_raw_fourstep)",
-            "#2ca02c",
-        ),
-        (
-            "mean_tab_raw_per_bar",
-            "Average ornaments per bar (tab_raw)",
-            "Ornaments per bar",
-            "#d62728",
-        ),
-        (
-            "mean_tab_raw_fourstep_per_bar",
-            "Average ornaments per bar (tab_raw_fourstep)",
-            "Ornaments per bar",
-            "#9467bd",
-        ),
-    ]
+    """Plot aggregate counts for the main extraction sources."""
 
-    fig, axes = plt.subplots(len(metrics), 1, figsize=(14, 28), sharex=True)
-    figure_title = "Ornament metrics across pieces"
+    sources = list(COUNT_METRICS.items())
+    if not sources:
+        raise RuntimeError("No count metric definitions available.")
+
+    subplot_height_in = (
+        BASE_SUBPLOT_HEIGHT_IN + ADDITIONAL_SUBPLOT_HEIGHT_CM * CM_TO_IN
+    )
+    fig_height = subplot_height_in * len(sources)
+    fig, axes = plt.subplots(
+        len(sources), 1, figsize=(12, fig_height), sharex=False
+    )
+    if len(sources) == 1:
+        axes = [axes]
+
+    figure_title = "Summary of Ornament Counts"
     if title_suffix:
         figure_title = f"{figure_title} ({title_suffix})"
     fig.suptitle(figure_title, fontsize=16)
 
-    for ax, (column, title, ylabel, color) in zip(axes, metrics):
-        if column not in frame.columns:
-            ax.text(
-                0.5,
-                0.5,
-                "Metric not available",
-                transform=ax.transAxes,
-                ha="center",
-                va="center",
-            )
-            ax.set_title(title)
-            ax.set_ylabel(ylabel)
-            ax.grid(True, linestyle="--", alpha=0.3)
-            continue
+    for ax, (source_name, metric_map) in zip(axes, sources):
+        labels: List[str] = []
+        values: List[float] = []
 
-        subset = frame.dropna(subset=["bar_num", column])
-        if subset.empty:
+        for display_label, column_name in metric_map.items():
+            labels.append(display_label)
+            if column_name not in frame.columns:
+                values.append(0.0)
+                continue
+            numeric_series = pd.to_numeric(frame[column_name], errors="coerce")
+            values.append(float(numeric_series.fillna(0).sum()))
+
+        if not any(values):
             ax.text(
                 0.5,
                 0.5,
@@ -305,53 +220,42 @@ def plot_overview(
                 ha="center",
                 va="center",
             )
-            ax.set_title(title)
-            ax.set_ylabel(ylabel)
+            ax.set_title(source_name.replace("_", " ").title())
+            ax.set_ylabel("Total count")
             ax.grid(True, linestyle="--", alpha=0.3)
             continue
-        ax.scatter(
-            subset["bar_num"],
-            subset[column],
-            color=color,
-            alpha=0.75,
-            edgecolor="black",
-            linewidth=0.5,
-        )
 
-        data_max = subset[column].max()
-        data_min = subset[column].min()
-        span = max(data_max - data_min, 0.1)
+        bar_positions = range(len(labels))
+        cmap = plt.get_cmap("tab10")
+        colors = [cmap(i % 10) for i in range(len(labels))]
+        bars = ax.bar(bar_positions, values, color=colors, alpha=0.85)
+        ax.set_xticks(list(bar_positions))
+        ax.set_xticklabels(labels, rotation=20, ha="right")
+        ax.set_ylabel("Total count")
+        ax.set_title(source_name.replace("_", " ").title())
+        ax.grid(True, axis="y", linestyle="--", alpha=0.3)
 
-        for _, row in subset.iterrows():
-            label_text = row.get("label") or row.get("piece") or ""
-            if not label_text:
-                continue
-            label_text = label_text[:12]
-            x_val = float(row["bar_num"])
-            y_val = float(row[column])
-            ax.annotate(
-                label_text,
-                (x_val, y_val),
-                textcoords="offset points",
-                xytext=(3, -2),
-                fontsize=6,
-                rotation=15,
-                ha="left",
+        if values:
+            y_max = max(values)
+            ax.set_ylim(0, y_max * 1.15)
+            label_offset = y_max * 0.04
+        else:
+            label_offset = 0.0
+
+        for rect, value in zip(bars, values):
+            height = rect.get_height()
+            ax.text(
+                rect.get_x() + rect.get_width() / 2,
+                height + label_offset,
+                f"{value:.0f}",
+                ha="center",
                 va="bottom",
+                fontsize=8,
             )
 
-        headroom = span * 0.15
-        ymin, ymax = ax.get_ylim()
-        target_top = data_max + headroom
-        if target_top > ymax:
-            ax.set_ylim(ymin, target_top)
-        ax.set_title(title)
-        ax.set_ylabel(ylabel)
-        ax.grid(True, linestyle="--", alpha=0.3)
-
-    axes[-1].set_xlabel("Number of bars (bar_num)")
-    fig.tight_layout(rect=(0, 0, 1, 0.98), h_pad=2.0)
-
+    top_padding_in = (TOP_PADDING_MM / 10.0) * CM_TO_IN
+    top_rect = max(0.0, 1 - (top_padding_in / fig_height if fig_height else 0))
+    fig.tight_layout(rect=(0, 0, 1, top_rect))
     figure_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(figure_path, dpi=300)
     plt.close(fig)
@@ -368,48 +272,17 @@ def main() -> None:
         help="Root directory containing subfolders with summary files.",
     )
     parser.add_argument(
-        "--figure-path",
+        "--counts-figure-path",
         type=Path,
-        default=DEFAULT_FIGURE_PATH,
-        help="Path to the plotted PNG file.",
-    )
-    parser.add_argument(
-        "--latex-path",
-        type=Path,
-        default=DEFAULT_LATEX_PATH,
-        help="Destination path for the generated LaTeX tables.",
+        default=DEFAULT_COUNTS_FIGURE_PATH,
+        help="Path to the aggregate counts PNG file.",
     )
     args = parser.parse_args()
 
     frame = collect_metrics(args.output_dir)
-    categories_present = (
-        "category" in frame.columns and not frame["category"].isna().all()
-    )
 
-    if categories_present:
-        categories = [
-            str(category)
-            for category in sorted(frame["category"].dropna().unique())
-        ]
-        for category in categories:
-            category_frame = frame[frame["category"] == category]
-            if category_frame.empty:
-                continue
-            category_figure_path = args.figure_path.with_name(
-                f"{args.figure_path.stem}_{_slugify(category)}{args.figure_path.suffix}"
-            )
-            plot_overview(
-                category_frame,
-                category_figure_path,
-                title_suffix=f"Category: {category}",
-            )
-            print(f"Saved figure to {category_figure_path}")
-    else:
-        plot_overview(frame, args.figure_path)
-        print(f"Saved figure to {args.figure_path}")
-
-    generate_latex_tables(frame, args.latex_path)
-    print(f"Wrote LaTeX tables to {args.latex_path}")
+    plot_count_breakdown(frame, args.counts_figure_path)
+    print(f"Saved counts figure to {args.counts_figure_path}")
 
 
 if __name__ == "__main__":

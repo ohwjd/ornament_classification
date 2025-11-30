@@ -198,7 +198,7 @@ def create_latex_table(
         "eighth": "eighth",
         "eighth_fourstep": "eighth fourstep",
         "fourstep": "fourstep",
-        "count_abrupt_duration_changes": "abrupt dur changes",
+        "count_abrupt_duration_changes": "abrupt dur changes  ",
         "abrupt_duration_change_sequence_ids": None,
         "count_consonant_beginning_sequences": "consonant start",
         "non_chord": "non-chord",
@@ -239,8 +239,16 @@ def create_latex_table(
         if value not in (None, ""):
             caption_parts.append(f"{latex_escape(key)}: {latex_escape(value)}")
 
+    label_text = None
+    if base_name:
+        label_seed = base_name[:7]
+        label_seed_sanitized = "".join(ch for ch in label_seed)
+        label_text = f"tab:results_{label_seed_sanitized}"
+
     if caption_parts:
         latex_lines.append(f"\\caption{{{'; '.join(caption_parts)}}}")
+    if label_text:
+        latex_lines.append(f"\\label{{{label_text}}}")
 
     latex_lines.append(f"\\begin{{tabular}}{{{col_spec}}}")
     latex_lines.append("\\hline")

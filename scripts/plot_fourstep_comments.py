@@ -101,9 +101,49 @@ def collect_comment_counts() -> OrderedDict[str, Counter[str]]:
     return counts
 
 
-def _safe_plot_name(csv_label: str) -> str:
-    """Return a filesystem-friendly plot name derived from the CSV label."""
-    return csv_label.replace("/", "__").replace(" ", "_")
+def _extract_type_from_filename(csv_label: str) -> str:
+    """Grab the ornament type token from the CSV filename."""
+    stem = Path(csv_label).stem
+    if stem.endswith("_fourstep"):
+        stem = stem[: -len("_fourstep")]
+
+    if "_tab_" in stem:
+        type_token = stem.rsplit("_tab_", 1)[-1]
+    elif "_" in stem:
+        type_token = stem.rsplit("_", 1)[-1]
+    else:
+        type_token = stem
+
+    return type_token or "unknown"
+
+
+def _title_components(csv_label: str) -> tuple[str, str]:
+    """Return the shortened stem and ornament type for labelling."""
+    stem = Path(csv_label).stem or "plot"
+    short_name = stem[:15] or "plot"
+    ornament_type = _extract_type_from_filename(csv_label)
+    return short_name, ornament_type
+
+
+def _build_plot_title(csv_label: str) -> str:
+    """Return shortened filename and type suitable for the plot title."""
+    short_name, ornament_type = _title_components(csv_label)
+    return f"{short_name} ({ornament_type})"
+
+
+def _slugify(value: str) -> str:
+    """Convert an arbitrary string to a filesystem-friendly slug."""
+    slug = "".join(ch.lower() if ch.isalnum() else "_" for ch in value)
+    slug = "_".join(filter(None, slug.split("_")))
+    return slug or "item"
+
+
+def _build_plot_filename(csv_label: str) -> str:
+    """Return a compact, readable filename for the generated plot image."""
+    short_name, ornament_type = _title_components(csv_label)
+    title_slug = _slugify(short_name)
+    type_slug = _slugify(ornament_type)
+    return f"{title_slug}_{type_slug}.png"
 
 
 def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
@@ -125,8 +165,8 @@ def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
         ax.set_yticks(range(len(series)))
         ax.set_yticklabels(series.index, fontsize=9)
         ax.set_xlabel("Sequences containing comment")
-        title_label = Path(csv_label).name
-        ax.set_title(f"counts: {title_label}")
+        title_label = _build_plot_title(csv_label)
+        ax.set_title(title_label)
         ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
         for idx, value in enumerate(series.values):
@@ -135,7 +175,7 @@ def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
         ax.set_xlim(0, max(series.values) * 1.1 if series.values.size else 1)
         fig.tight_layout()
 
-        output_path = PLOTS_DIR / f"{_safe_plot_name(csv_label)}.png"
+        output_path = PLOTS_DIR / _build_plot_filename(csv_label)
         fig.savefig(output_path, dpi=300)
         plt.close(fig)
         print(f"Saved plot for {csv_label} -> {output_path}")
