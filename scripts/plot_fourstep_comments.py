@@ -146,6 +146,23 @@ def _build_plot_filename(csv_label: str) -> str:
     return f"{title_slug}_{type_slug}.png"
 
 
+def _combine_perfect_fifth(comment_counter: Counter[str]) -> Counter[str]:
+    """Aggregate perfect-fifth variants into a single bucket for plotting."""
+    combined: Counter[str] = Counter()
+    perfect_total = 0
+
+    for label, value in comment_counter.items():
+        if "perfect_fifth" in label:
+            perfect_total += value
+        else:
+            combined[label] = value
+
+    if perfect_total:
+        combined["perfect_fifth"] = perfect_total
+
+    return combined
+
+
 def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
     """Create a horizontal bar plot for each CSV in ``counts``."""
     if not counts:
@@ -157,7 +174,8 @@ def plot_counts(counts: OrderedDict[str, Counter[str]]) -> None:
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
     for csv_label, comment_counter in counts.items():
-        series = pd.Series(comment_counter).sort_values(ascending=True)
+        display_counts = _combine_perfect_fifth(comment_counter)
+        series = pd.Series(display_counts).sort_values(ascending=True)
         fig_height = max(3.5, 0.35 * len(series))
         fig, ax = plt.subplots(figsize=(10, fig_height))
 
