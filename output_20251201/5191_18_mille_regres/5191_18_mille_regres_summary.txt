@@ -1,0 +1,44 @@
+Summary for 5191_18_mille_regres
+tuning: A
+meter_info: 2/1
+bar_num: 40
+diminution: 1
+category: chanson
+--------------------------------
+abtab: 51
+abtab_count_abrupt_duration_changes: 0
+abtab_count_consonant_beginning_sequences: 51
+abtab_fourstep: 7
+abtab_non_chord: 26
+raw: 19
+raw_count_abrupt_duration_changes: 0
+raw_count_consonant_beginning_sequences: 19
+raw_fourstep: 5
+raw_non_chord: 13
+voice_0: 8
+voice_0_fourstep: 0
+voice_1: 9
+voice_1_fourstep: 1
+voice_2: 9
+voice_2_fourstep: 3
+voice_3: 2
+voice_3_fourstep: 2
+voices_merged: 28
+voices_merged_abrupt_duration_change_sequence_ids: [15]
+voices_merged_count_abrupt_duration_changes: 1
+voices_merged_fourstep: 6
+
+\begin{table}[ht]
+\centering
+\caption{Summary for 5191\_18\_mille\_regres; category: chanson; tuning: A; meter\_info: 2/1; bar\_num: 40; diminution: 1}
+\label{tab:results_5191_18}
+\begin{tabular}{llllll}
+\hline
+ & \rotatebox{90}{count} & \rotatebox{90}{abrupt dur changes  } & \rotatebox{90}{consonant start} & \rotatebox{90}{fourstep} & \rotatebox{90}{non-chord} \\
+\hline
+abtab & 51 & 0 & 51 & 7 & 26 \\
+raw & 19 & 0 & 19 & 5 & 13 \\
+voices\_merged & 28 & 1 & -- & 6 & -- \\
+\hline
+\end{tabular}
+\end{table}

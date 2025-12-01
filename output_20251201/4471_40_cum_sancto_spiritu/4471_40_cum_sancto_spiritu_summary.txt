@@ -1,0 +1,48 @@
+Summary for 4471_40_cum_sancto_spiritu
+tuning: A
+meter_info: 3/2
+bar_num: 28
+diminution: 2
+category: mass_section
+--------------------------------
+abtab: 45
+abtab_abrupt_duration_change_sequence_ids: [15,43]
+abtab_count_abrupt_duration_changes: 2
+abtab_count_consonant_beginning_sequences: 42
+abtab_fourstep: 21
+abtab_non_chord: 31
+abtab_non_consonant_beginning_sequence_ids: [2,21,22]
+raw: 46
+raw_abrupt_duration_change_sequence_ids: [11,44]
+raw_count_abrupt_duration_changes: 2
+raw_count_consonant_beginning_sequences: 44
+raw_fourstep: 21
+raw_non_chord: 29
+raw_non_consonant_beginning_sequence_ids: [18,20]
+voice_0: 13
+voice_0_fourstep: 6
+voice_1: 14
+voice_1_fourstep: 5
+voice_2: 13
+voice_2_fourstep: 2
+voice_3: 10
+voice_3_fourstep: 4
+voices_merged: 50
+voices_merged_abrupt_duration_change_sequence_ids: [5,35]
+voices_merged_count_abrupt_duration_changes: 2
+voices_merged_fourstep: 17
+
+\begin{table}[ht]
+\centering
+\caption{Summary for 4471\_40\_cum\_sancto\_spiritu; category: mass\_section; tuning: A; meter\_info: 3/2; bar\_num: 28; diminution: 2}
+\label{tab:results_4471_40}
+\begin{tabular}{llllll}
+\hline
+ & \rotatebox{90}{count} & \rotatebox{90}{abrupt dur changes  } & \rotatebox{90}{consonant start} & \rotatebox{90}{fourstep} & \rotatebox{90}{non-chord} \\
+\hline
+abtab & 45 & 2 & 42 & 21 & 31 \\
+raw & 46 & 2 & 44 & 21 & 29 \\
+voices\_merged & 50 & 2 & -- & 17 & -- \\
+\hline
+\end{tabular}
+\end{table}

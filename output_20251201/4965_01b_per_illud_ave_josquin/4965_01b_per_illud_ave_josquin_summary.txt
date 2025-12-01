@@ -1,0 +1,42 @@
+Summary for 4965_01b_per_illud_ave_josquin
+tuning: G
+meter_info: 2/2
+bar_num: 28
+diminution: 2
+category: motet
+--------------------------------
+abtab: 46
+abtab_abrupt_duration_change_sequence_ids: [0]
+abtab_count_abrupt_duration_changes: 1
+abtab_count_consonant_beginning_sequences: 46
+abtab_fourstep: 15
+abtab_non_chord: 33
+raw: 40
+raw_abrupt_duration_change_sequence_ids: [0]
+raw_count_abrupt_duration_changes: 1
+raw_count_consonant_beginning_sequences: 40
+raw_fourstep: 16
+raw_non_chord: 25
+voice_0: 34
+voice_0_fourstep: 12
+voice_1: 17
+voice_1_fourstep: 6
+voices_merged: 51
+voices_merged_abrupt_duration_change_sequence_ids: [0]
+voices_merged_count_abrupt_duration_changes: 1
+voices_merged_fourstep: 18
+
+\begin{table}[ht]
+\centering
+\caption{Summary for 4965\_01b\_per\_illud\_ave\_josquin; category: motet; tuning: G; meter\_info: 2/2; bar\_num: 28; diminution: 2}
+\label{tab:results_4965_01}
+\begin{tabular}{llllll}
+\hline
+ & \rotatebox{90}{count} & \rotatebox{90}{abrupt dur changes  } & \rotatebox{90}{consonant start} & \rotatebox{90}{fourstep} & \rotatebox{90}{non-chord} \\
+\hline
+abtab & 46 & 1 & 46 & 15 & 33 \\
+raw & 40 & 1 & 40 & 16 & 25 \\
+voices\_merged & 51 & 1 & -- & 18 & -- \\
+\hline
+\end{tabular}
+\end{table}

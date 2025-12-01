@@ -1,0 +1,46 @@
+Summary for 4465_33-34_memor_esto-1
+tuning: A
+meter_info: 2/2
+bar_num: 165
+diminution: 2
+category: motet
+--------------------------------
+abtab: 33
+abtab_abrupt_duration_change_sequence_ids: [0,2]
+abtab_count_abrupt_duration_changes: 2
+abtab_count_consonant_beginning_sequences: 33
+abtab_fourstep: 12
+abtab_non_chord: 24
+raw: 34
+raw_abrupt_duration_change_sequence_ids: [0,3]
+raw_count_abrupt_duration_changes: 2
+raw_count_consonant_beginning_sequences: 34
+raw_fourstep: 19
+raw_non_chord: 11
+voice_0: 5
+voice_0_fourstep: 1
+voice_1: 10
+voice_1_fourstep: 4
+voice_2: 12
+voice_2_fourstep: 3
+voice_3: 8
+voice_3_fourstep: 1
+voices_merged: 35
+voices_merged_abrupt_duration_change_sequence_ids: [12]
+voices_merged_count_abrupt_duration_changes: 1
+voices_merged_fourstep: 9
+
+\begin{table}[ht]
+\centering
+\caption{Summary for 4465\_33-34\_memor\_esto-1; category: motet; tuning: A; meter\_info: 2/2; bar\_num: 165; diminution: 2}
+\label{tab:results_4465_33}
+\begin{tabular}{llllll}
+\hline
+ & \rotatebox{90}{count} & \rotatebox{90}{abrupt dur changes  } & \rotatebox{90}{consonant start} & \rotatebox{90}{fourstep} & \rotatebox{90}{non-chord} \\
+\hline
+abtab & 33 & 2 & 33 & 12 & 24 \\
+raw & 34 & 2 & 34 & 19 & 11 \\
+voices\_merged & 35 & 1 & -- & 9 & -- \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,48 @@
+Summary for 4482_50_mille_regrets_P
+tuning: A
+meter_info: 2/2
+bar_num: 40
+diminution: 2
+category: chanson
+--------------------------------
+abtab: 57
+abtab_abrupt_duration_change_sequence_ids: [17,34]
+abtab_count_abrupt_duration_changes: 2
+abtab_count_consonant_beginning_sequences: 56
+abtab_fourstep: 20
+abtab_non_chord: 41
+abtab_non_consonant_beginning_sequence_ids: [37]
+raw: 40
+raw_abrupt_duration_change_sequence_ids: [11,22]
+raw_count_abrupt_duration_changes: 2
+raw_count_consonant_beginning_sequences: 39
+raw_fourstep: 20
+raw_non_chord: 27
+raw_non_consonant_beginning_sequence_ids: [25]
+voice_0: 35
+voice_0_fourstep: 13
+voice_1: 18
+voice_1_fourstep: 4
+voice_2: 6
+voice_2_fourstep: 2
+voice_3: 1
+voice_3_fourstep: 0
+voices_merged: 60
+voices_merged_abrupt_duration_change_sequence_ids: [10,23,59]
+voices_merged_count_abrupt_duration_changes: 3
+voices_merged_fourstep: 19
+
+\begin{table}[ht]
+\centering
+\caption{Summary for 4482\_50\_mille\_regrets\_P; category: chanson; tuning: A; meter\_info: 2/2; bar\_num: 40; diminution: 2}
+\label{tab:results_4482_50}
+\begin{tabular}{llllll}
+\hline
+ & \rotatebox{90}{count} & \rotatebox{90}{abrupt dur changes  } & \rotatebox{90}{consonant start} & \rotatebox{90}{fourstep} & \rotatebox{90}{non-chord} \\
+\hline
+abtab & 57 & 2 & 56 & 20 & 41 \\
+raw & 40 & 2 & 39 & 20 & 27 \\
+voices\_merged & 60 & 3 & -- & 19 & -- \\
+\hline
+\end{tabular}
+\end{table}
