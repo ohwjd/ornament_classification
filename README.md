@@ -24,3 +24,11 @@ python -m search_for_rules.main
 The output is then saved in the "output" folder.
 It contains subfolders corresponding to the individual pieces from the data set.
 Each folder contains a .txt file with a summary of the number of found ornaments per category as well as multiple .csv files with the found ornament sequences.
+
+
+To plot the found ornament sequences, run:
+
+```bash
+python scripts/plot_ornament_sequences.py
+python scripts/plot_fourstep_comments.py
+```
