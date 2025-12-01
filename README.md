@@ -5,8 +5,8 @@ The work summarizes different approaches for search in polyphonic music and disc
 This work is part of the process of developing a computer-aided analysis tool for the E-LAUTE project, which aims to study lute intabulations of vocal music. The findings of this thesis contribute to a better understanding of lute ornamentation and lute music in general.
 
 ------------------------------------------------------------------
-After cloning the repository, cd into the folder. 
-To run this code it is recommended to use a virtual environment to then installing the required libraries:
+After cloning the repository, cd into the folder.
+To run this code it is recommended to use a virtual environment. After setting this up and activating it, install the required libraries.
 
 ```bash
 python3 -m venv .venv
@@ -21,6 +21,6 @@ python -m search_for_rules.main
 
 ```
 
-The output is then saved in the "output" folder. 
-It contains subfolders corresponding to the individual pieces from the data set. 
-Each ....
+The output is then saved in the "output" folder.
+It contains subfolders corresponding to the individual pieces from the data set.
+Each folder contains a .txt file with a summary of the number of found ornaments per category as well as multiple .csv files with the found ornament sequences.
