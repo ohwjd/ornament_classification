@@ -6,16 +6,14 @@ def preprocess_df(df):
 
     # convert string durations to numbers
     df["duration"] = df["duration"].apply(Fraction)
-    # df["dur_float"] = df["duration"].apply(float)
     df["onset"] = df["onset"].apply(Fraction)
 
-    # remove space from column name
     df.rename(columns={"mapped voice": "voice"}, inplace=True)
 
     df = df.drop(
         columns=["bar"]
     )  # remove bar column, could contain wrong information (when inconsistencies in meter occur (e.g., 3/2 bar in 2/2 meter))
-    df = df.drop(columns=["cost"])  # remove cost column
+    df = df.drop(columns=["cost"])
 
     # Expand multi-voice rows before computing vertical ordering so each duplicated row can receive an appropriate rank (otherwise a combined "0 and 1" row would be treated as a single note at its onset and incorrectly get order 0 only).
     df = expand_and_split_voices(df)
@@ -47,10 +45,9 @@ def squish_to_one_staff(
 ):
     """Add a per-onset vertical ordering column across all voices before splitting.
 
-    Logic:
-      - Single note at an onset -> 0
-      - Multiple notes: rank unique voices numerically ascending (voice '0' highest) -> 0..N-1
-      - Multiple rows sharing the same voice at that onset (if any) all get the same rank.
+    - Single note at an onset -> 0
+    - Multiple notes: rank unique voices numerically ascending (voice '0' highest) -> 0..N-1
+    - Multiple rows sharing the same voice at that onset (if any) all get the same rank.
     """
     new_col = "voice_tab"
     if voice_col not in df.columns or onset_col not in df.columns:

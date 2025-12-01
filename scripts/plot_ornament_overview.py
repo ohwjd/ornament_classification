@@ -1,5 +1,8 @@
-#!/usr/bin/env python3
-"""Plot ornament statistics aggregated from *_summary.txt files under the output directory."""
+"""
+Plot ornament statistics aggregated from *_summary.txt files under the output directory.
+
+"""
+
 from __future__ import annotations
 
 import argparse

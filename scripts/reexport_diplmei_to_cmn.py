@@ -1,3 +1,9 @@
+"""
+Re-export diplomatic MEI files to common music notation (CMN) format using music21 for ease of reading.
+This script was originally intended to try to create mei files from tabmapper CSV outputs, but this was not acomplished.
+
+"""
+
 import os
 import sys
 import tempfile

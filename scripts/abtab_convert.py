@@ -4,11 +4,8 @@ import pathlib
 input_folder = "/Users/jaklin/abtab/data/transcriber/diplomatic/in"
 failed_files = []
 
-# https://github.com/reinierdevalk/data/tree/master/tabmapper/josquin-int/in/tab
-# run again on those files!
-
 """
-Wrapper script to run abtab on all files in a folder.
+Wrapper script to run abtab transcriber on all files in a folder.
 
 """
 

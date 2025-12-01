@@ -1,17 +1,14 @@
-"""Visualise four_step_comment distributions for every fourstep CSV.
+"""
+Visualise four_step_comment distributions for every fourstep CSV.
 
 The script walks through the ``output`` directory, finds every ``fourstep``
 subdirectory, and counts how many sequences contain each
 ``four_step_comment`` label. Every comment is counted at most once per
-``sequence_id`` to avoid inflating totals when it appears multiple times in the
-same sequence. A dedicated bar chart is stored for each CSV so that comment
+``sequence_id``. A dedicated bar chart is stored for each CSV so that comment
 distributions can be inspected per file.
+Aggregated "perfect_fifth" counts combine all variants containing "perfect_fifth"
+in their label.
 
-Usage::
-
-    python -m scripts.plot_fourstep_comments
-
-The plot is written to ``output/fourstep_comment_counts.png`` by default.
 """
 
 from __future__ import annotations

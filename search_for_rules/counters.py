@@ -69,14 +69,10 @@ def count_ornaments_by_length(
             core_length = int(core_onsets.nunique())
 
             if core_length == 0:
-                # No valid onset values were available; deduplicate by onset to ensure
-                # only one representative note per onset (NaNs collapse together).
                 core_length = int(
                     non_context.drop_duplicates(subset=["onset"]).shape[0]
                 )
         else:
-            # Without onset information, fall back to unique row indices (already
-            # filtered to non-context notes).
             core_length = int(non_context.index.nunique())
 
         if core_length == 0:
@@ -203,17 +199,6 @@ def count_abrupt_duration_changes(
             continue
         ratio = longer / shorter
         if ratio >= 8:
-            # print(
-            #     "[abrupt_duration_match] seq_id=%s pre_context=%s first_core=%s longer=%s shorter=%s ratio=%s"
-            #     % (
-            #         seq_id,
-            #         pre_context_duration,
-            #         first_core_duration,
-            #         longer,
-            #         shorter,
-            #         ratio,
-            #     )
-            # )
             abrupt_change_count += 1
             matching_sequence_ids.append(int(seq_id))
 
@@ -278,22 +263,8 @@ def count_consonant_beginning_sequences(
         note_count = int(same_onset_rows.shape[0])
 
         interval_classes: List[int] = []
-        if "interval" in same_onset_rows.columns:
-            unique_intervals = same_onset_rows["interval"].dropna().unique()
-            for raw_interval in unique_intervals:
-                try:
-                    numeric_interval = float(raw_interval)
-                except (TypeError, ValueError):
-                    continue
-                if pd.isna(numeric_interval):
-                    continue
-                numeric_interval = int(round(numeric_interval))
-                # Capture the exact semitone span and its reduced class so octaves and extended consonances match.
-                interval_classes.append(abs(numeric_interval))
-                interval_classes.append(abs(numeric_interval) % 12)
 
-        if not interval_classes and "pitch" in same_onset_rows.columns:
-            # Derive intervals from MIDI pitches when explicit interval data is absent.
+        if "pitch" in same_onset_rows.columns:
             pitch_series = same_onset_rows["pitch"].dropna()
             if not pitch_series.empty:
                 pitches = [int(round(p)) for p in pitch_series.tolist()]

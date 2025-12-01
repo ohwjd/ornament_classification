@@ -92,7 +92,6 @@ def parse_meter_info(meter_info_raw):
         else:
             meter_frac = Fraction(int(meter_str.strip()), 1)
     except Exception:
-        # Fallback: try to construct Fraction directly from the string
         try:
             meter_frac = Fraction(meter_str)
         except Exception:

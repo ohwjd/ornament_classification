@@ -175,7 +175,6 @@ for f in [
     #####################################################
 
     # abtab
-
     # max_ornament_duration_threshold is set to a quarter of the meter_info or two levels below beat level (in accordance to JosquinTab data set conventions)
     ornament_sequences_abtab = find_ornament_sequences_abtab(
         preprocessed_df,
@@ -245,28 +244,6 @@ for f in [
         else:
             summary_counts["abtab_non_chord"] = 0
 
-        # abtab_starting_chord = only_starting_chord_and_then_non_chord_sequences(
-        # ornament_sequences_abtab
-        # )
-        # if not abtab_starting_chord.empty:
-        #     abtab_starting_chord_path = os.path.join(
-        #         fourstep_dir,
-        #         f"{base_name}_tab_abtab_starting_chord.csv",
-        #     )
-        #     abtab_starting_chord.to_csv(
-        #         abtab_starting_chord_path, index=False, sep=";"
-        #     )
-        #     record_length_summary(
-        #         abtab_starting_chord_path, abtab_starting_chord
-        #     )
-        #     record_duration_summary(
-        #         abtab_starting_chord_path, abtab_starting_chord
-        #     )
-        #     summary_counts["abtab_starting_chord"] = abtab_starting_chord[
-        #         "sequence_id"
-        #     ].nunique()
-        # else:
-        #     summary_counts["abtab_starting_chord"] = 0
     else:
         summary_counts.update(
             {
@@ -275,7 +252,6 @@ for f in [
                 "abtab_count_abrupt_duration_changes": 0,
                 "abtab_count_consonant_beginning_sequences": 0,
                 "abtab_non_chord": 0,
-                # "abtab_starting_chord": 0,
             }
         )
 
@@ -448,15 +424,11 @@ for f in [
 
     merged_by_voice_parts = []
     merged_sequence_offset = 0
-    # merged_by_voice_parts_eighth = []
     merged_eighth_sequence_offset = 0
 
     for voice, df_voice in voice_dfs.items():
         output_path = os.path.join(voices_dir, f"{base_name}_voice-{voice}.csv")
         sequences_df = find_ornament_sequences_abtab(df_voice)
-        # sequences_df_eighth = find_ornament_sequences_abtab(
-        #     df_voice, max_ornament_duration_threshold=meter_info / 8
-        # )
 
         if not sequences_df.empty:
             sequences_df.to_csv(output_path, index=False)
@@ -465,7 +437,6 @@ for f in [
             summary_counts[f"voice_{voice}"] = sequences_df[
                 "sequence_id"
             ].nunique()
-            # Second step: filter for four-note small-step sequences
             filtered_four = filter_four_note_step_sequences(sequences_df)
             filtered_path = os.path.join(
                 voices_dir,
@@ -496,22 +467,6 @@ for f in [
         else:
             summary_counts[f"voice_{voice}"] = 0
             summary_counts[f"voice_{voice}_fourstep"] = 0
-
-        # if not sequences_df_eighth.empty:
-        #     voice_part_eighth = sequences_df_eighth.copy()
-        #     voice_part_eighth["sequence_id_voice"] = voice_part_eighth[
-        #         "sequence_id"
-        #     ]
-        #     voice_part_eighth["sequence_id"] = (
-        #         voice_part_eighth["sequence_id"] + merged_eighth_sequence_offset
-        #     )
-        #     merged_eighth_sequence_offset = (
-        #         voice_part_eighth["sequence_id"].max() + 1
-        #         if not voice_part_eighth.empty
-        #         else merged_eighth_sequence_offset
-        #     )
-        #     voice_part_eighth["voice"] = str(voice)
-        # merged_by_voice_parts_eighth.append(voice_part_eighth)
 
     if merged_by_voice_parts:
         merged_by_voice = pd.concat(
