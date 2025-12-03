@@ -1,5 +1,3 @@
-# import music21 as m21
-
 import os
 from typing import Dict, List
 
@@ -211,7 +209,6 @@ for f in [
                 + ",".join(str(seq_id) for seq_id in non_consonant_ids)
                 + "]"
             )
-        # Four-note variant for ornament
         voice_tab_four = filter_four_note_step_sequences(
             ornament_sequences_abtab
         )
@@ -254,53 +251,6 @@ for f in [
                 "abtab_non_chord": 0,
             }
         )
-
-    # ornament_sequences_abtab_eight = find_ornament_sequences_abtab(
-    #     preprocessed_df,
-    #     max_ornament_duration_threshold=meter_info / 8,
-    # # )
-    # if not ornament_sequences_abtab_eight.empty:
-    #     voice_tab_eight_path = os.path.join(
-    #         file_output_dir, f"{base_name}_tab_abtab_eighth.csv"
-    #     )
-    #     ornament_sequences_abtab_eight.to_csv(voice_tab_eight_path, index=False)
-    #     record_length_summary(
-    #         voice_tab_eight_path, ornament_sequences_abtab_eight
-    #     )
-    #     record_duration_summary(
-    #         voice_tab_eight_path, ornament_sequences_abtab_eight
-    #     )
-    #     summary_counts["abtab_eighth"] = ornament_sequences_abtab_eight[
-    #         "sequence_id"
-    #     ].nunique()
-
-    #     voice_tab_eight_four = filter_four_note_step_sequences(
-    #         ornament_sequences_abtab_eight
-    #     )
-    #     if not voice_tab_eight_four.empty:
-    #         voice_tab_eight_four_path = os.path.join(
-    #             fourstep_dir,
-    #             f"{base_name}_tab_abtab_eighth_fourstep.csv",
-    #         )
-    #         voice_tab_eight_four.to_csv(
-    #             voice_tab_eight_four_path, index=False, sep=";"
-    #         )
-    #         record_length_summary(
-    #             voice_tab_eight_four_path, voice_tab_eight_four
-    #         )
-    #         record_duration_summary(
-    #             voice_tab_eight_four_path, voice_tab_eight_four
-    #         )
-    #         summary_counts["abtab_eighth_fourstep"] = voice_tab_eight_four[
-    #             "sequence_id"
-    #         ].nunique()
-    # else:
-    #     summary_counts.update(
-    #         {
-    #             "abtab_eighth": 0,
-    #             "abtab_eighth_fourstep": 0,
-    #         }
-    #     )
 
     #############################################
     # raw (not abtab based)
@@ -361,66 +311,11 @@ for f in [
         else:
             summary_counts["raw_non_chord"] = 0
 
-        # ornament_sequences_raw_eight = find_ornament_sequences_raw(
-        #     preprocessed_df,
-        #     max_ornament_duration_threshold=meter_info / 8,
-        # )
-
-        # if not ornament_sequences_raw_eight.empty:
-        #     raw_eight_path = os.path.join(
-        #         file_output_dir, f"{base_name}_tab_raw_eighth.csv"
-        #     )
-        #     ornament_sequences_raw_eight.to_csv(raw_eight_path, index=False)
-        #     record_length_summary(raw_eight_path, ornament_sequences_raw_eight)
-        #     record_duration_summary(
-        #         raw_eight_path, ornament_sequences_raw_eight
-        #     )
-        #     summary_counts["raw_eighth"] = ornament_sequences_raw_eight[
-        #         "sequence_id"
-        #     ].nunique()
-        #     raw_eight_four = filter_four_note_step_sequences(
-        #         ornament_sequences_raw_eight
-        #     )
-        #     if not raw_eight_four.empty:
-        #         raw_eight_four_path = os.path.join(
-        #             fourstep_dir,
-        #             f"{base_name}_tab_raw_eighth_fourstep.csv",
-        #         )
-        #         raw_eight_four.to_csv(raw_eight_four_path, index=False, sep=";")
-        #         record_length_summary(raw_eight_four_path, raw_eight_four)
-        #         record_duration_summary(raw_eight_four_path, raw_eight_four)
-        #         summary_counts["raw_eighth_fourstep"] = raw_eight_four[
-        #             "sequence_id"
-        #         ].nunique()
-        #     else:
-        #         summary_counts["raw_eighth_fourstep"] = 0
-        # else:
-        #     summary_counts["raw_eighth"] = 0
-
-        # raw_starting_chord = only_starting_chord_and_then_non_chord_sequences(
-        #     ornament_sequences_raw
-        # )
-        # if not raw_starting_chord.empty:
-        #     raw_starting_chord_path = os.path.join(
-        #         fourstep_dir,
-        #         f"{base_name}_tab_raw_starting_chord.csv",
-        #     )
-        #     raw_starting_chord.to_csv(
-        #         raw_starting_chord_path, index=False, sep=";"
-        #     )
-        #     record_length_summary(raw_starting_chord_path, raw_starting_chord)
-        #     record_duration_summary(raw_starting_chord_path, raw_starting_chord)
-        #     summary_counts["raw_starting_chord"] = raw_starting_chord[
-        #         "sequence_id"
-        #     ].nunique()
-        # else:
-        #     summary_counts["raw_starting_chord"] = 0
     else:
         summary_counts["raw"] = 0
         summary_counts["raw_fourstep"] = 0
         summary_counts["raw_count_abrupt_duration_changes"] = 0
         summary_counts["raw_count_consonant_beginning_sequences"] = 0
-        # summary_counts["raw_eighth"] = 0
 
     merged_by_voice_parts = []
     merged_sequence_offset = 0

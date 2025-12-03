@@ -129,16 +129,7 @@ def write_summary(
     summary_counts,
     category,
 ):
-    """Write the per-file summary and its LaTeX table into one text file."""
-
-    header_info = {
-        "tuning": tuning,
-        "meter_info": meter_raw,
-        "bar_num": bar_num,
-        "diminution": diminution,
-        "category": category,
-    }
-
+    """Write the per-file summary a text file."""
     summary_lines = [f"Summary for {base_name}"]
     summary_lines.append(f"tuning: {tuning}")
     summary_lines.append(f"meter_info: {meter_raw}")
@@ -149,133 +140,9 @@ def write_summary(
     for key, val in sorted(summary_counts.items()):
         summary_lines.append(f"{key}: {val}")
 
-    latex_table = create_latex_table(
-        base_name=base_name,
-        header_info=header_info,
-        summary_counts=summary_counts,
-    )
-
     summary_path = os.path.join(file_output_dir, f"{base_name}_summary.txt")
     with open(summary_path, "w", encoding="utf-8") as sf:
         sf.write("\n".join(summary_lines))
         sf.write("\n\n")
-        sf.write(latex_table)
         sf.write("\n")
     return summary_path
-
-
-def create_latex_table(
-    *,
-    base_name,
-    header_info,
-    summary_counts,
-    target_rows=None,
-):
-    """Build the LaTeX table string from in-memory summary data."""
-
-    if target_rows is None:
-        target_rows = ["abtab", "raw", "voices_merged"]
-
-    def latex_escape(value):
-        text = str(value)
-        replacements = {
-            "\\": "\\textbackslash{}",
-            "_": "\\_",
-            "%": "\\%",
-            "&": "\\&",
-            "#": "\\#",
-            "{": "\\{",
-            "}": "\\}",
-        }
-        for old, new in replacements.items():
-            text = text.replace(old, new)
-        return text
-
-    columns = ["count"]
-    pretty_names = {
-        "count": "count",
-        "eighth": "eighth",
-        "eighth_fourstep": "eighth fourstep",
-        "fourstep": "fourstep",
-        "count_abrupt_duration_changes": "abrupt dur changes  ",
-        "abrupt_duration_change_sequence_ids": None,
-        "count_consonant_beginning_sequences": "consonant start",
-        "non_chord": "non-chord",
-        "starting_chord": "start chord",
-    }
-
-    row_values = {row: {} for row in target_rows}
-
-    for full_key in sorted(summary_counts):
-        val = summary_counts[full_key]
-        for row in target_rows:
-            if full_key == row:
-                row_values[row]["count"] = val
-                break
-            prefix = f"{row}_"
-            if full_key.startswith(prefix):
-                suffix = full_key[len(prefix) :]
-                if suffix == "non_consonant_beginning_sequence_ids":
-                    break
-                row_values[row][suffix] = val
-                if pretty_names.get(suffix, suffix) and suffix not in columns:
-                    columns.append(suffix)
-                break
-
-    for row in target_rows:
-        row_values[row].setdefault("count", "--")
-
-    display_columns = [col for col in columns if pretty_names.get(col, col)]
-
-    col_spec = "l" + "l" * len(display_columns)
-    latex_lines = ["\\begin{table}[ht]", "\\centering"]
-
-    caption_parts = []
-    if base_name:
-        caption_parts.append(f"Summary for {latex_escape(base_name)}")
-    for key in ("category", "tuning", "meter_info", "bar_num", "diminution"):
-        value = header_info.get(key)
-        if value not in (None, ""):
-            caption_parts.append(f"{latex_escape(key)}: {latex_escape(value)}")
-
-    label_text = None
-    if base_name:
-        label_seed = base_name[:7]
-        label_seed_sanitized = "".join(ch for ch in label_seed)
-        label_text = f"tab:results_{label_seed_sanitized}"
-
-    if caption_parts:
-        latex_lines.append(f"\\caption{{{'; '.join(caption_parts)}}}")
-    if label_text:
-        latex_lines.append(f"\\label{{{label_text}}}")
-
-    latex_lines.append(f"\\begin{{tabular}}{{{col_spec}}}")
-    latex_lines.append("\\hline")
-
-    header_cells = [""]
-    for col in display_columns:
-        pretty = pretty_names.get(col, col)
-        if not pretty:
-            continue
-        header_cells.append(f"\\rotatebox{{90}}{{{latex_escape(pretty)}}}")
-
-    row_end = " \\\\"  # space then LaTeX line break
-    latex_lines.append(" & ".join(header_cells) + row_end)
-    latex_lines.append("\\hline")
-
-    for row in target_rows:
-        row_cells = [latex_escape(row)]
-        for col in display_columns:
-            value = row_values[row].get(col, "--")
-            if value == 0:
-                value = "0"
-            elif value in (None, ""):
-                value = "--"
-            row_cells.append(latex_escape(value))
-        latex_lines.append(" & ".join(row_cells) + row_end)
-
-    latex_lines.append("\\hline")
-    latex_lines.append("\\end{tabular}")
-    latex_lines.append("\\end{table}")
-
-    return "\n".join(latex_lines)
