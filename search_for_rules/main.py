@@ -44,10 +44,6 @@ csv_file_names = sorted(
     [f for f in os.listdir(csv_folder_path) if f.endswith(".csv")]
 )
 
-# score_mei_file_names = sorted(
-#     [f for f in os.listdir(score_mei_folder_path) if f.endswith(".mei")]
-# )
-
 dipl_mei_file_names = sorted(
     [f for f in os.listdir(dipl_mei_folder_path) if f.endswith(".mei")]
 )
